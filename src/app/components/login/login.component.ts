@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 
 //creamos la interfaz con los datos necesarios para el login
@@ -25,21 +26,25 @@ export class LoginComponent {
   credenciales: AuthRequestDTO = { username: '',password: '' };
 
   // Inyectamos el servicio
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   iniciarSesion()
   {
-    console.log('Iniciando sesión con los datos... \n', this.credenciales);
-
     //Enviamos la peticion y esperamos la respuesta
     this.authService.iniciarSesion(this.credenciales).subscribe({
-      next: (respuesta) =>
+      next: (respuesta: any) =>
       {
         console.log('Respuesta del servidor: ', respuesta);
+
+        //Guardamos el token
+        localStorage.setItem('token', respuesta.token);
+
+        this.router.navigate(['/home']);
       },
       error: (error) =>
       {
-        console.log('Error en la peticion: ', error);
+        console.log('Error al iniciar sesion: ', error);
+        alert('Credenciales invalidas');
       }
     });
 
