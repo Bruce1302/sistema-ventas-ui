@@ -1,1 +1,21 @@
-<p>home works!</p>
+<section class="principal-contenedor">
+  <h2>Bienvenido, {{ nombreUsuario }}</h2>
+  <!-- Menu de Navegacion -->
+  <aside class="menu-lateral">
+    <h2>Opciones</h2>
+
+    <nav>
+      <ul>
+        <li><a href="#">Ventas realizadas</a></li>
+        <li><a href="#">Productos</a></li>
+      </ul>
+    </nav>
+
+    <button (click)="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
+  </aside>
+
+  <section class="area-trabajo">
+    <h1>Carrito</h1>
+  </section>
+
+</section>

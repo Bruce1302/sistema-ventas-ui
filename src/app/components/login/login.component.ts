@@ -38,7 +38,6 @@ export class LoginComponent {
 
         //Guardamos el token
         localStorage.setItem('token', respuesta.token);
-
         this.router.navigate(['/home']);
       },
       error: (error) =>

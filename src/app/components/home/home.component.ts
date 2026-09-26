@@ -1,9 +1,31 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   imports: [],
+  standalone: true,
   selector: 'app-home',
   styleUrl: './home.component.css',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+
+  // Variable para que el HTML pueda leerla
+  nombreUsuario: string = '';
+
+  constructor( private auth: AuthService) {}
+
+  // Este metodo se ejecuta apenas el componente nace en la pantalla
+  ngOnInit() {
+    const usuario = this.auth.obtenerUsernameLogueado(); //Obtenemos el usuario del token
+
+    if (usuario)
+      this.nombreUsuario = usuario; //Enviamos el username al html
+  }
+
+  cerrarSesion()
+  {
+    this.auth.cerrarSesion();
+  }
+}
