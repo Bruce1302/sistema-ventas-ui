@@ -1,19 +1,21 @@
+<section class="contenedor-principal">
+  <section class="login-contenedor">
+    <h2>Sistema de venta</h2>
+    <h3>Iniciar Sesión</h3>
 
-<section class="login-contenedor">
-  <h2>Sistema de venta</h2>
-  <p>Iniciar Sesión</p>
+    <form (ngSubmit)="iniciarSesion()" class="form-contenedor">
+      <div class="campos-contenedor">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="credenciales.username" placeholder="Ej. Administrador">
+      </div>
 
-  <form (ngSubmit)="iniciarSesion()" class="form-contenedor">
-    <div class="campos-contenedor">
-      <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" [(ngModel)]="credenciales.username" placeholder="Ej. Administrador">
-    </div>
+      <div class="campos-contenedor">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="credenciales.password" placeholder="**********">
+      </div>
 
-    <div class="campos-contenedor">
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" [(ngModel)]="credenciales.password" placeholder="**********">
-    </div>
+      <button type="submit" class="btn-ingresar">Ingresar</button>
+    </form>
+  </section>
 
-    <button type="submit" class="btn-ingresar">Ingresar</button>
-  </form>
 </section>

@@ -3,4 +3,11 @@ body
   font-size: 10px;
   margin: 0;
   padding: 0;
+
+  background: #fff;
+
+  /* Opcional: Asegura que el contenedor ocupe toda la altura de la pantalla */
+
+
+
 }
