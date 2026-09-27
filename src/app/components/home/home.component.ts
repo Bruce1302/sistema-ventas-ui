@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProductosComponent } from '../productos/productos.component';
@@ -10,7 +10,7 @@ import { ProductosComponent } from '../productos/productos.component';
   styleUrl: './home.component.css',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   // Variable para que el HTML pueda leerla
   nombreUsuario: string = '';

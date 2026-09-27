@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
 
@@ -20,11 +20,11 @@ export interface Producto
   templateUrl: './productos.component.html',
 })
 
-export class ProductosComponent {
+export class ProductosComponent implements OnInit{
 
   constructor(private productoService: ProductoService, private router: Router) {  }
 
-  listaProductos: Producto[] = [];
+  listaProductos = signal<Producto[]>([]);
 
   ngOnInit()
   {
@@ -34,12 +34,14 @@ export class ProductosComponent {
   obtenerProductos()
   {
     this.productoService.obtenerProductos().subscribe({
-      next: (productos: Producto[]) =>
+      //Lo que nos retorna el api no es un array, es un objeto paginado
+      next: (respuesta: any) =>
       {
-        this.listaProductos = productos;
-        console.log('Catálogo cargado con éxito:', this.listaProductos);
+        //Extraemos lo que lleva dentro del content
+        this.listaProductos.set(respuesta.content);
+        console.log('productos cargados con exito:', this.listaProductos);
       },
-      error(error)
+      error: (error) =>
       {
         console.log('No se pudieron obtener los productos', error);
       }

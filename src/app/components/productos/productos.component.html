@@ -1,1 +1,18 @@
-<p>productos works!</p>
+<section class="contendor-productos">
+
+  <!-- Recorremos la lista de productos y los mostramos -->
+  @for (producto of listaProductos(); track producto.id)
+  {
+    <article class="producto-card">
+      <h3>{{ producto.nombre }}</h3>
+      <p class="stock">Stock disponible: {{ producto.stock }}</p>
+      <p class="precio">S/ {{ producto.precio }}</p>
+      <button class="btn-agregar">Agregar</button>
+    </article>
+  }
+  @empty
+  {
+    <p>No hay productos disponibles</p>
+  }
+
+</section>
