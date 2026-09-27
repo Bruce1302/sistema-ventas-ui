@@ -6,7 +6,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   // Inyectamos el enrutador
   const router = inject(Router);
 
-  // Buscamos el pase VIP en el local storage del navegador
+  // Buscamos el token en el local storage
   const token = localStorage.getItem('token');
 
   if (token)

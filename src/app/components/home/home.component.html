@@ -1,6 +1,10 @@
-<section class="principal-contenedor">
+<section class="sesion-contenedor">
   <h2>Bienvenido, {{ nombreUsuario }}</h2>
-  <!-- Menu de Navegacion -->
+
+  <button (click)="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
+</section>
+
+<section class="contenedor-principal">
   <aside class="menu-lateral">
     <h2>Opciones</h2>
 
@@ -10,11 +14,13 @@
         <li><a href="#">Productos</a></li>
       </ul>
     </nav>
-
-    <button (click)="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
   </aside>
 
-  <section class="area-trabajo">
+  <section class="productos-contenedor">
+    <app-productos></app-productos>
+  </section>
+
+  <section class="carrito-contenedor">
     <h1>Carrito</h1>
   </section>
 
