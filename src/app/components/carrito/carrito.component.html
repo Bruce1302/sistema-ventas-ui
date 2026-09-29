@@ -1,0 +1,18 @@
+<section class="contenedor-carrito">
+
+  <!-- Recorremos el array y los mostramos -->
+  @for (itemCarrito of listaCarrito(); track itemCarrito.productoId)
+  {
+    <article class="producto-card">
+      <h3>{{ itemCarrito.nombre }}</h3>
+      <p class="cantidad">Cantidad: {{ itemCarrito.cantidad }}</p>
+      <p class="subTotal">S/ {{ itemCarrito.subTotal }}</p>
+      <button class="btn-agregar">eliminar</button>
+    </article>
+  }
+  @empty
+  {
+    <p>No hay productos en el carrito</p>
+  }
+
+</section>
