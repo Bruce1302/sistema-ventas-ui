@@ -7,7 +7,7 @@
       <h3>{{ itemCarrito.nombre }}</h3>
       <p class="cantidad">Cantidad: {{ itemCarrito.cantidad }}</p>
       <p class="subTotal">S/ {{ itemCarrito.subTotal }}</p>
-      <button class="btn-agregar">eliminar</button>
+      <button (click)="quitarItem(itemCarrito.productoId)" class="btn-agregar">eliminar</button>
     </article>
   }
   @empty

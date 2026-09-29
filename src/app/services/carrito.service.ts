@@ -22,19 +22,35 @@ export class CarritoService {
 
   agregarItem(producto: Producto)
   {
-    let productoExiste = false;
+     // averiguamos si el producto ya existe en la forma actual del carrito
+    const existe = this.carrito().find(item => item.productoId === producto.id);
 
-    // Usamos update para transformar el arreglo completo y se actualice la vista
+    if (existe)//Si existe aumentamos la cantidad
+      this.aumentarCantidad(producto);
+    else //Si el producto es nuevo, lo agregamos
+    {
+      // construimos el ítem y lo insertamos de forma inmutable
+      const nuevoItem: CarritoItem = {
+        productoId: producto.id,
+        nombre: producto.nombre,
+        cantidad: 1,
+        subTotal: producto.precio
+      };
+      this.carrito.update(items => [...items, nuevoItem]);
+    }
+
+  }
+
+  aumentarCantidad(producto: Producto)
+  {
     this.carrito.update((itemsActuales) =>
     {
-
-      // Recorremos el arreglo
       const nuevoArreglo = itemsActuales.map(item =>
       {
-        //Si el producto existe, lo copiamos y actualizamos
+        //Buscamos el producto
         if (item.productoId === producto.id)
         {
-          productoExiste = true;
+          //Devolvemos el item actualizado
           return {
             ...item,
             cantidad: item.cantidad + 1,
@@ -43,23 +59,17 @@ export class CarritoService {
         }
         return item;
       });
-
-      //Si lo encontramos y modificamos, devolvemos el arreglo notificando el cambio
-      if (productoExiste) {
-        return nuevoArreglo;
-      }
-
-      // Si no existe, construimos el item localmente y lo añadimos
-      const nuevoItem: CarritoItem = {
-        productoId: producto.id,
-        nombre: producto.nombre,
-        cantidad: 1,
-        subTotal: producto.precio
-      };
-
-      return [...itemsActuales, nuevoItem];
+      return nuevoArreglo;
     });
 
+  }
+
+  quitarItem(productoId: string)
+  {
+    this.carrito.update((itemsActuales) =>
+    {
+      return itemsActuales.filter(item => item.productoId !== productoId);
+    });
   }
 
   obtenerCarrito()

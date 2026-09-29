@@ -14,5 +14,8 @@ export class CarritoComponent  {
   listaCarrito = this.carritoService.obtenerCarrito();
 
 
-
+  quitarItem(productoId: string)
+  {
+    this.carritoService.quitarItem(productoId);
+  }
 }
