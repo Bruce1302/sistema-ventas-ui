@@ -1,6 +1,7 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
+import {CarritoService} from '../../services/carrito.service';
 
 export interface Producto
 {
@@ -22,7 +23,8 @@ export interface Producto
 
 export class ProductosComponent implements OnInit{
 
-  constructor(private productoService: ProductoService, private router: Router) {  }
+  private productoService = inject(ProductoService);
+  private carritoService = inject(CarritoService);
 
   listaProductos = signal<Producto[]>([]);
 
@@ -46,5 +48,10 @@ export class ProductosComponent implements OnInit{
         console.log('No se pudieron obtener los productos', error);
       }
     })
+  }
+
+  agregarAlCarrito(producto: Producto)
+  {
+    this.carritoService.agregarItem(producto);
   }
 }

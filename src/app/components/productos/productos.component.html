@@ -7,7 +7,7 @@
       <h3>{{ producto.nombre }}</h3>
       <p class="stock">Stock disponible: {{ producto.stock }}</p>
       <p class="precio">S/ {{ producto.precio }}</p>
-      <button class="btn-agregar">Agregar</button>
+      <button (click)="agregarAlCarrito(producto)" class="btn-agregar">Agregar</button>
     </article>
   }
   @empty
