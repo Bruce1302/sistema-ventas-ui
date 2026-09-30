@@ -64,6 +64,16 @@ export class CarritoService {
 
   }
 
+  calcularTotal()
+  {
+
+  }
+
+  limpiarCarrito()
+  {
+    this.carrito.set([]);
+  }
+
   quitarItem(productoId: string)
   {
     this.carrito.update((itemsActuales) =>
@@ -76,4 +86,6 @@ export class CarritoService {
   {
     return this.carrito;
   }
+
+
 }

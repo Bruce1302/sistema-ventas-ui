@@ -1,5 +1,6 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {CarritoItem, CarritoService} from '../../services/carrito.service';
+import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
 
 @Component({
   imports: [],
@@ -10,6 +11,7 @@ import {CarritoItem, CarritoService} from '../../services/carrito.service';
 export class CarritoComponent  {
 
   private carritoService = inject(CarritoService);
+  private ventaService = inject(VentaService);
 
   listaCarrito = this.carritoService.obtenerCarrito();
 
@@ -17,5 +19,30 @@ export class CarritoComponent  {
   quitarItem(productoId: string)
   {
     this.carritoService.quitarItem(productoId);
+  }
+
+  nuevaVenta()
+  {
+    //Creamos un array con los detalles de la venta y agreagmos los datos necesarios del carrito
+    const listaDetalles: DetallesVenta[]  = this.listaCarrito().map(item => (
+      { productoId: item.productoId, cantidad: item.cantidad }));
+
+    //detalles en la clave de propiedad del json, el api necesita la estructura { detalles: [ lista de los productos a vender] }
+    const ventaRequest: VentaRequest = { detalles: listaDetalles };
+
+    //los enviamos al api
+    this.ventaService.nuevaVenta(ventaRequest).subscribe(
+      {
+        next: () => {
+          this.carritoService.limpiarCarrito();
+          console.log('Venta realizada con éxito \n' + listaDetalles);
+        },
+
+        error: (error) => {
+          console.error('Error al realizar la venta:', error);
+        }
+
+      }
+    );
   }
 }
