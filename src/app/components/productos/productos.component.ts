@@ -26,28 +26,11 @@ export class ProductosComponent implements OnInit{
   private productoService = inject(ProductoService);
   private carritoService = inject(CarritoService);
 
-  listaProductos = signal<Producto[]>([]);
+  listaProductos = this.productoService.productos; //enlazamos el signal
 
   ngOnInit()
   {
-    this.obtenerProductos();
-  }
-
-  obtenerProductos()
-  {
-    this.productoService.obtenerProductos().subscribe({
-      //Lo que nos retorna el api no es un array, es un objeto paginado
-      next: (respuesta: any) =>
-      {
-        //Extraemos lo que lleva dentro del content
-        this.listaProductos.set(respuesta.content);
-        console.log('productos cargados con exito:', this.listaProductos);
-      },
-      error: (error) =>
-      {
-        console.log('No se pudieron obtener los productos', error);
-      }
-    })
+    this.productoService.obtenerProductos();
   }
 
   agregarAlCarrito(producto: Producto)

@@ -1,6 +1,7 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {CarritoItem, CarritoService} from '../../services/carrito.service';
 import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
+import {ProductoService} from '../../services/producto.service';
 
 @Component({
   imports: [],
@@ -12,6 +13,7 @@ export class CarritoComponent  {
 
   private carritoService = inject(CarritoService);
   private ventaService = inject(VentaService);
+  private productoService = inject(ProductoService);
 
   listaCarrito = this.carritoService.obtenerCarrito();
 
@@ -19,6 +21,11 @@ export class CarritoComponent  {
   quitarItem(productoId: string)
   {
     this.carritoService.quitarItem(productoId);
+  }
+
+  actualizarListaProductos()
+  {
+
   }
 
   nuevaVenta()
@@ -35,6 +42,7 @@ export class CarritoComponent  {
       {
         next: () => {
           this.carritoService.limpiarCarrito();
+          this.productoService.obtenerProductos();
           console.log('Venta realizada con éxito \n' + listaDetalles);
         },
 

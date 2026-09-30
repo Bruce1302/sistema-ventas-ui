@@ -1,4 +1,4 @@
-import {Injectable, Service, signal} from '@angular/core';
+import {inject, Injectable, Service, signal} from '@angular/core';
 import {Producto} from '../components/productos/productos.component';
 
 export interface CarritoItem
@@ -17,6 +17,7 @@ export interface CarritoItem
 export class CarritoService {
 
   carrito = signal<CarritoItem[]>([]);
+
 
   itemCarrito: CarritoItem = {productoId: '', nombre: '', cantidad: 0, subTotal: 0};
 

@@ -1,4 +1,4 @@
-import { Injectable, Service } from '@angular/core';
+import {Injectable, Service, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../components/productos/productos.component';
 import {CarritoService} from './carrito.service';
@@ -11,6 +11,8 @@ import {CarritoService} from './carrito.service';
 )
 export class ProductoService {
 
+  productos = signal(<Producto[]>([]));
+
   //Direccion del API
   private apiUrl = 'http://localhost:8080/productos';
 
@@ -18,7 +20,19 @@ export class ProductoService {
 
   obtenerProductos()
   {
-    return this.http.get<Producto[]>(this.apiUrl);
+    this.http.get<Producto[]>(this.apiUrl).subscribe({
+
+      next: (respuesta: any) =>
+      {
+        this.productos.set(respuesta.content);
+        console.log('productos cargados con exito:', this.productos);
+      },
+
+      error: (error) =>
+      {
+        console.log('No se pudieron obtener los productos', error);
+      }
+    });
   }
 
 }
