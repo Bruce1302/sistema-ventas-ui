@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProductosComponent } from '../productos/productos.component';
@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   // Variable para que el HTML pueda leerla
   nombreUsuario: string = '';
 
-  constructor( private auth: AuthService) {}
+  private auth = inject(AuthService);
+  rolUsuario = this.auth.usuarioRol; //Obtenemos el rol del usuario logueado
 
   // Este metodo se ejecuta apenas el componente nace en la pantalla
   ngOnInit() {
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit {
 
     if (usuario)
       this.nombreUsuario = usuario; //Enviamos el username al html
+
+
   }
 
   cerrarSesion()

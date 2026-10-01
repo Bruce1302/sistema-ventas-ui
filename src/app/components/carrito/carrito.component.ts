@@ -23,10 +23,6 @@ export class CarritoComponent  {
     this.carritoService.quitarItem(productoId);
   }
 
-  actualizarListaProductos()
-  {
-
-  }
 
   nuevaVenta()
   {

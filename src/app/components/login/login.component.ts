@@ -38,6 +38,7 @@ export class LoginComponent {
 
         //Guardamos el token
         localStorage.setItem('token', respuesta.token);
+        this.authService.obtenerRolLogueado()
         this.router.navigate(['/home']);
       },
       error: (error) =>
