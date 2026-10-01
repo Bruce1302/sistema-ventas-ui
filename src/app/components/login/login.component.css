@@ -2,7 +2,7 @@
 
 .contenedor-principal
 {
-  background: linear-gradient(to bottom, #C8FF33, #ffffff);
+  background: linear-gradient(to bottom, #E9E1EE, #ffffff);
   /*border: 1px solid black;*/
   margin-top: 2rem ;
   padding-top: 2rem;
@@ -11,21 +11,29 @@
 .login-contenedor
 {
   display: flex;
-  border: 2px solid black;
-  border-radius: 10px;
+  /*border: 2px solid black;*/
   width: 30%;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 26px;
+  box-shadow: 0px 35px 68px 0px rgba(233, 225, 238, 0.5), inset 0px -8px 16px 0px rgba(233, 225, 238, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
 }
 
-.login-contenedor h2, h3
+.login-contenedor h3
 {
   font-family: "Staatliches", sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  font-size: clamp(1.2rem, -1.05rem + 7.2vw, 3rem);
+
+  margin-bottom: 1rem;
 }
 
 .form-contenedor
@@ -43,19 +51,46 @@
 .campos-contenedor
 {
   /*border: 1px solid blue;*/
-  width: 50%;
-  margin: auto;
+  width: 60%;
+  margin: 0 auto 1.5rem auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-content: center;
   justify-content: center;
-  margin-top: 20px;
+
 
 }
 
 .campos-contenedor label
 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  font-size: clamp(0.6rem, 0.225rem + 1.2vw, 0.9rem);
+
+  letter-spacing: 1px;
+}
+
+.campos-contenedor input
+{
+  border: none;
+  border-bottom: 4px solid #7D39EB;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(0.6rem, 0.225rem + 1.2vw, 0.9rem);
+  padding: .5rem .8rem;
+  height: 1.5rem;
+  transition: border-color 0.3s ease-in-out;
+
+}
+
+.campos-contenedor input:focus
+{
+  outline: none;
+  border-color: #C8FF33;
+
 
 }
 
