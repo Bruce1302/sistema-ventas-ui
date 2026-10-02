@@ -1,8 +1,6 @@
-
-
 .contenedor-principal
 {
-  background: linear-gradient(to bottom, #E9E1EE, #ffffff);
+  background: linear-gradient(to bottom, #FFA98A, #ffffff);
   /*border: 1px solid black;*/
   margin-top: 2rem ;
   padding-top: 2rem;
@@ -12,7 +10,10 @@
 {
   display: flex;
   /*border: 2px solid black;*/
-  width: 30%;
+  width: 90%;
+  max-width: 600px;
+  padding:1.5rem;
+
   margin: 0 auto;
   align-items: center;
   justify-content: center;
@@ -20,7 +21,7 @@
   gap: 10px;
 
   backdrop-filter: blur(5px);
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 26px;
   box-shadow: 0px 35px 68px 0px rgba(233, 225, 238, 0.5), inset 0px -8px 16px 0px rgba(233, 225, 238, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
 }
@@ -31,9 +32,11 @@
   font-weight: 400;
   font-style: normal;
 
-  font-size: clamp(1.2rem, -1.05rem + 7.2vw, 3rem);
+  font-size: clamp(1.8rem, 0.3rem + 4.8vw, 3rem);
 
   margin-bottom: 1rem;
+
+  color: #751F00;
 }
 
 .form-contenedor
@@ -52,7 +55,7 @@
 {
   /*border: 1px solid blue;*/
   width: 60%;
-  margin: 0 auto 1.5rem auto;
+  margin: 1rem auto 1.5rem auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -66,36 +69,169 @@
 {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-style: normal;
-
-  font-size: clamp(0.6rem, 0.225rem + 1.2vw, 0.9rem);
+  font-size: clamp(0.8rem, 0.55rem + 0.8vw, 1rem);
 
   letter-spacing: 1px;
+
+  color: #751F00;
 }
 
 .campos-contenedor input
 {
   border: none;
-  border-bottom: 4px solid #7D39EB;
+  border-bottom: 4px solid #751F00;
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
-  font-size: clamp(0.6rem, 0.225rem + 1.2vw, 0.9rem);
+  font-size: clamp(0.7rem, 0.325rem + 1.2vw, 1rem);
   padding: .5rem .8rem;
   height: 1.5rem;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+
 
 }
 
 .campos-contenedor input:focus
 {
   outline: none;
-  border-color: #C8FF33;
-
+  border-color: #FF6B35;
+  box-shadow: rgba(255, 107, 53, 0.2) 0px 7px 29px 0px;
 
 }
 
 .btn-ingresar
 {
-  width: 40%;
-  margin: auto;
+  width: max-content;
+  margin: 1rem auto 3rem auto;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 0.55rem + 0.8vw, 1rem);
+
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  background-color: inherit;
+  border-radius: 100px;
+  color: #751F00 ;
+  box-shadow: 0 0 0 2px #751F00;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+.btn-ingresar  svg
+{
+  position: absolute;
+  width: 24px;
+  fill: #751F00;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-ingresar  .arr-1
+{
+  right: 16px;
+}
+
+.btn-ingresar  .arr-2
+{
+  left: -25%;
+}
+
+.btn-ingresar  .circle
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #FF6B35;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-ingresar .text
+{
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-ingresar:hover
+{
+  box-shadow: 0 0 0 12px transparent;
+  color: #212121;
+  border-radius: 12px;
+}
+
+.btn-ingresar:hover .arr-1
+{
+  right: -25%;
+}
+
+.btn-ingresar:hover .arr-2
+{
+  left: 16px;
+}
+
+.btn-ingresar:hover .text
+{
+  transform: translateX(12px);
+}
+
+.btn-ingresar:hover svg
+{
+  fill: #212121;
+}
+
+.btn-ingresar:active
+{
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #FF6B35;
+}
+
+.btn-ingresar:hover .circle
+{
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+@media (min-width: 481px) and (max-width: 750px)
+{
+  .login-contenedor
+  {
+    width: 70%;
+  }
+
+  .campos-contenedor
+  {
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 480px)
+{
+  .login-contenedor
+  {
+    width: 80%;
+  }
+
+  .campos-contenedor
+  {
+    width: 90%;
+  }
+
+
+}
+
