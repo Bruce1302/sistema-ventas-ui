@@ -12,11 +12,11 @@
       <ul>
         <li><a href="#">Ventas realizadas</a></li>
         <li><a href="#">Productos</a></li>
+        <li><a href="#">Editar Producto</a></li>
 
         @if (rolUsuario() === 'ADMIN')
         {
-          <li><a href="#">Editar Producto</a></li>
-          <li><a href="#">Gestionar Usuarios</a></li>
+          <li><a routerLink="/usuarios">Gestionar Usuarios</a></li>
         }
 
       </ul>
