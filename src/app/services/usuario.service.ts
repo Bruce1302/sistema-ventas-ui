@@ -50,4 +50,9 @@ export class UsuarioService {
       }
     });
   }
+
+    agregarUsuario(usuario: {username: string, password: string, rol: string})
+    {
+      return this.http.post<Usuario>(this.apiUrl, usuario);
+    }
 }
