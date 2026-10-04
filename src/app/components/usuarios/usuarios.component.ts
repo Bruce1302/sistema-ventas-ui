@@ -20,4 +20,9 @@ export class UsuariosComponent implements OnInit{
     this.usuarioService.obtenerUsuarios();
   }
 
+  eliminarUsuario(id: string)
+  {
+    this.usuarioService.eliminarUsuario(id);
+  }
+
 }
