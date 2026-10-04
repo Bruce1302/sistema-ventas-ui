@@ -6,6 +6,27 @@
   </section>
 
   <section class="contenedor-usuarios">
+    <!-- Iteramos el Signal con los usuarios y los mostramos -->
+  @for (usuario of usuarios(); track usuario.id)
+  {
+    <article class="usuario-card">
+      <div class="card-info">
+        <h4>{{ usuario.username }}</h4>
 
+        <span class="badge-rol">{{ usuario.rol }}</span>
+      </div>
+
+      <div class="card-acciones">
+        <button class="btn-editar">Editar</button>
+        <button class="btn-eliminar">Eliminar</button>
+      </div>
+    </article>
+  }
+  @empty
+  {
+    <div class="mensaje-vacio">
+      <p>No hay usuarios registrados en el sistema.</p>
+    </div>
+  }
   </section>
 </section>

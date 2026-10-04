@@ -1,11 +1,11 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { ProductosComponent } from '../productos/productos.component';
 import {CarritoComponent} from '../carrito/carrito.component';
 
 @Component({
-  imports: [ProductosComponent, CarritoComponent],
+  imports: [ProductosComponent, CarritoComponent, RouterLink],
   standalone: true,
   selector: 'app-home',
   styleUrl: './home.component.css',

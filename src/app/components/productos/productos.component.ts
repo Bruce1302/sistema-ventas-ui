@@ -21,7 +21,7 @@ export interface Producto
   templateUrl: './productos.component.html',
 })
 
-export class ProductosComponent implements OnInit{
+  export class ProductosComponent implements OnInit{
 
   private productoService = inject(ProductoService);
   private carritoService = inject(CarritoService);
