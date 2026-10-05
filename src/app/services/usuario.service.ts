@@ -6,6 +6,7 @@ export interface Usuario
   id: string;
   username: string;
   rol: string;
+  activo: boolean;
 }
 
 @Injectable(
@@ -28,6 +29,7 @@ export class UsuarioService {
       next: (usuarios) =>
       {
         this.usuarios.set(usuarios);
+        console.log('Usuarios obtenidos con éxito ' + this.usuarios());
       },
       error: (error) =>
       {
@@ -36,13 +38,23 @@ export class UsuarioService {
     });
   }
 
-  eliminarUsuario(id: string)
+  suspenderUsuario(id: string)
   {
     this.http.delete(`${this.apiUrl}/${id}`).subscribe({
       next: () =>
       {
-        // Actualizamos la lista de usuarios eliminando el usuario con el id proporcionado
-        this.usuarios.update(usuarios => usuarios.filter(usuario => usuario.id !== id));
+        //Actualizamos la lista de usuarios inactivando el usuario con el id proporcionado
+        this.usuarios.update(usuariosActuales =>
+          usuariosActuales.map(usuario => {
+            if (usuario.id === id) //buscamos al usuario y lo inactivamos
+              return { ...usuario, activo: false };
+
+            //si no es, lo devolvemos sin modificar
+            return usuario;
+          })
+        );
+        console.log('Usuario inactivado con éxito');
+
       },
       error: (error) =>
       {

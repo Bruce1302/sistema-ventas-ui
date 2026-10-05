@@ -39,12 +39,22 @@
       <div class="card-info">
         <h4>{{ usuario.username }}</h4>
 
-        <span class="badge-rol">{{ usuario.rol }}</span>
+        <h4>{{ usuario.activo }}</h4>
+
+        @if (usuario.activo)
+        {
+          <span>Estado: Activo</span>
+          <br>
+        } @else {
+          <span>Estado: Inactivo</span>
+          <br>
+        }
+        <span class="badge-rol">Rol: {{ usuario.rol }}</span>
       </div>
 
       <div class="card-acciones">
         <button  class="btn-editar">Editar</button>
-        <button (click)="eliminarUsuario( usuario.id )" class="btn-eliminar">Eliminar</button>
+        <button (click)="suspenderUsuario( usuario.id )" class="btn-eliminar">Quitar acceso</button>
       </div>
     </article>
   }

@@ -29,9 +29,9 @@ export class UsuariosComponent implements OnInit{
     this.usuarioService.obtenerUsuarios();
   }
 
-  eliminarUsuario(id: string)
+  suspenderUsuario(id: string)
   {
-    this.usuarioService.eliminarUsuario(id);
+    this.usuarioService.suspenderUsuario(id);
   }
 
   guardarUsuario()
