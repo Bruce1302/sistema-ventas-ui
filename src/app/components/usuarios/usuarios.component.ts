@@ -110,12 +110,20 @@ export class UsuariosComponent implements OnInit{
       rol: user.rol,
       password: '' // se deja la contraseña en blanco
     });
+
+    //para poder mantener el campo de contraseña vacio y se actualice solo los campos cambiados, solo sucede al seleccionar la opcion de actualizar
+    this.usuarioForm.get('password')?.clearValidators(); //quitamos la necesidad de validar el campo de contraseña
+    this.usuarioForm.get('password')?.updateValueAndValidity();
   }
 
   cancelarEdicion()
   {
     this.usuarioSeleccionadoId = null;
     this.usuarioForm.reset({ rol: 'CAJERO' });
+
+    // Volvemos a exigir la contraseña para crear usuarios nuevos
+    this.usuarioForm.get('password')?.setValidators([Validators.required]);
+    this.usuarioForm.get('password')?.updateValueAndValidity();
   }
 
 }
