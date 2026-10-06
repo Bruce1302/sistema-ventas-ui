@@ -63,8 +63,31 @@ export class UsuarioService {
     });
   }
 
-    agregarUsuario(usuario: {username: string, password: string, rol: string})
-    {
-      return this.http.post<Usuario>(this.apiUrl, usuario);
-    }
+  destruirUsuario(id: string)
+  {
+    this.http.delete(`${this.apiUrl}/${id}/hard`).subscribe({
+      next: () =>
+      {
+        //eliminamos el usuario de la lista de usuarios
+        this.usuarios.update(usuariosActuales =>
+          usuariosActuales.filter(usuario => usuario.id !== id)
+        );
+        console.log('Usuario eliminado con exito');
+      },
+      error: (error) =>
+      {
+        console.error('Error al eliminar el usuario:', error);
+      }
+    })
+  }
+
+  agregarUsuario(usuario: {username: string, password: string, rol: string})
+  {
+    return this.http.post<Usuario>(this.apiUrl, usuario);
+  }
+
+  editarUsuario(usuario: { id: string, username: string, password: string, rol: string})
+  {
+    return this.http.put<Usuario>(`${this.apiUrl}/${usuario.id}`, usuario);
+  }
 }

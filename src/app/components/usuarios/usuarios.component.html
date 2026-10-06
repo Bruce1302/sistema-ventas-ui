@@ -1,6 +1,6 @@
 <section class="contenedor-principal">
   <section class="contenedor-form">
-    <h3>Registrar nuevo Usuario</h3>
+    <h3>{{ usuarioSeleccionadoId ? 'Editar Usuario' : 'Registrar Usuario' }}</h3>
 
     <!-- Enlazamos el grupo de datos y el evento de guardado -->
     <form [formGroup]="usuarioForm" (ngSubmit)="guardarUsuario()">
@@ -25,7 +25,13 @@
       </div>
 
       <!-- El boton se bloquea  si faltan datos -->
-      <button type="submit" class="btn-guardar" [disabled]="usuarioForm.invalid">Guardar</button>
+      <button type="submit" class="btn-guardar" [disabled]="usuarioForm.invalid">{{ usuarioSeleccionadoId ? 'Actualizar' : 'Guardar' }}</button>
+
+      @if (usuarioSeleccionadoId)
+      {
+        <button type="button" class="btn-cancelar" (click)="cancelarEdicion()">Cancelar</button>
+      }
+
     </form>
 
   </section>
@@ -53,9 +59,11 @@
       </div>
 
       <div class="card-acciones">
-        <button  class="btn-editar">Editar</button>
-        <button (click)="suspenderUsuario( usuario.id )" class="btn-eliminar">Quitar acceso</button>
+        <button (click)="seleccionarUsuario(usuario)" class="btn-editar">Editar</button>
+        <button (click)="suspenderUsuario( usuario.id )" class="btn-desactivar">Quitar acceso</button>
+        <button (click)="destruirUsuario( usuario.id )" class="btn-eliminar">Eliminar</button>
       </div>
+
     </article>
   }
   @empty
