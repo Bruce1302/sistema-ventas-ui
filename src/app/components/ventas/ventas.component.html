@@ -6,11 +6,11 @@
       <article class="venta-card">
         <!-- Resumen de la Venta -->
         <div class="venta-resumen">
-          <h3>Venta #{{ venta.id.substring(0,8) }}...</h3>
+          <h3>Venta codigo: {{ venta.id }} </h3>
           <!-- Angular tiene un pipe nativo ( | ) para formatear fechas automaticamente -->
-          <p>Fecha: {{ venta.fecha | date:'short' }}</p>
-          <p>Total: <strong>S/ {{ venta.total }}</strong></p>
-          <p>Artículos vendidos: {{ venta.cantidadProductosVendido }}</p>
+          <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
+          <p>Total: S/ {{ venta.total }}</p>
+          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
         </div>
 
         <!-- Menu desplegable para poder ver los detalles -->
@@ -36,7 +36,24 @@
       <p>No hay ventas registradas en esta página.</p>
     }
 
+    <!--controles de la paginacion -->
+    <div class="paginacion-controles">
+      <!-- Bloqueamos el botn "Anterior" si estamos en la pagina 0 -->
+      <button
+        class="btn-nav"
+        (click)="cambiarPagina(paginaActual() - 1)"
+        [disabled]="paginaActual() === 0"> Anterior </button>
 
+      <span>Página {{ paginaActual() + 1 }} de {{ ventasPaginadas()?.totalPages || 1 }}</span>
+
+      <!-- Bloqueamos el botón "Siguiente" si ya llegamos a la ultima pagina -->
+      <button
+        class="btn-nav"
+        (click)="cambiarPagina(paginaActual() + 1)"
+        [disabled]="paginaActual() >= (ventasPaginadas()?.totalPages || 1) - 1">
+        Siguiente
+      </button>
+    </div>
 
   </section>
 </section>

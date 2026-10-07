@@ -17,8 +17,8 @@ export interface VentaResponse
   id: string;
   total: number;
   detalles: DetalleVentaResponse[];
-  cantidadProductosVendido: number;
-  fecha: Date;
+  cantidadProductosVendidos: number;
+  fechaVenta: Date;
 
 }
 
