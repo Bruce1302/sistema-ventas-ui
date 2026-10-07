@@ -26,6 +26,7 @@ export interface DetalleVentaResponse
 {
   id: string;
   productoId: string;
+  productoNombre: string;
   cantidad: number;
   precioUnitario: number;
   subTotal: number;

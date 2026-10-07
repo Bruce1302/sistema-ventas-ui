@@ -21,7 +21,7 @@
             <!-- iteramos los detalles que viajan anidados -->
             @for (detalle of venta.detalles; track detalle.id) {
               <li>
-                Producto ID: {{ detalle.productoId.substring(0,8) }}... |
+                Producto: {{ detalle.productoNombre }} |
                 Cant: {{ detalle.cantidad }} |
                 Subtotal: S/ {{ detalle.subTotal }}
               </li>
