@@ -1,1 +1,42 @@
-<p>ventas works!</p>
+<section>
+  <section class="contenedor-ventas">
+    <!-- Iteramos sobre el cobtenido del Signal -->
+    @for (venta of ventasPaginadas()?.content; track venta.id)
+    {
+      <article class="venta-card">
+        <!-- Resumen de la Venta -->
+        <div class="venta-resumen">
+          <h3>Venta #{{ venta.id.substring(0,8) }}...</h3>
+          <!-- Angular tiene un pipe nativo ( | ) para formatear fechas automaticamente -->
+          <p>Fecha: {{ venta.fecha | date:'short' }}</p>
+          <p>Total: <strong>S/ {{ venta.total }}</strong></p>
+          <p>Artículos vendidos: {{ venta.cantidadProductosVendido }}</p>
+        </div>
+
+        <!-- Menu desplegable para poder ver los detalles -->
+        <details class="venta-detalles">
+          <summary>Ver detalles de los productos</summary>
+
+          <ul class="lista-detalles">
+            <!-- iteramos los detalles que viajan anidados -->
+            @for (detalle of venta.detalles; track detalle.id) {
+              <li>
+                Producto ID: {{ detalle.productoId.substring(0,8) }}... |
+                Cant: {{ detalle.cantidad }} |
+                Subtotal: S/ {{ detalle.subTotal }}
+              </li>
+            }
+          </ul>
+        </details>
+
+      </article>
+    }
+    @empty
+    {
+      <p>No hay ventas registradas en esta página.</p>
+    }
+
+
+
+  </section>
+</section>
