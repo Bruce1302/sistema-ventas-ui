@@ -1,5 +1,6 @@
 import { inject, Injectable, Service, signal } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 export interface DetallesVenta
 {
@@ -54,6 +55,7 @@ export class VentaService {
 
   ventasRealizadas = signal<pageVentasResponse | null>(null);
 
+
   nuevaVenta(ventaRequest: VentaRequest)
   {
     return this.http.post(this.apiUrl, ventaRequest);
@@ -72,6 +74,11 @@ export class VentaService {
         console.error("Error al obtener ventas:", error);
       }
     });
+  }
+
+  eliminarVenta(id: string)
+  {
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 

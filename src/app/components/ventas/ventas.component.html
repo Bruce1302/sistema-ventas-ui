@@ -11,6 +11,11 @@
           <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
           <p>Total: S/ {{ venta.total }}</p>
           <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
+
+          @if (usuarioRol() === 'ADMIN')
+          {
+            <button (click)="eliminarVenta( venta.id )">Eliminar</button>
+          }
         </div>
 
         <!-- Menu desplegable para poder ver los detalles -->
