@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../productos/productos.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CategoriaService } from '../../services/categoria.service';
 
 @Component({
   imports: [
@@ -11,9 +12,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './inventario.component.css',
   templateUrl: './inventario.component.html',
 })
-export class InventarioComponent {
+export class InventarioComponent implements OnInit{
 
   private productoService = inject(ProductoService);
+  private categoriaService = inject(CategoriaService);
+
+  listaCategorias = this.categoriaService.categorias; //traemos las categorias
   listaProductos = this.productoService.productos; //traemos los productos
 
   private fb = inject(FormBuilder);
@@ -25,6 +29,11 @@ export class InventarioComponent {
     precio: ['', Validators.required],
     stock: ['', Validators.required]
   });
+
+  ngOnInit()
+  {
+    this.categoriaService.obtenerCategorias();
+  }
 
   agregarProducto()
   {
