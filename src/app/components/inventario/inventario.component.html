@@ -20,6 +20,18 @@
         <input type="number" id="stock" formControlName="stock" placeholder="Ej. 15">
       </div>
 
+      <div class="contenedor-campos">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" formControlName="categoriaId">
+          <option value="" disabled selected>Selecciona una categoría</option>
+
+          <!-- mostramos las categorias disponibles -->
+          @for (categoria of listaCategorias(); track categoria.id) {
+            <option [value]="categoria.id">{{ categoria.nombre }}</option>
+          }
+        </select>
+      </div>
+
       <!-- El boton se bloquea  si faltan datos -->
       <button type="submit" class="btn-guardar"> Guardar </button>
 

@@ -1,7 +1,7 @@
 import { inject, Injectable, OnInit, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface categoria
+export interface Categoria
 {
   id: number;
   nombre: string;
@@ -14,7 +14,7 @@ export interface categoria
 )
 export class CategoriaService
 {
-   categorias = signal(<categoria[]>([]));
+   categorias = signal(<Categoria[]>([]));
 
    private apiUrl = 'http://localhost:8080/categorias';
 
@@ -22,10 +22,10 @@ export class CategoriaService
 
    obtenerCategorias()
    {
-     this.http.get<categoria[]>(this.apiUrl).subscribe({
-       next: (data) =>
+     this.http.get<Categoria[]>(this.apiUrl).subscribe({
+       next: (categorias:Categoria[]) =>
        {
-         this.categorias.set(data);
+         this.categorias.set(categorias);
        }
      });
    }

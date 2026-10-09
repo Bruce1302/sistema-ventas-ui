@@ -33,6 +33,7 @@ export class InventarioComponent implements OnInit{
   ngOnInit()
   {
     this.categoriaService.obtenerCategorias();
+    this.productoService.obtenerProductos();
   }
 
   agregarProducto()
