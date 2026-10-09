@@ -5,6 +5,7 @@ import {authGuard} from './guards/auth.guard';
 import {guestGuard} from './guards/guest.guard';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { VentasComponent } from './components/ventas/ventas.component';
+import { InventarioComponent } from './components/inventario/inventario.component';
 
 export const routes: Routes = [
 
@@ -20,4 +21,6 @@ export const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard] },
 
   { path: 'ventas', component: VentasComponent, canActivate: [authGuard] },
+
+  { path: 'inventario', component: InventarioComponent, canActivate: [authGuard] }
 ];

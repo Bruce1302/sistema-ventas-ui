@@ -28,6 +28,7 @@ export interface Producto
 
   listaProductos = this.productoService.productos; //enlazamos el signal
 
+
   ngOnInit()
   {
     this.productoService.obtenerProductos();
@@ -37,4 +38,6 @@ export interface Producto
   {
     this.carritoService.agregarItem(producto);
   }
+
+
 }

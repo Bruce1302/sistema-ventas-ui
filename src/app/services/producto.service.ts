@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Producto } from '../components/productos/productos.component';
 import {CarritoService} from './carrito.service';
 
-
 @Injectable(
   {
     providedIn: 'root' // servicio disponible para toda la aplicación
@@ -33,6 +32,16 @@ export class ProductoService {
         console.log('No se pudieron obtener los productos', error);
       }
     });
+  }
+
+  eliminarProducto(id: string)
+  {
+    this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  agregarProducto(producto: Producto)
+  {
+    return this.http.post(this.apiUrl, producto);
   }
 
 }
