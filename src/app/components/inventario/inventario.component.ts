@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../productos/productos.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CategoriaService } from '../../services/categoria.service';
+import {Categoria, CategoriaService} from '../../services/categoria.service';
 
 @Component({
   imports: [
@@ -31,6 +31,11 @@ export class InventarioComponent implements OnInit{
     stock: ['', Validators.required]
   });
 
+  //creamos el formulario reactivo para agregar categorias
+  categoriaForm: FormGroup = this.fb.group({
+    nombre: ['', Validators.required]
+  });
+
   ngOnInit()
   {
     this.categoriaService.obtenerCategorias();
@@ -46,6 +51,7 @@ export class InventarioComponent implements OnInit{
         {
           console.log('Producto agregado');
           this.productoForm.reset();
+
         },
         error: (error) =>
         {
@@ -68,6 +74,27 @@ export class InventarioComponent implements OnInit{
   eliminarProducto(id: string)
   {
     this.productoService.eliminarProducto(id);
+  }
+
+  agregarCategoria()
+  {
+    if(this.categoriaForm.valid)
+    {
+      this.categoriaService.agregarCategorias(this.categoriaForm.value).subscribe({
+      next: (categoria: Categoria) =>
+      {
+        console.log('Categoria agregada');
+        this.listaCategorias.update(categoriasActuales => [...categoriasActuales, categoria]); // Agregamos la nueva categoría a la lista
+      },
+      error: (error) =>
+      {
+        console.error('Error al agregar categoria:', error);
+      }
+
+      });
+    }
+
+
   }
 
 

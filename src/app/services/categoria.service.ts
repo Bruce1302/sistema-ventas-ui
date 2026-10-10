@@ -30,5 +30,10 @@ export class CategoriaService
      });
    }
 
+   agregarCategorias(nombre: string)
+   {
+      return this.http.post<Categoria>(this.apiUrl, nombre);
+   }
+
 
 }
