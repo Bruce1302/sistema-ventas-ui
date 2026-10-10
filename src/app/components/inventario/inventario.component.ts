@@ -51,6 +51,7 @@ export class InventarioComponent implements OnInit{
         {
           console.log('Producto agregado');
           this.productoForm.reset();
+          this.productoService.obtenerProductosPaginados(this.paginaActual());
 
         },
         error: (error) =>

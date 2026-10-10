@@ -1,6 +1,7 @@
 import { inject, Injectable, Service, signal } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { AuthService } from './auth.service';
+import {PageResponse} from '../models/pagination.model';
 
 export interface DetallesVenta
 {
@@ -34,13 +35,6 @@ export interface DetalleVentaResponse
 
 }
 
-export interface pageVentasResponse
-{
-  content: VentaResponse[];
-  totalPages: number;
-  totalElements: number;
-}
-
 @Injectable(
   {
     providedIn: 'root'
@@ -53,7 +47,7 @@ export class VentaService {
 
   private http = inject(HttpClient)
 
-  ventasRealizadas = signal<pageVentasResponse | null>(null);
+  ventasRealizadas = signal<PageResponse<VentaResponse> | null>(null);
 
 
   nuevaVenta(ventaRequest: VentaRequest)
@@ -63,8 +57,8 @@ export class VentaService {
 
   obtenerVentas(page: number)
   {
-    return this.http.get<pageVentasResponse>(`${this.apiUrl}?page=${page}&size=10`).subscribe({
-      next: (response: pageVentasResponse) =>
+    return this.http.get<PageResponse<VentaResponse>>(`${this.apiUrl}?page=${page}&size=10`).subscribe({
+      next: (response: PageResponse<VentaResponse>) =>
       {
         this.ventasRealizadas.set(response);
         console.log("ventas cargadas con exito");

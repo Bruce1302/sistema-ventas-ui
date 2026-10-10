@@ -49,13 +49,13 @@
         (click)="cambiarPagina(paginaActual() - 1)"
         [disabled]="paginaActual() === 0"> Anterior </button>
 
-      <span>Página {{ paginaActual() + 1 }} de {{ ventasPaginadas()?.totalPages || 1 }}</span>
+      <span>Página {{ paginaActual() + 1 }} de {{ ventasPaginadas()?.page?.totalPages || 1 }}</span>
 
       <!-- Bloqueamos el botón "Siguiente" si ya llegamos a la ultima pagina -->
       <button
         class="btn-nav"
         (click)="cambiarPagina(paginaActual() + 1)"
-        [disabled]="paginaActual() >= (ventasPaginadas()?.totalPages || 1) - 1">
+        [disabled]="paginaActual() >= (ventasPaginadas()?.page?.totalPages || 1) - 1">
         Siguiente
       </button>
     </div>

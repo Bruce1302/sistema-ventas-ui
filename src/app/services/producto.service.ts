@@ -2,13 +2,7 @@ import {Injectable, Service, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../components/productos/productos.component';
 import {CarritoService} from './carrito.service';
-
-export interface PageProductoResponse
-{
-  content: Producto[];
-  totalPages: number;
-  totalElements: number;
-}
+import {PageResponse} from '../models/pagination.model';
 
 @Injectable(
   {
@@ -18,7 +12,7 @@ export interface PageProductoResponse
 export class ProductoService {
 
   productos = signal(<Producto[]>([]));
-  productosPaginados = signal<PageProductoResponse | null>(null);
+  productosPaginados = signal<PageResponse<Producto> | null>(null);
 
   //Direccion del API
   private apiUrl = 'http://localhost:8080/productos';
@@ -44,8 +38,8 @@ export class ProductoService {
 
   obtenerProductosPaginados(page: number)
   {
-    this.http.get<PageProductoResponse>(`${this.apiUrl}?page=${page}&size=10`).subscribe({
-      next: (response: PageProductoResponse) => {
+    this.http.get<PageResponse<Producto>>(`${this.apiUrl}?page=${page}&size=10`).subscribe({
+      next: (response: PageResponse<Producto>) => {
         this.productosPaginados.set(response);
         console.log(`Productos de la página ${page} cargados con éxito`);
       },
