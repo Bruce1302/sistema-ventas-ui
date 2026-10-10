@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../productos/productos.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -17,8 +17,9 @@ export class InventarioComponent implements OnInit{
   private productoService = inject(ProductoService);
   private categoriaService = inject(CategoriaService);
 
+  productosPaginados = this.productoService.productosPaginados;
   listaCategorias = this.categoriaService.categorias; //traemos las categorias
-  listaProductos = this.productoService.productos; //traemos los productos
+  paginaActual = signal(0);
 
   private fb = inject(FormBuilder);
 
@@ -33,7 +34,7 @@ export class InventarioComponent implements OnInit{
   ngOnInit()
   {
     this.categoriaService.obtenerCategorias();
-    this.productoService.obtenerProductos();
+    this.cambiarPagina(this.paginaActual());
   }
 
   agregarProducto()
@@ -55,8 +56,19 @@ export class InventarioComponent implements OnInit{
     }
   }
 
+  //cuando se requieran ver mas productos
+  cambiarPagina(nuevaPagina: number)
+  {
+    this.paginaActual.set(nuevaPagina);
+
+    //le pasamos el bloque de ventas que necesitamos
+    this.productoService.obtenerProductosPaginados(nuevaPagina);
+  }
+
   eliminarProducto(id: string)
   {
     this.productoService.eliminarProducto(id);
   }
+
+
 }
