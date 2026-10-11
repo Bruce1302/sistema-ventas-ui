@@ -94,8 +94,11 @@ export class InventarioComponent implements OnInit{
 
       });
     }
+  }
 
-
+  eliminarCategoria(id: string)
+  {
+    this.categoriaService.eliminarCategoria(id);
   }
 
 

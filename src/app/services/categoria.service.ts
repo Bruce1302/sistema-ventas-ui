@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 export interface Categoria
 {
-  id: number;
+  id: string;
   nombre: string;
 }
 
@@ -33,6 +33,21 @@ export class CategoriaService
    agregarCategorias(nombre: string)
    {
       return this.http.post<Categoria>(this.apiUrl, nombre);
+   }
+
+   eliminarCategoria(id: string)
+   {
+      return this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+        next: () =>
+        {
+          console.log('Categoria eliminada');
+          this.categorias.update(categoriasActuales => categoriasActuales.filter(categoria => categoria.id !== id));
+        },
+        error: (error) =>
+        {
+          console.error('Error al eliminar categoria:', error);
+        }
+      })
    }
 
 
