@@ -27,12 +27,12 @@ export interface Producto
   private productoService = inject(ProductoService);
   private carritoService = inject(CarritoService);
 
-  listaProductos = this.productoService.productos; //enlazamos el signal
+  topProductos = this.productoService.topProductos; //enlazamos el signal
 
 
   ngOnInit()
   {
-    this.productoService.obtenerProductos();
+    this.productoService.obtenerTopProductos();
   }
 
   agregarAlCarrito(producto: Producto)

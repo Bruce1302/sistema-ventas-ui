@@ -1,7 +1,7 @@
 <section class="contenedor-productos">
 
   <!-- Recorremos la lista de productos y los mostramos -->
-  @for (producto of listaProductos(); track producto.id)
+  @for (producto of topProductos(); track producto.id)
   {
     <article class="producto-card">
       <h3>{{ producto.nombre }}</h3>

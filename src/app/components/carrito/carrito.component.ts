@@ -38,7 +38,7 @@ export class CarritoComponent  {
       {
         next: () => {
           this.carritoService.limpiarCarrito();
-          this.productoService.obtenerProductos();
+          this.productoService.obtenerTopProductos();
           console.log('Venta realizada con éxito \n' + listaDetalles);
         },
 

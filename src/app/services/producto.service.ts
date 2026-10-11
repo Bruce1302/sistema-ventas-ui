@@ -11,7 +11,7 @@ import {PageResponse} from '../models/pagination.model';
 )
 export class ProductoService {
 
-  productos = signal(<Producto[]>([]));
+  topProductos = signal(<Producto[]>([]));
   productosPaginados = signal<PageResponse<Producto> | null>(null);
 
   //Direccion del API
@@ -19,14 +19,16 @@ export class ProductoService {
 
   constructor(private http: HttpClient, private carritoService: CarritoService) {}
 
-  obtenerProductos()
+  obtenerTopProductos()
   {
-    this.http.get<Producto[]>(this.apiUrl).subscribe({
+    const topProductos = 'http://localhost:8080/productos/top';
 
-      next: (respuesta: any) =>
+    this.http.get<Producto[]>(topProductos).subscribe({
+
+      next: (productos: Producto[]) =>
       {
-        this.productos.set(respuesta.content);
-        console.log('productos cargados con exito:', this.productos);
+        this.topProductos.set(productos);
+        console.log('productos cargados con exito:', this.topProductos);
       },
 
       error: (error) =>
