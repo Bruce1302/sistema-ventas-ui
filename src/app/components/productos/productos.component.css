@@ -51,10 +51,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #2e7d32; /* Un verde suave como en tu imagen */
   font-size: 0.9rem;
   font-weight: 500;
-  background-color: #e8f5e9;
   padding: 4px 10px;
   border-radius: 20px;
   width: fit-content;
@@ -123,4 +121,23 @@
 {
   width: 20px;
   height: 20px;
+}
+
+
+/* 🟢 Estado 1: Stock Alto (Verde) */
+.stock-alto {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+}
+
+/* 🟠 Estado 2: Stock Medio (Naranja/Amarillo) */
+.stock-medio {
+  color: #e65100;
+  background-color: #fff3e0;
+}
+
+/* 🔴 Estado 3: Stock Bajo/Crítico (Rojo) */
+.stock-bajo {
+  color: #c62828;
+  background-color: #ffebee;
 }

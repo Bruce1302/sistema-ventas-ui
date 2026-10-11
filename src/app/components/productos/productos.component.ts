@@ -2,6 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
 import {CarritoService} from '../../services/carrito.service';
+import {NgClass} from '@angular/common';
 
 export interface Producto
 {
@@ -15,7 +16,9 @@ export interface Producto
 }
 
 @Component({
-  imports: [],
+  imports: [
+    NgClass
+  ],
   standalone: true,
   selector: 'app-productos',
   styleUrl: './productos.component.css',

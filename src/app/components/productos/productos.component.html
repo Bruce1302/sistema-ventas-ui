@@ -5,7 +5,11 @@
   {
     <article class="producto-card">
 
-      <div class="card-header">
+      <div class="card-header" [ngClass]="{
+        'stock-alto': producto.stock >= 30,
+        'stock-medio': producto.stock > 15 && producto.stock < 30,
+        'stock-bajo': producto.stock <= 15
+      }">
         <div class="barra-color-default"></div>
         <h3 class="producto-titulo">{{ producto.nombre }}</h3>
       </div>
