@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  font-family: 'Poppins', sans-serif;
+}
+.contenedor-topProductos-grid
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.producto-card
+{
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-header
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.barra-color-default
+{
+  width: 5px;
+  height: 35px;
+  background-color: #007bff;
+  border-radius: 4px;
+}
+
+.producto-titulo
+{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.card-stock
+{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2e7d32; /* Un verde suave como en tu imagen */
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: #e8f5e9;
+  padding: 4px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.card-stock p
+{
+  margin: 0;
+}
+
+
+.producto-precio {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007bff;
+  margin: 5px 0;
+}
+
+/* Controles Inferiores */
+.card-acciones
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.control-cantidad
+{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f7fafc;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.btn-cantidad
+{
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #4a5568;
+}
+
+.btn-agregar-default
+{
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.card-stock svg,
+.btn-agregar-default svg
+{
+  width: 20px;
+  height: 20px;
+}
