@@ -61,4 +61,9 @@ export class ProductoService {
     return this.http.post(this.apiUrl, producto);
   }
 
+  buscarProductos(termino: string)
+  {
+    return this.http.get<Producto[]>(`${this.apiUrl}/buscar?nombre=${termino}`);
+  }
+
 }

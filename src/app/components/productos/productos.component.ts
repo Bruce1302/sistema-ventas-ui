@@ -3,6 +3,8 @@ import { ProductoService } from '../../services/producto.service';
 import { Router } from '@angular/router';
 import {CarritoService} from '../../services/carrito.service';
 import {NgClass} from '@angular/common';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 
 export interface Producto
 {
@@ -17,7 +19,8 @@ export interface Producto
 
 @Component({
   imports: [
-    NgClass
+    NgClass,
+    ReactiveFormsModule
   ],
   standalone: true,
   selector: 'app-productos',
@@ -26,6 +29,8 @@ export interface Producto
 })
 
   export class ProductosComponent implements OnInit{
+
+  buscador = new FormControl('');
 
   private productoService = inject(ProductoService);
   private carritoService = inject(CarritoService);
@@ -36,6 +41,8 @@ export interface Producto
   ngOnInit()
   {
     this.productoService.obtenerTopProductos();
+
+    this.buscarProductos();
   }
 
   agregarAlCarrito(producto: Producto)
@@ -43,5 +50,27 @@ export interface Producto
     this.carritoService.agregarItem(producto);
   }
 
+  buscarProductos() {
+    this.buscador.valueChanges.pipe(
+      debounceTime(200), // Espera 300 milisegundos despues de que el usuario deje de teclear
+      distinctUntilChanged() // Solo busca si el texto es diferente a la última busqueda
+    ).subscribe((textoIngresado) => {
+
+      // Si el texto esta vacio, volvemos a mostrar el top de vendidos
+      if (!textoIngresado || textoIngresado.trim() === '') {
+        this.productoService.obtenerTopProductos();
+        return;
+      }
+
+      // Si hay texto, valo buscamos
+      this.productoService.buscarProductos(textoIngresado).subscribe({
+        next: (coincidencias: Producto[]) => {
+          // El Signal cambia los cards automaticamente
+          this.topProductos.set(coincidencias);
+        },
+        error: (error) => console.log('Error en la búsqueda', error)
+      });
+    });
+  }
 
 }
