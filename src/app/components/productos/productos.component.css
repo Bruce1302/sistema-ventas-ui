@@ -3,6 +3,101 @@
 {
   font-family: 'Poppins', sans-serif;
 }
+
+.barra-herramientas
+{
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #d6e3ff;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.buscador-contenedor
+{
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px #d6e3ff;
+  transition: box-shadow 0.2s ease-in-out;
+
+}
+
+.buscador-contenedor:focus-within
+{
+  box-shadow: 0 0 8px #0b5ed7;
+}
+
+.buscador-contenedor svg
+{
+  width: 30px;
+  height: 30px;
+  color: #0b5ed7;
+}
+
+
+.input-buscador
+{
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #1a202c;
+}
+
+.input-buscador::placeholder
+{
+  color: #a0aec0;
+}
+
+.btn-limpiar
+{
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+}
+
+.btn-limpiar svg
+{
+  color: #6e6e6e;
+}
+
+.btn-filtros
+{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-filtros:hover
+{
+  background-color: #0b5ed7;
+}
+
 .contenedor-topProductos-grid
 {
   display: grid;
@@ -16,7 +111,7 @@
   background-color: white;
   border-radius: 12px;
   padding: 15px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
   border: 1px solid #f0f4f8;
   display: flex;
   flex-direction: column;
