@@ -4,6 +4,17 @@
   font-family: 'Poppins', sans-serif;
 }
 
+@keyframes nacerSuave {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .barra-herramientas
 {
   border: none;
@@ -116,6 +127,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  animation: nacerSuave 0.3s ease-out forwards;
+  will-change: transform, opacity;
 }
 
 .card-header
@@ -201,7 +215,7 @@
 .control-cantidad input
 {
   font-size: .8rem;
-  width: 1.2rem;
+  width: 1.5rem;
   height: 1.3rem;
   margin: 0;
   outline: none;
@@ -227,7 +241,6 @@
 .btn-agregar
 {
   background-color: var(--color-tema);
-
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
