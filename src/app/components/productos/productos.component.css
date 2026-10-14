@@ -112,9 +112,12 @@
 .contenedor-topProductos-grid
 {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 310px));
+  gap: 30px;
   padding: 20px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .producto-card
@@ -291,3 +294,50 @@
   --color-tema: #c62828; /* Rojo */
   --bg-tema: #ffebee;    /* Rojo clarito */
 }
+
+.mensajeRegistrar
+{
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 0;
+
+}
+
+.mensajeRegistrar span
+{
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: #3a80e7;
+  width: fit-content;
+  padding: .8rem 1.5rem;
+  color: #ffffff;
+  border-radius: 8px;
+  margin: 1rem auto 0 auto;
+}
+
+.agregar-producto
+{
+  margin: 0 auto;
+  width: fit-content;
+  /*border: 3px solid black;*/
+  text-transform: uppercase;
+  border-radius: 50%;
+  padding: 8px 10px 5px 10px;
+  background-color: #89cc3f;
+  transition: scale 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.agregar-producto:hover
+{
+  scale: 1.05;
+  box-shadow: 0 0 8px #89cc3f;
+}
+
+.agregar-producto svg
+{
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+}
+

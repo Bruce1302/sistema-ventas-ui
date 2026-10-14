@@ -1,6 +1,6 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {CarritoService} from '../../services/carrito.service';
 import {NgClass} from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +20,8 @@ export interface Producto
 @Component({
   imports: [
     NgClass,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   standalone: true,
   selector: 'app-productos',
@@ -62,7 +63,7 @@ export interface Producto
         return;
       }
 
-      // Si hay texto, valo buscamos
+      // Si hay texto, lo buscamos
       this.productoService.buscarProductos(textoIngresado).subscribe({
         next: (coincidencias: Producto[]) => {
           // El Signal cambia los cards automaticamente

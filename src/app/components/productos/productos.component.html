@@ -97,7 +97,28 @@
   }
   @empty
   {
-    <p>Aún no hay productos vendidos para mostrar.</p>
+    @if (buscador.value != null)
+    {
+      <article class="producto-card">
+        <p class="mensajeRegistrar">Este producto aún no se ha registrado <br> <span>¡Agrégalo!</span></p>
+        <a routerLink="/inventario" class="agregar-producto" >
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path d="M7 12L12 12M12 12L17 12M12 12V7M12 12L12 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </a>
+      </article>
+    }
+    @else
+    {
+      <article class="producto-card">
+        <p>Aún no se han realizado ventas para ver los productos más vendidos.</p>
+      </article>
+    }
+
   }
 
 </section>
