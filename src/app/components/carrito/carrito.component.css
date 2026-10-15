@@ -1,19 +1,19 @@
 .stock-alto
 {
-  --color-tema: #2d9b32; /* Verde */
-  --bg-tema: #e8f5e9;    /* Verde clarito */
+  --color-tema: #2d9b32;
+  --bg-tema: #e8f5e9;
 }
 
 .stock-medio
 {
-  --color-tema: #e65100; /* Naranja */
-  --bg-tema: #fff3e0;    /* Naranja clarito */
+  --color-tema: #e65100;
+  --bg-tema: #fff3e0;
 }
 
 .stock-bajo
 {
-  --color-tema: #c62828; /* Rojo */
-  --bg-tema: #ffebee;    /* Rojo clarito */
+  --color-tema: #c62828;
+  --bg-tema: #ffebee;
 }
 
 .carrito-panel {
@@ -28,7 +28,7 @@
   max-width: 350px;
 }
 
-/* Cabecera */
+
 .carrito-header {
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@
 .icono svg {
   width: 24px;
   height: 24px;
-  color: #007bff; /* Color azul para el carrito */
+  color: #007bff;
 }
 
 .titulo-wrapper h2 {
@@ -65,7 +65,7 @@
   font-size: 0.9rem;
 }
 
-/* Lista y Tarjetas */
+
 .carrito-lista {
   flex-grow: 1;
   overflow-y: auto;
@@ -86,12 +86,12 @@
 .borde-color {
   width: 4px;
   height: 40px;
-  background-color: var(--color-tema); /* Puedes vincular esto a tu sistema de colores ngClass */
+  background-color: var(--color-tema);
   border-radius: 4px;
   margin-right: 12px;
 }
 
-/* Info del Producto */
+
 .item-info {
   flex-grow: 1;
   display: flex;
@@ -168,12 +168,11 @@
   font-weight: bold;
 }
 
-/* Eliminar */
 .btn-eliminar {
   background: none;
   border: none;
   cursor: pointer;
-  color: #a60606; /* Rojo para el tacho de basura */
+  color: #a60606;
   padding: 5px;
   display: flex;
   align-items: center;
@@ -191,7 +190,7 @@
   transform: scale(1.2);
 }
 
-/* Resumen Final */
+
 .carrito-resumen {
   margin-top: 20px;
   padding-top: 15px;
@@ -228,7 +227,7 @@
   color: #007bff;
 }
 
-/* Botón Finalizar */
+
 .btn-finalizar {
   background-color: #007bff;
   color: white;

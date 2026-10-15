@@ -45,16 +45,16 @@
           </span>
 
           <div class="cantidad-control">
-            <button class="btn-cantidad" >-</button> <!--(click)="disminuirCantidad(itemCarrito.productoId)"-->
+            <button class="btn-cantidad" >-</button>
               <span class="numero">{{ itemCarrito.cantidad }}</span>
-            <button class="btn-cantidad" >+</button> <!--(click)="(click)="aumentarCantidad(itemCarrito.productoId)"-->
+            <button class="btn-cantidad" >+</button>
           </div>
         </div>
 
         <div class="item-precios">
-          <!-- Precio unitario (puedes agregarlo a tu interfaz si no lo tienes) -->
-          <p class="precio-unit"> {{ itemCarrito.precio }}</p> <!--{{ (itemCarrito.subTotal / itemCarrito.cantidad) | number:'1.2-2' }}-->
-          <p class="subtotal-item">S/ {{ itemCarrito.subTotal }} </p> <!-- {{ itemCarrito.subTotal | number:'1.2-2' }}-->
+
+          <p class="precio-unit"> {{ itemCarrito.precio }}</p>
+          <p class="subtotal-item">S/ {{ itemCarrito.subTotal | number:'1.2-2'}} </p>
         </div>
 
         <button class="btn-eliminar" (click)="quitarItem(itemCarrito.productoId)">
@@ -86,16 +86,16 @@
     <div class="carrito-resumen">
       <div class="resumen-fila">
         <span>Subtotal</span>
-        <span>S/ </span> <!--{{ calcularSubtotal() | number:'1.2-2' }}-->
+        <span>S/ </span>
       </div>
       <div class="resumen-fila">
         <span>IGV (18%)</span>
-        <span>S/ </span> <!--{{ calcularIgv() | number:'1.2-2' }}-->
+        <span>S/ </span>
       </div>
 
       <div class="resumen-fila total">
         <span>Total</span>
-        <span class="monto-total">S/ </span> <!--{{ calcularTotal() | number:'1.2-2' }}-->
+        <span class="monto-total">S/ </span>
       </div>
 
       <button class="btn-finalizar" (click)="nuevaVenta()">

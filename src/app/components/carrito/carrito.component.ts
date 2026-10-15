@@ -2,11 +2,12 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {CarritoItem, CarritoService} from '../../services/carrito.service';
 import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
 import {ProductoService} from '../../services/producto.service';
-import { NgClass } from '@angular/common';
+import { DecimalPipe, NgClass } from '@angular/common';
 
 @Component({
   imports: [
-    NgClass
+    NgClass,
+    DecimalPipe
   ],
   selector: 'app-carrito',
   styleUrl: './carrito.component.css',
