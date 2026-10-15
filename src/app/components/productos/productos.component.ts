@@ -46,9 +46,9 @@ export interface Producto
     this.buscarProductos();
   }
 
-  agregarAlCarrito(producto: Producto)
+  agregarAlCarrito(producto: Producto, cantidad: string)
   {
-    this.carritoService.agregarItem(producto);
+    this.carritoService.agregarItem(producto, cantidad);
   }
 
   buscarProductos() {

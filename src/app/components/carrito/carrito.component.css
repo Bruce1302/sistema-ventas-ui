@@ -1,0 +1,256 @@
+.stock-alto
+{
+  --color-tema: #2d9b32; /* Verde */
+  --bg-tema: #e8f5e9;    /* Verde clarito */
+}
+
+.stock-medio
+{
+  --color-tema: #e65100; /* Naranja */
+  --bg-tema: #fff3e0;    /* Naranja clarito */
+}
+
+.stock-bajo
+{
+  --color-tema: #c62828; /* Rojo */
+  --bg-tema: #ffebee;    /* Rojo clarito */
+}
+
+.carrito-panel {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 80px);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 350px;
+}
+
+/* Cabecera */
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.titulo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a202c;
+}
+
+.icono svg {
+  width: 24px;
+  height: 24px;
+  color: #007bff; /* Color azul para el carrito */
+}
+
+.titulo-wrapper h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.badge {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Lista y Tarjetas */
+.carrito-lista {
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.item-card {
+  display: flex;
+  /*align-items: center;*/
+  padding: 15px 10px;
+  border-bottom: 1px solid #f9f9f9;
+  position: relative;
+}
+
+.borde-color {
+  width: 4px;
+  height: 40px;
+  background-color: var(--color-tema); /* Puedes vincular esto a tu sistema de colores ngClass */
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+/* Info del Producto */
+.item-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.item-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.stock-badge {
+  font-size: 0.75rem;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stock-badge svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-tema); /* Verde para el icono de caja */
+}
+
+/* Controles de Cantidad */
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  width: fit-content;
+  padding: 2px 6px;
+  margin-top: 4px;
+}
+
+.btn-cantidad {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #4a5568;
+}
+
+.numero {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.item-precios {
+  text-align: right;
+  margin-right: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: var(--color-tema);
+}
+
+.precio-unit {
+  font-size: 0.85rem;
+  /*color: #007bff;*/
+  margin: 0 0 15px 0;
+  font-weight: 500;
+}
+
+.subtotal-item {
+  font-size: 0.95rem;
+  color: #007bff;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Eliminar */
+.btn-eliminar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a60606; /* Rojo para el tacho de basura */
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-eliminar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-eliminar:hover {
+  transform: scale(1.2);
+}
+
+/* Resumen Final */
+.carrito-resumen {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.resumen-fila.total {
+  background-color: #f7fafc;
+  padding: 15px;
+  border-radius: 8px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.resumen-fila.total span:first-child {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1a202c;
+}
+
+.monto-total {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Botón Finalizar */
+.btn-finalizar {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn-finalizar svg {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-finalizar:hover {
+  background-color: #0056b3;
+}

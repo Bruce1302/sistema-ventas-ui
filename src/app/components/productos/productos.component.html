@@ -72,11 +72,11 @@
 
       <div class="card-acciones">
         <div class="control-cantidad">
-          <button class="btn-cantidad">-</button>
-          <input type="tel" value="1">
-          <button class="btn-cantidad">+</button>
+          <button class="btn-cantidad" (click)="cantidadInput.stepDown()">-</button>
+          <input #cantidadInput type="number" value="1" min="1" [max]="producto.stock">
+          <button class="btn-cantidad" (click)="cantidadInput.stepUp()">+</button>
         </div>
-        <button class="btn-agregar" (click)="agregarAlCarrito(producto)">
+        <button class="btn-agregar" (click)="agregarAlCarrito(producto, cantidadInput.value)">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
