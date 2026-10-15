@@ -16,7 +16,8 @@
   --bg-tema: #ffebee;
 }
 
-.carrito-panel {
+.carrito-panel
+{
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -29,7 +30,8 @@
 }
 
 
-.carrito-header {
+.carrito-header
+{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,25 +40,29 @@
   margin-bottom: 15px;
 }
 
-.titulo-wrapper {
+.titulo-wrapper
+{
   display: flex;
   align-items: center;
   gap: 10px;
   color: #1a202c;
 }
 
-.icono svg {
+.icono svg
+{
   width: 24px;
   height: 24px;
   color: #007bff;
 }
 
-.titulo-wrapper h2 {
+.titulo-wrapper h2
+{
   font-size: 1.2rem;
   margin: 0;
 }
 
-.badge {
+.badge
+{
   background-color: #007bff;
   color: white;
   padding: 4px 10px;
@@ -66,7 +72,8 @@
 }
 
 
-.carrito-lista {
+.carrito-lista
+{
   flex-grow: 1;
   overflow-y: auto;
   display: flex;
@@ -75,7 +82,8 @@
 
 }
 
-.item-card {
+.item-card
+{
   display: flex;
   /*align-items: center;*/
   padding: 15px 10px;
@@ -83,7 +91,8 @@
   position: relative;
 }
 
-.borde-color {
+.borde-color
+{
   width: 4px;
   height: 40px;
   background-color: var(--color-tema);
@@ -92,20 +101,23 @@
 }
 
 
-.item-info {
+.item-info
+{
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.item-info h3 {
+.item-info h3
+{
   margin: 0;
   font-size: 1rem;
   color: #2d3748;
 }
 
-.stock-badge {
+.stock-badge
+{
   font-size: 0.75rem;
   color: #718096;
   display: flex;
@@ -116,11 +128,11 @@
 .stock-badge svg {
   width: 14px;
   height: 14px;
-  color: var(--color-tema); /* Verde para el icono de caja */
+  color: var(--color-tema);
 }
 
-/* Controles de Cantidad */
-.cantidad-control {
+.cantidad-control
+{
   display: flex;
   align-items: center;
   gap: 10px;
@@ -131,7 +143,8 @@
   margin-top: 4px;
 }
 
-.btn-cantidad {
+.btn-cantidad
+{
   background: none;
   border: none;
   cursor: pointer;
@@ -139,12 +152,14 @@
   color: #4a5568;
 }
 
-.numero {
+.numero
+{
   font-weight: bold;
   font-size: 0.9rem;
 }
 
-.item-precios {
+.item-precios
+{
   text-align: right;
   margin-right: 15px;
 
@@ -154,21 +169,24 @@
   color: var(--color-tema);
 }
 
-.precio-unit {
+.precio-unit
+{
   font-size: 0.85rem;
   /*color: #007bff;*/
   margin: 0 0 15px 0;
   font-weight: 500;
 }
 
-.subtotal-item {
+.subtotal-item
+{
   font-size: 0.95rem;
   color: #007bff;
   margin: 0;
   font-weight: bold;
 }
 
-.btn-eliminar {
+.btn-eliminar
+{
   background: none;
   border: none;
   cursor: pointer;
@@ -181,17 +199,20 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.btn-eliminar svg {
+.btn-eliminar svg
+{
   width: 22px;
   height: 22px;
 }
 
-.btn-eliminar:hover {
+.btn-eliminar:hover
+{
   transform: scale(1.2);
 }
 
 
-.carrito-resumen {
+.carrito-resumen
+{
   margin-top: 20px;
   padding-top: 15px;
   border-top: 1px solid #f0f0f0;
@@ -200,14 +221,16 @@
   gap: 10px;
 }
 
-.resumen-fila {
+.resumen-fila
+{
   display: flex;
   justify-content: space-between;
   color: #4a5568;
   font-size: 0.95rem;
 }
 
-.resumen-fila.total {
+.resumen-fila.total
+{
   background-color: #f7fafc;
   padding: 15px;
   border-radius: 8px;
@@ -215,20 +238,23 @@
   margin-top: 5px;
 }
 
-.resumen-fila.total span:first-child {
+.resumen-fila.total span:first-child
+{
   font-weight: bold;
   font-size: 1.1rem;
   color: #1a202c;
 }
 
-.monto-total {
+.monto-total
+{
   font-size: 1.4rem;
   font-weight: bold;
   color: #007bff;
 }
 
 
-.btn-finalizar {
+.btn-finalizar
+{
   background-color: #007bff;
   color: white;
   border: none;
@@ -245,11 +271,13 @@
   transition: background-color 0.3s;
 }
 
-.btn-finalizar svg {
+.btn-finalizar svg
+{
   width: 22px;
   height: 22px;
 }
 
-.btn-finalizar:hover {
+.btn-finalizar:hover
+{
   background-color: #0056b3;
 }
