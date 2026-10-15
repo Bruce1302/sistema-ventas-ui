@@ -67,7 +67,7 @@
           <p>Stock: {{ producto.stock }}</p>
         </div>
 
-        <p class="producto-precio">S/ {{ producto.precio }}</p>
+        <p class="producto-precio">S/ {{ producto.precio | number:'1.2-2'}}</p>
       </div>
 
       <div class="card-acciones">

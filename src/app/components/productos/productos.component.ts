@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import { ProductoService } from '../../services/producto.service';
 import { Router, RouterLink } from '@angular/router';
 import {CarritoService} from '../../services/carrito.service';
-import {NgClass} from '@angular/common';
+import { DecimalPipe, NgClass } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 
@@ -21,7 +21,8 @@ export interface Producto
   imports: [
     NgClass,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    DecimalPipe
   ],
   standalone: true,
   selector: 'app-productos',

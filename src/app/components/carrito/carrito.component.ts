@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {CarritoItem, CarritoService} from '../../services/carrito.service';
 import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
 import {ProductoService} from '../../services/producto.service';
@@ -21,6 +21,17 @@ export class CarritoComponent  {
 
   listaCarrito = this.carritoService.obtenerCarrito();
 
+  total = computed(() => {
+    return this.listaCarrito().reduce((acumulador, item) => acumulador + item.subTotal, 0);
+  });
+
+  subtotal = computed(() => {
+    return this.total() / 1.18;
+  });
+
+  igv = computed(() => {
+    return this.total() - this.subtotal();
+  });
 
   quitarItem(productoId: string)
   {
