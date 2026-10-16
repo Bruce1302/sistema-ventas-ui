@@ -35,7 +35,7 @@
   </button-->
 </section>
 
-<section class="contenedor-topProductos-grid">
+<section class="contenedor-topProductos-grid" [ngClass]="{'resultado-busqueda': topProductos().length<3}">
   <!-- Recorremos la lista de productos y los mostramos -->
   @for (producto of topProductos(); track producto.id)
   {
