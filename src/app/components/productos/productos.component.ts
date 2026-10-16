@@ -49,7 +49,17 @@ export interface Producto
 
   agregarAlCarrito(producto: Producto, cantidad: string)
   {
-    this.carritoService.agregarItem(producto, cantidad);
+    let cantidadSeleccionada = parseInt(cantidad);
+
+    //Si la cantidad no es un número entonces aumaticamente se convertira en un 1
+    if (isNaN(cantidadSeleccionada) || cantidadSeleccionada < 1)
+      cantidadSeleccionada = 1;
+
+    //Si la cantidad seleccionada es mayor al stock entonces se convierte en el stock
+    if (cantidadSeleccionada > producto.stock)
+      cantidadSeleccionada = producto.stock;
+
+    this.carritoService.agregarItem(producto, cantidadSeleccionada);
   }
 
   buscarProductos() {

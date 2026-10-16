@@ -245,7 +245,7 @@
   margin: 0;
 }
 
-/* Ocultar flechas en Firefox */
+
 .control-cantidad input[type="number"] {
   -moz-appearance: textfield;
 }

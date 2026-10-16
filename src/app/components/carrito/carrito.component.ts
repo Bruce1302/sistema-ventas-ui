@@ -3,6 +3,7 @@ import {CarritoItem, CarritoService} from '../../services/carrito.service';
 import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
 import {ProductoService} from '../../services/producto.service';
 import { DecimalPipe, NgClass } from '@angular/common';
+import { Producto, ProductosComponent } from '../productos/productos.component';
 
 @Component({
   imports: [
@@ -38,6 +39,16 @@ export class CarritoComponent  {
     this.carritoService.quitarItem(productoId);
   }
 
+  aumentarCantidad(id: string)
+  {
+    this.carritoService.aumentarCantidad(id);
+  }
+
+  disminuirCantidad(id: string)
+  {
+    this.carritoService.disminuirCantidad(id);
+  }
+
 
   nuevaVenta()
   {
@@ -63,5 +74,10 @@ export class CarritoComponent  {
 
       }
     );
+  }
+
+  limpiarCarrito()
+  {
+    this.carritoService.limpiarCarrito();
   }
 }
