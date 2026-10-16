@@ -26,7 +26,8 @@
   gap: 15px;
   max-width: 900px;
   margin: 20px auto;
-  width: 100%;
+  min-width: 400px;
+  /*width: 100%;*/
 }
 
 .buscador-contenedor
@@ -112,7 +113,7 @@
 .contenedor-topProductos-grid
 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 310px));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 30px;
   padding: 20px;
   justify-content: center;
