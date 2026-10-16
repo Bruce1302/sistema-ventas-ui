@@ -56,7 +56,8 @@ export class CarritoService {
   aumentarCantidad(productoId: string)
   {
     this.carrito.update(items => items.map(item => {
-      if (item.productoId === productoId) {
+      if (item.productoId === productoId && item.cantidad < item.stock)
+      {
 
         // Calculamos el precio base dividiendo el subtotal entre la cantidad actual
         const precioUnitario = item.subTotal / item.cantidad;
@@ -76,7 +77,8 @@ export class CarritoService {
   {
     this.carrito.update(items => items.map(item => {
       // Solo aplicamos la resta si la cantidad actual es mayor a 1
-      if (item.productoId === productoId && item.cantidad > 1) {
+      if (item.productoId === productoId && item.cantidad > 1 )
+      {
         const precioUnitario = item.subTotal / item.cantidad;
         const nuevaCantidad = item.cantidad - 1;
 
