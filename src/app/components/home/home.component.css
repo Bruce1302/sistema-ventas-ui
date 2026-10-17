@@ -193,10 +193,12 @@ aside
     position: static;
     grid-area: sidebar;
     box-sizing: border-box;
-    height: 220px;
+    height: 270px;
     width: 100%;
     max-width: 100%;
     margin-bottom: 0;
+    box-shadow: 0 0 10px #d6e3ff;
+    border-radius: 20px;
 
   }
 
@@ -206,7 +208,9 @@ aside
     grid-template-columns: 155px 1fr;
     grid-template-areas: "home inventario" "usuarios ventas";
     gap: 20px;
+    box-shadow: none;
     font-size: .8rem;
+    padding-bottom: 0;
   }
 
   .home-opcion
@@ -246,12 +250,25 @@ aside
     width: 100%;
     margin-top: 0;
     align-self: start;
-    display: flex; flex-direction: column; justify-content: flex-start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
     max-height: calc(100vh - 500px);
   }
 
   .sidebar-footer
   {
-    display: none;
+    position: static;
+    margin-top: 0;
+    box-shadow: none;
+    padding: 0 20px 20px 20px;
+    border: none;
   }
+}
+
+@media (max-width: 1140px)
+{
+
 }
