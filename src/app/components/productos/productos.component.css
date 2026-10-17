@@ -378,6 +378,12 @@
     grid-template-columns: repeat(auto-fit, minmax(290px, 310px));
   }
 
+}
 
-
+@media (max-width: 1140px)
+{
+  .contenedor-topProductos-grid
+  {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 450px));
+  }
 }
