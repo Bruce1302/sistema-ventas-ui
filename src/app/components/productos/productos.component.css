@@ -124,7 +124,8 @@
   padding: 20px;
   justify-content: center;
   max-width: 1000px;
-
+  height: calc(100vh - 200px);
+  overflow-y: auto;
   margin: 0 auto;
 }
 
@@ -387,3 +388,22 @@
     grid-template-columns: repeat(auto-fit, minmax(290px, 450px));
   }
 }
+
+@media (max-width: 890px)
+{
+  .contenedor-topProductos-grid
+  {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+
+  }
+}
+
+@media (max-width: 740px)
+{
+  .contenedor-topProductos-grid
+  {
+    grid-template-columns: repeat(auto-fit, minmax(290px, 400px));
+
+  }
+}
+

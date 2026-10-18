@@ -345,3 +345,12 @@
   }
 
 }
+
+@media (max-width: 890px)
+{
+  .carrito-panel
+  {
+    max-height: 400px;
+  }
+}
+
