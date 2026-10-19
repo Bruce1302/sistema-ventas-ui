@@ -27,6 +27,17 @@
   }
 }
 
+.btn-flotante-carrito, .btn-cerrar-carrito
+{
+  display: none;
+}
+
+.header-acciones
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 .carrito-panel
 {
@@ -348,9 +359,107 @@
 
 @media (max-width: 890px)
 {
+
+  .carrito-overlay
+  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .carrito-overlay.abierto
+  {
+    opacity: 1;
+    visibility: visible;
+  }
+
   .carrito-panel
   {
-    max-height: 400px;
+    max-height: calc(100dvh - 100px);
+  }
+
+
+  .btn-flotante-carrito
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background-color: #ffffff;
+    color: #0a6ad2;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #c7d7fa;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .btn-flotante-carrito svg
+  {
+    width: 35px;
+    height: 35px;
+  }
+
+  .badge-flotante
+  {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 50px;
+    box-shadow: 0 0 5px #fc5951;
+    color: #e12d2d;
+  }
+
+  .carrito-panel
+  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 350px;
+    height: auto;
+    max-height: 85vh;
+    border-radius: 16px;
+    z-index: 1000;
+
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .carrito-panel.abierto
+  {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .btn-cerrar-carrito
+  {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #4a5568;
+    cursor: pointer;
+    padding: 0;
   }
 }
 

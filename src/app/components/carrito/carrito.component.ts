@@ -14,11 +14,14 @@ import { Producto, ProductosComponent } from '../productos/productos.component';
   styleUrl: './carrito.component.css',
   templateUrl: './carrito.component.html',
 })
-export class CarritoComponent  {
+export class CarritoComponent {
 
   private carritoService = inject(CarritoService);
   private ventaService = inject(VentaService);
   private productoService = inject(ProductoService);
+
+  //efecto del menu del carrito
+  carritoAbierto = false;
 
   listaCarrito = this.carritoService.obtenerCarrito();
 
@@ -33,6 +36,11 @@ export class CarritoComponent  {
   igv = computed(() => {
     return this.total() - this.subtotal();
   });
+
+  toggleCarrito()
+  {
+    this.carritoAbierto = !this.carritoAbierto;
+  }
 
   quitarItem(productoId: string)
   {
