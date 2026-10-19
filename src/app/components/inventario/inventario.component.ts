@@ -3,10 +3,12 @@ import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../productos/productos.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {Categoria, CategoriaService} from '../../services/categoria.service';
+import {FormProductoComponent} from './form-producto/form-producto.component';
 
 @Component({
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormProductoComponent
   ],
   selector: 'app-inventario',
   styleUrl: './inventario.component.css',
@@ -23,14 +25,6 @@ export class InventarioComponent implements OnInit{
 
   private fb = inject(FormBuilder);
 
-  // creamos el molde del formulario reactivo
-  productoForm: FormGroup = this.fb.group({
-    nombre: ['', Validators.required],
-    categoriaId: ['', Validators.required],
-    precio: ['', Validators.required],
-    stock: ['', Validators.required]
-  });
-
   //creamos el formulario reactivo para agregar categorias
   categoriaForm: FormGroup = this.fb.group({
     nombre: ['', Validators.required]
@@ -42,26 +36,6 @@ export class InventarioComponent implements OnInit{
     this.cambiarPagina(this.paginaActual());
   }
 
-  agregarProducto()
-  {
-    if (this.productoForm.valid)
-    {
-      this.productoService.agregarProducto(this.productoForm.value).subscribe({
-        next: () =>
-        {
-          console.log('Producto agregado');
-          this.productoForm.reset();
-          this.productoService.obtenerProductosPaginados(this.paginaActual());
-
-        },
-        error: (error) =>
-        {
-          console.error('Error al agregar producto:', error);
-        }
-
-      });
-    }
-  }
 
   //cuando se requieran ver mas productos
   cambiarPagina(nuevaPagina: number)

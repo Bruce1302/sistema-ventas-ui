@@ -1,0 +1,36 @@
+<h3>Agregar Producto</h3>
+
+<!-- Enlazamos el grupo de datos y el evento de guardado -->
+<form [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+
+  <div class="contenedor-campos">
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre" formControlName="nombre" placeholder="Ej. Coca Cola 1L">
+  </div>
+
+  <div class="contenedor-campos">
+    <label for="precio">Precio</label>
+    <input type="number" id="precio" formControlName="precio" placeholder="Ej. 3.00">
+  </div>
+
+  <div class="contenedor-campos">
+    <label for="stock">Stock</label>
+    <input type="number" id="stock" formControlName="stock" placeholder="Ej. 15">
+  </div>
+
+  <div class="contenedor-campos">
+    <label for="categoria">Categoría</label>
+    <select id="categoria" formControlName="categoriaId">
+      <option value="" disabled selected>Selecciona una categoría</option>
+
+      <!-- mostramos las categorias disponibles -->
+      @for (categoria of listaCategorias(); track categoria.id) {
+        <option [value]="categoria.id">{{ categoria.nombre }}</option>
+      }
+    </select>
+  </div>
+
+  <!-- El boton se bloquea  si faltan datos -->
+  <button type="submit" class="btn-guardar"> Guardar</button>
+</form>
+

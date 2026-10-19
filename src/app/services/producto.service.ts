@@ -14,6 +14,9 @@ export class ProductoService {
   topProductos = signal(<Producto[]>([]));
   productosPaginados = signal<PageResponse<Producto> | null>(null);
 
+  paginaActual = signal(0);
+
+
   //Direccion del API
   private apiUrl = 'http://localhost:8080/productos';
 
