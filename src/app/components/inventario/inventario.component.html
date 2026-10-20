@@ -5,8 +5,8 @@
   </section>
 
 
-  <section class="contenedor-productos">
-    <!-- Recorremos la lista de productos y los mostramos -->
+  <section class="contenedor-grillaProductos">
+    <!--
     @for (producto of productosPaginados()?.content; track producto.id)
     {
       <article class="producto-card">
@@ -22,9 +22,9 @@
       <p>No hay productos disponibles</p>
     }
 
-    <!--controles de la paginacion -->
+
     <div class="paginacion-controles">
-      <!-- Bloqueamos el botn "Anterior" si estamos en la pagina 0 -->
+
       <button
         class="btn-nav"
         (click)="cambiarPagina(paginaActual() - 1)"
@@ -32,7 +32,7 @@
 
       <span>Página {{ paginaActual() + 1 }} de {{ productosPaginados()?.page?.totalPages || 1 }}</span>
 
-      <!-- Bloqueamos el botón "Siguiente" si ya llegamos a la ultima pagina -->
+
       <button
         class="btn-nav"
         (click)="cambiarPagina(paginaActual() + 1)"
@@ -40,7 +40,8 @@
         Siguiente
       </button>
     </div>
-
+  -->
+    <app-grilla-productos></app-grilla-productos>
   </section>
 
   <section class="contenedor-formCategorias">

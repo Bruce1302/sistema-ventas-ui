@@ -4,11 +4,13 @@ import { Producto } from '../productos/productos.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {Categoria, CategoriaService} from '../../services/categoria.service';
 import {FormProductoComponent} from './form-producto/form-producto.component';
+import { GrillaProductosComponent } from './grilla-productos/grilla-productos.component';
 
 @Component({
   imports: [
     ReactiveFormsModule,
-    FormProductoComponent
+    FormProductoComponent,
+    GrillaProductosComponent
   ],
   selector: 'app-inventario',
   styleUrl: './inventario.component.css',
