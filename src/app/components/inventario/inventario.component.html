@@ -4,57 +4,12 @@
     <app-form-producto></app-form-producto>
   </section>
 
-
   <section class="contenedor-grillaProductos">
-    <!--
-    @for (producto of productosPaginados()?.content; track producto.id)
-    {
-      <article class="producto-card">
-        <h3>{{ producto.nombre }}</h3>
-        <p> {{ producto.categoriaNombre}}</p>
-        <p class="stock">Stock disponible: {{ producto.stock }}</p>
-        <p class="precio">S/ {{ producto.precio }}</p>
-        <button class="btn-agregar">editar</button>
-      </article>
-    }
-    @empty
-    {
-      <p>No hay productos disponibles</p>
-    }
-
-
-    <div class="paginacion-controles">
-
-      <button
-        class="btn-nav"
-        (click)="cambiarPagina(paginaActual() - 1)"
-        [disabled]="paginaActual() === 0"> Anterior </button>
-
-      <span>Página {{ paginaActual() + 1 }} de {{ productosPaginados()?.page?.totalPages || 1 }}</span>
-
-
-      <button
-        class="btn-nav"
-        (click)="cambiarPagina(paginaActual() + 1)"
-        [disabled]="paginaActual() >= (productosPaginados()?.page?.totalPages || 1) - 1">
-        Siguiente
-      </button>
-    </div>
-  -->
     <app-grilla-productos></app-grilla-productos>
   </section>
 
   <section class="contenedor-formCategorias">
-    <h3>Agregar Categoria</h3>
-
-    <form [formGroup]="categoriaForm" (ngSubmit)="agregarCategoria()">
-      <div class="contenedor-campos">
-        <label for="nombre">Nombre: </label>
-        <input type="text" id="nombre" formControlName="nombre" placeholder="Ej. Coca Cola 1L">
-      </div>
-
-      <button type="submit" class="btn-guardar">Guardar</button>
-    </form>
+    <app-form-categoria></app-form-categoria>
   </section>
 
   <section>

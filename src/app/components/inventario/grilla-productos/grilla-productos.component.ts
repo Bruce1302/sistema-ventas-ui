@@ -28,4 +28,9 @@ export class GrillaProductosComponent implements OnInit{
     this.productoService.obtenerProductosPaginados(nuevaPagina);
   }
 
+  eliminarProducto(id: string)
+  {
+    this.productoService.eliminarProducto(id);
+  }
+
 }

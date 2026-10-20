@@ -5,72 +5,25 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import {Categoria, CategoriaService} from '../../services/categoria.service';
 import {FormProductoComponent} from './form-producto/form-producto.component';
 import { GrillaProductosComponent } from './grilla-productos/grilla-productos.component';
+import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
 
 @Component({
   imports: [
     ReactiveFormsModule,
     FormProductoComponent,
-    GrillaProductosComponent
+    GrillaProductosComponent,
+    FormCategoriaComponent
   ],
   selector: 'app-inventario',
   styleUrl: './inventario.component.css',
   templateUrl: './inventario.component.html',
 })
-export class InventarioComponent implements OnInit{
+export class InventarioComponent{
 
   private productoService = inject(ProductoService);
   private categoriaService = inject(CategoriaService);
 
-  productosPaginados = this.productoService.productosPaginados;
   listaCategorias = this.categoriaService.categorias; //traemos las categorias
-  paginaActual = signal(0);
-
-  private fb = inject(FormBuilder);
-
-  //creamos el formulario reactivo para agregar categorias
-  categoriaForm: FormGroup = this.fb.group({
-    nombre: ['', Validators.required]
-  });
-
-  ngOnInit()
-  {
-    this.categoriaService.obtenerCategorias();
-    this.cambiarPagina(this.paginaActual());
-  }
-
-
-  //cuando se requieran ver mas productos
-  cambiarPagina(nuevaPagina: number)
-  {
-    this.paginaActual.set(nuevaPagina);
-
-    //le pasamos el bloque de ventas que necesitamos
-    this.productoService.obtenerProductosPaginados(nuevaPagina);
-  }
-
-  eliminarProducto(id: string)
-  {
-    this.productoService.eliminarProducto(id);
-  }
-
-  agregarCategoria()
-  {
-    if(this.categoriaForm.valid)
-    {
-      this.categoriaService.agregarCategorias(this.categoriaForm.value).subscribe({
-      next: (categoria: Categoria) =>
-      {
-        console.log('Categoria agregada');
-        this.listaCategorias.update(categoriasActuales => [...categoriasActuales, categoria]); // Agregamos la nueva categoría a la lista
-      },
-      error: (error) =>
-      {
-        console.error('Error al agregar categoria:', error);
-      }
-
-      });
-    }
-  }
 
   eliminarCategoria(id: string)
   {

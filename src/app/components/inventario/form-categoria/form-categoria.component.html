@@ -1,0 +1,10 @@
+<h3>Agregar Categoria</h3>
+
+<form [formGroup]="categoriaForm" (ngSubmit)="agregarCategoria()">
+  <div class="contenedor-campos">
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre" formControlName="nombre" placeholder="Ej. Coca Cola 1L">
+  </div>
+
+  <button type="submit" class="btn-guardar">Guardar</button>
+</form>
