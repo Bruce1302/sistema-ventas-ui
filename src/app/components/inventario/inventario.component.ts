@@ -6,13 +6,15 @@ import {Categoria, CategoriaService} from '../../services/categoria.service';
 import {FormProductoComponent} from './form-producto/form-producto.component';
 import { GrillaProductosComponent } from './grilla-productos/grilla-productos.component';
 import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
+import {SidebarMenuComponent} from '../shared/sidebar-menu/sidebar-menu.component';
 
 @Component({
   imports: [
     ReactiveFormsModule,
     FormProductoComponent,
     GrillaProductosComponent,
-    FormCategoriaComponent
+    FormCategoriaComponent,
+    SidebarMenuComponent
   ],
   selector: 'app-inventario',
   styleUrl: './inventario.component.css',

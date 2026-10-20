@@ -1,0 +1,135 @@
+:host
+{
+  display: block;
+  width: 10%;
+}
+
+.sidebar
+{
+  background-color: white;
+  margin: 10px;
+  width: 100%;
+  max-width: 80px;
+
+}
+
+.sidebar-nav ul
+{
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border-radius: 20px;
+  box-shadow: 0 0 10px #d6e3ff;
+  padding: 20px 10px;
+}
+
+.sidebar-nav a, .sidebar-nav .btn-logout
+{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.home-opcion a .icono
+{
+  /*border: 3px solid #d6faff;*/
+  color: #08879a;
+  box-shadow: 0 0 20px #d6faff;
+}
+
+.inventario-opcion a .icono
+{
+  /*border: 3px solid #ffe8d6;*/
+  color: #ab4f07;
+  box-shadow: 0 0 20px #ffe8d6;
+}
+
+.usuarios-opcion a .icono
+{
+  /*border: 3px solid #efd6ff;*/
+  color: #490277;
+  box-shadow: 0 0 20px #efd6ff;
+}
+
+.ventas-opcion a .icono
+{
+  /*border: 3px solid #edffd6;*/
+  color: #488002;
+  box-shadow: 0 0 20px #e3fdc2;
+}
+
+.home-opcion a .icono:hover
+{
+  background-color: #d6faff;
+  color: #08879a;
+}
+
+.inventario-opcion a .icono:hover
+{
+  background-color: #ffe8d6;
+  color: #ab4f07;
+}
+
+.usuarios-opcion a .icono:hover
+{
+  background-color: #efd6ff;
+  color: #490277;
+}
+
+.ventas-opcion a .icono:hover
+{
+  background-color: #e3fdc2;
+  color: #488002;
+}
+
+.icono
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.icono svg,
+.btn-logout svg
+{
+  width: 25px;
+  height: 25px;
+}
+
+.logout-opcion
+{
+  margin-top: 2rem;
+}
+
+.btn-logout
+{
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  color: #b90505;
+}
+
+.btn-logout .icono
+{
+  background-color: #ffeeee;
+}
+
+.btn-logout:hover
+{
+  transform: scale(1.1);
+}
