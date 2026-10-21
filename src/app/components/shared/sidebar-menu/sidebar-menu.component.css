@@ -25,7 +25,7 @@ aside
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   border-radius: 20px;
   box-shadow: 0 0 10px #d6e3ff;
@@ -38,10 +38,10 @@ aside
   align-items: center;
   justify-content: center;
 }
-.sidebar-nav ul li a
-{
-  padding: 0;
-}
+/*.sidebar-nav ul li a*/
+/*{*/
+/*  padding: 0;*/
+/*}*/
 
 .sidebar-nav a, .sidebar-nav .btn-logout
 {

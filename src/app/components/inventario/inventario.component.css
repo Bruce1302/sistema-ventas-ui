@@ -17,6 +17,7 @@
   display: block;
   grid-area: sidebar;
   border: 1px solid blue;
+  height: fit-content;
 
 }
 
