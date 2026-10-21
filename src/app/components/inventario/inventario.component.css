@@ -1,0 +1,45 @@
+.contenedor-principal
+{
+  display: grid;
+  grid-template-columns: 120px 1fr 2.5fr;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+  grid-template-areas: "sidebar formProductos productos"
+                    "formCategorias formCategorias productos"
+                    "categorias categorias productos" ;
+
+  padding: 15px;
+
+}
+
+.sidebar
+{
+  display: block;
+  grid-area: sidebar;
+  border: 1px solid blue;
+
+}
+
+.contenedor-formProductos
+{
+  grid-area: formProductos;
+  border: 1px solid black;
+}
+
+.contenedor-formCategorias
+{
+  grid-area: formCategorias;
+  border: 1px solid green;
+}
+
+.contenedor-grillaProductos
+{
+  grid-area: productos;
+  border: 1px solid red;
+}
+
+.contenedor-grillaCategorias
+{
+  grid-area: categorias;
+  border: 1px solid red;
+}

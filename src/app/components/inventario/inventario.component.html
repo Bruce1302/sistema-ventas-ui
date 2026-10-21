@@ -1,8 +1,6 @@
-<section>
+<main class="contenedor-principal">
 
-  <section class="sidebar">
-    <app-sidebar-menu></app-sidebar-menu>
-  </section>
+  <app-sidebar-menu class="sidebar"></app-sidebar-menu>
 
   <section class="contenedor-formProductos">
     <app-form-producto></app-form-producto>
@@ -16,16 +14,8 @@
     <app-form-categoria></app-form-categoria>
   </section>
 
-  <section>
-    <h3>Lista de Categorías</h3>
-    @for (categoria of listaCategorias(); track categoria.id)
-    {
-      <h3>{{ categoria.nombre }}</h3>
-      <h3>{{ categoria.id}}</h3>
-      <button (click)="eliminarCategoria( categoria.id )">Eliminar</button>
-      <button>Editar</button>
-
-    }
+  <section class="contenedor-grillaCategorias">
+    <app-grilla-categorias></app-grilla-categorias>
   </section>
 
-</section>
+</main>
