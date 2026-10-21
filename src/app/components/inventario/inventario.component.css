@@ -3,12 +3,14 @@
   display: grid;
   grid-template-columns: 120px 1fr 2.5fr;
   grid-template-rows:  auto auto auto;
-  gap: 10px;
+  gap: 15px;
   grid-template-areas: "sidebar formProductos panel-productos"
                     "formCategorias formCategorias panel-productos"
                     "categorias categorias panel-productos" ;
 
   padding: 15px;
+
+  box-sizing: border-box;
 
 }
 
@@ -24,14 +26,10 @@
 .contenedor-formProductos
 {
   grid-area: formProductos;
-  border: 1px solid black;
+  margin: 10px auto;
+  /*border: 1px solid black;*/
 }
 
-.contenedor-barra-buscar
-{
-  grid-area: barra-buscar;
-  border: 1px solid yellow;
-}
 
 .contenedor-grillaProductos
 {
@@ -43,6 +41,16 @@
 {
   grid-area: panel-productos;
   border: 1px solid purple;
+}
+
+.barra-herramientas
+{
+  max-width: 800px;
+  margin: 10px auto;
+  position: sticky;
+  top: 25px;
+  z-index: 10;
+  padding: 1.5rem;
 }
 
 .contenedor-formCategorias
