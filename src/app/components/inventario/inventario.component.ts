@@ -8,6 +8,7 @@ import { GrillaProductosComponent } from './grilla-productos/grilla-productos.co
 import { FormCategoriaComponent } from './form-categoria/form-categoria.component';
 import {SidebarMenuComponent} from '../shared/sidebar-menu/sidebar-menu.component';
 import { GrillaCategoriasComponent } from './grilla-categorias/grilla-categorias.component';
+import {BarraBuscarComponent} from './barra-buscar/barra-buscar.component';
 
 @Component({
   imports: [
@@ -16,7 +17,8 @@ import { GrillaCategoriasComponent } from './grilla-categorias/grilla-categorias
     GrillaProductosComponent,
     FormCategoriaComponent,
     SidebarMenuComponent,
-    GrillaCategoriasComponent
+    GrillaCategoriasComponent,
+    BarraBuscarComponent
   ],
   selector: 'app-inventario',
   styleUrl: './inventario.component.css',

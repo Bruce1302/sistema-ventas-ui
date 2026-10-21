@@ -2,11 +2,11 @@
 {
   display: grid;
   grid-template-columns: 120px 1fr 2.5fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows:  auto auto auto;
   gap: 10px;
-  grid-template-areas: "sidebar formProductos productos"
-                    "formCategorias formCategorias productos"
-                    "categorias categorias productos" ;
+  grid-template-areas: "sidebar formProductos panel-productos"
+                    "formCategorias formCategorias panel-productos"
+                    "categorias categorias panel-productos" ;
 
   padding: 15px;
 
@@ -26,10 +26,10 @@
   border: 1px solid black;
 }
 
-.contenedor-formCategorias
+.contenedor-barra-buscar
 {
-  grid-area: formCategorias;
-  border: 1px solid green;
+  grid-area: barra-buscar;
+  border: 1px solid yellow;
 }
 
 .contenedor-grillaProductos
@@ -37,6 +37,19 @@
   grid-area: productos;
   border: 1px solid red;
 }
+
+.panel-productos
+{
+  grid-area: panel-productos;
+  border: 1px solid purple;
+}
+
+.contenedor-formCategorias
+{
+  grid-area: formCategorias;
+  border: 1px solid green;
+}
+
 
 .contenedor-grillaCategorias
 {

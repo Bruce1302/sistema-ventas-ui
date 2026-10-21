@@ -5,6 +5,7 @@ import {CarritoService} from '../../services/carrito.service';
 import { DecimalPipe, NgClass } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
+import {PageResponse} from '../../models/pagination.model';
 
 export interface Producto
 {
@@ -75,12 +76,12 @@ export interface Producto
       }
 
       // Si hay texto, lo buscamos
-      this.productoService.buscarProductos(textoIngresado).subscribe({
-        next: (coincidencias: Producto[]) => {
+      this.productoService.buscarProductos(textoIngresado ?? '').subscribe({
+        next: (coincidencias: PageResponse<Producto>) => {
           // El Signal cambia los cards automaticamente
-          this.topProductos.set(coincidencias);
+          this.topProductos.set(coincidencias.content);
         },
-        error: (error) => console.log('Error en la búsqueda', error)
+        error: (error) => console.log('Error en     la búsqueda', error)
       });
     });
   }

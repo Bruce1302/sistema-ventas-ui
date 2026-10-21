@@ -66,7 +66,7 @@ export class ProductoService {
 
   buscarProductos(termino: string)
   {
-    return this.http.get<Producto[]>(`${this.apiUrl}/buscar?nombre=${termino}`);
+    return this.http.get<PageResponse<Producto>>(`${this.apiUrl}/buscar?nombre=${termino}`);
   }
 
 }
