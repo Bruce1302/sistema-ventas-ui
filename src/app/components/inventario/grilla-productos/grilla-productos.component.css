@@ -42,13 +42,12 @@
   border-radius: 4px;
 }
 
-/* 2. El Título (Camuflado como input) */
 .card-header input {
   width: 100%;
   font-size: 1.1rem;
   font-weight: 650;
   color: #050505;
-  border: 1px solid transparent; /* Ocultamos el borde */
+  border: 1px solid transparent;
   background: transparent;
   outline: none;
   padding: 4px;
@@ -85,7 +84,6 @@ svg
 
 .flecha-dropdown { opacity: 0.5; }
 
-/* 4. Cuerpo y Fila de Precios/Stock */
 .card-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -101,7 +99,6 @@ svg
   align-self: center;
 }
 
-/* 5. EL CAMUFLAJE: Inputs de Precio y Stock */
 .input-simulado {
   display: flex;
   align-items: center;
@@ -128,7 +125,6 @@ svg
   transition: all 0.2s;
 }
 
-/* Limpiamos las flechas por defecto de los number, tal como aprendimos antes */
 .input-simulado input[type="number"]::-webkit-inner-spin-button,
 .input-simulado input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -143,7 +139,7 @@ svg
   gap: 2px;
 }
 
-/* 6. Botones Inferiores */
+
 .card-acciones {
   display: grid;
   grid-template-columns: 1fr 1fr;

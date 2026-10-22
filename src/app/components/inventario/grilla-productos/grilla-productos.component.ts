@@ -13,15 +13,18 @@ import {NgClass} from '@angular/common';
 })
 export class GrillaProductosComponent implements OnInit{
 
-  ngOnInit()
-  {
-    this.cambiarPagina(this.paginaActual());
-  }
-
   private productoService = inject(ProductoService);
+  private categoriaService = inject(CategoriaService);
+
   paginaActual = signal(0);
 
   productosPaginados = this.productoService.productosPaginados;
+
+  ngOnInit()
+  {
+    this.cambiarPagina(this.paginaActual());
+    this.categoriaService.obtenerCategorias();
+  }
 
   cambiarPagina(nuevaPagina: number)
   {
