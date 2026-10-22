@@ -1,8 +1,8 @@
 .contenedor-principal
 {
   display: grid;
-  grid-template-columns: 120px 1fr 2.5fr;
-  grid-template-rows:  auto auto auto;
+  grid-template-columns: 120px 450px 2.5fr;
+  grid-template-rows:  520px auto auto;
   gap: 15px;
   grid-template-areas: "sidebar formProductos panel-productos"
                     "formCategorias formCategorias panel-productos"
@@ -18,15 +18,17 @@
 {
   display: block;
   grid-area: sidebar;
-  border: 1px solid blue;
-  height: fit-content;
+  /*border: 1px solid blue;*/
+  /*height: fit-content;*/
 
 }
 
 .contenedor-formProductos
 {
   grid-area: formProductos;
-  margin: 10px auto;
+  margin: 0 auto;
+  min-width: 390px;
+  max-width: 450px;
   /*border: 1px solid black;*/
 }
 
