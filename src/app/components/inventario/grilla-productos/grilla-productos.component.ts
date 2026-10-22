@@ -1,9 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductoService } from '../../../services/producto.service';
 import { CategoriaService } from '../../../services/categoria.service';
+import {NgClass} from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [
+    NgClass
+  ],
   selector: 'app-grilla-productos',
   styleUrl: './grilla-productos.component.css',
   templateUrl: './grilla-productos.component.html',

@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  font-family: 'Poppins', sans-serif;
+}
+
+.contenedor-grillaProductos
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+
+}
+
+.producto-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
+  border: 1px solid #f0f4f8;
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-header
+{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.barra-color
+{
+  width: 5px;
+  height: 35px;
+  background-color: var(--color-tema);
+  border-radius: 4px;
+}
+
+/* 2. El Título (Camuflado como input) */
+.card-header input {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: #050505;
+  border: 1px solid transparent; /* Ocultamos el borde */
+  background: transparent;
+  outline: none;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+/* 3. Badge de Categoría */
+.card-categoria .badge-categoria {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #f1f5f9;
+  color: #64748b;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+svg
+{
+  width: 20px;
+  height: 20px;
+}
+
+.cf-icon-svg, .svg-stock
+{
+  width: 30px;
+  height: 39px;
+  color: #6aa81c;
+}
+
+.flecha-dropdown { opacity: 0.5; }
+
+/* 4. Cuerpo y Fila de Precios/Stock */
+.card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.campo-grupo label {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  font-weight: 500;
+  align-self: center;
+}
+
+/* 5. EL CAMUFLAJE: Inputs de Precio y Stock */
+.input-simulado {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.simbolo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.input-simulado input {
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  border: 1px solid transparent; /* Ocultamos el borde */
+  background: transparent;
+  padding: 4px 6px;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+/* Limpiamos las flechas por defecto de los number, tal como aprendimos antes */
+.input-simulado input[type="number"]::-webkit-inner-spin-button,
+.input-simulado input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.icono-lapiz { color: #cbd5e1; }
+.controles-numericos {
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* 6. Botones Inferiores */
+.card-acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.btn-editar, .btn-eliminar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+  transition: all 0.2s;
+}
+
+.btn-editar {
+  color: #3b82f6;
+  border: 1px solid #bfdbfe;
+}
+.btn-editar:hover { background-color: #eff6ff; }
+
+.btn-eliminar {
+  color: #ef4444;
+  border: 1px solid #fecaca;
+}
+.btn-eliminar:hover { background-color: #fef2f2; }
+
+
+.card-header input:not([readonly]),
+.input-simulado input:not([readonly]) {
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header input:not([readonly]):focus,
+.input-simulado input:not([readonly]):focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.stock-alto
+{
+  --color-tema: #2d9b32; /* Verde */
+  --bg-tema: #e8f5e9;    /* Verde clarito */
+}
+
+.stock-medio
+{
+  --color-tema: #e65100; /* Naranja */
+  --bg-tema: #fff3e0;    /* Naranja clarito */
+}
+
+.stock-bajo
+{
+  --color-tema: #c62828; /* Rojo */
+  --bg-tema: #ffebee;    /* Rojo clarito */
+}

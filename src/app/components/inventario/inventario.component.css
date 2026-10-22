@@ -1,7 +1,7 @@
 .contenedor-principal
 {
   display: grid;
-  grid-template-columns: 120px 450px 2.5fr;
+  grid-template-columns: 120px 430px 2.5fr;
   grid-template-rows:  520px auto auto;
   gap: 15px;
   grid-template-areas: "sidebar formProductos panel-productos"
@@ -42,7 +42,7 @@
 .panel-productos
 {
   grid-area: panel-productos;
-  border: 1px solid purple;
+  /*border: 1px solid purple;*/
 }
 
 .barra-herramientas
