@@ -9,6 +9,7 @@ import {PageResponse} from '../models/pagination.model';
     providedIn: 'root' // servicio disponible para toda la aplicación
   }
 )
+
 export class ProductoService {
 
   topProductos = signal(<Producto[]>([]));
@@ -67,6 +68,11 @@ export class ProductoService {
   buscarProductos(termino: string)
   {
     return this.http.get<PageResponse<Producto>>(`${this.apiUrl}/buscar?nombre=${termino}`);
+  }
+
+  actualizarProducto( producto: Producto, id: string)
+  {
+    return this.http.put(`${this.apiUrl}/${id}`, producto);
   }
 
 }
