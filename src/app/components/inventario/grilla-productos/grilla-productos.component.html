@@ -113,10 +113,10 @@
         }
         @else
         {
-          <button type="submit" class="btn-guardar" [disabled]="formularios[producto.id].invalid">
+          <button type="submit" class="btn-editar" [disabled]="formularios[producto.id].invalid">
             Actualizar
           </button>
-          <button type="button" class="btn-cancelar" (click)="cancelarEdicion(producto.id)">
+          <button type="button" class="btn-eliminar" (click)="cancelarEdicion(producto.id)">
             Cancelar
           </button>
         }
