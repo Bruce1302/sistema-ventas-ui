@@ -61,12 +61,34 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background-color: #f1f5f9;
-  color: #64748b;
+  background-color: #ffffff;
+
+  color: #187abb;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
   width: fit-content;
+}
+
+.card-categoria-edit
+{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.8rem;
+}
+
+.card-categoria-edit select
+{
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  appearance: none;
 }
 
 svg
@@ -84,13 +106,15 @@ svg
 
 .flecha-dropdown { opacity: 0.5; }
 
-.card-body {
+.card-body
+{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.campo-grupo label {
+.campo-grupo label
+{
   display: block;
   font-size: 0.75rem;
   /*color: #5a687a;*/
@@ -99,20 +123,23 @@ svg
   align-self: center;
 }
 
-.input-simulado {
+.input-simulado
+{
   display: flex;
   align-items: center;
   gap: 4px;
   position: relative;
 }
 
-.simbolo {
+.simbolo
+{
   font-size: 0.9rem;
   font-weight: 600;
   color: #64748b;
 }
 
-.input-simulado input {
+.input-simulado input
+{
   width: 100%;
   font-size: 0.95rem;
   font-weight: 600;
@@ -132,7 +159,8 @@ svg
 }
 
 .icono-lapiz { color: #cbd5e1; }
-.controles-numericos {
+.controles-numericos
+{
   color: #cbd5e1;
   display: flex;
   flex-direction: column;
@@ -140,14 +168,16 @@ svg
 }
 
 
-.card-acciones {
+.card-acciones
+{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-top: 5px;
 }
 
-.btn-editar, .btn-eliminar {
+.btn-editar, .btn-eliminar
+{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,14 +205,17 @@ svg
 
 
 .card-header input:not([readonly]),
-.input-simulado input:not([readonly]) {
+.input-simulado input:not([readonly])
+{
   border: 1px solid #cbd5e1;
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .card-header input:not([readonly]):focus,
-.input-simulado input:not([readonly]):focus {
+.input-simulado input:not([readonly]):focus,
+.card-categoria-edit:focus
+{
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }

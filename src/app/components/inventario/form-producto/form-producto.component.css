@@ -151,7 +151,6 @@ input:focus, select:focus
 
 .input-contenedor:focus-within
 {
-
   box-shadow: 0 0 5px #4798ef;
 }
 
