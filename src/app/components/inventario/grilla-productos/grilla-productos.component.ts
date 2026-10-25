@@ -4,11 +4,13 @@ import { CategoriaService } from '../../../services/categoria.service';
 import {NgClass} from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Producto } from '../../productos/productos.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
     NgClass,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   selector: 'app-grilla-productos',
   styleUrl: './grilla-productos.component.css',
