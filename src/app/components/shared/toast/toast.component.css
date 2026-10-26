@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
 .toast-contenedor
 {
   position: fixed;
@@ -20,11 +29,11 @@
   gap: 12px;
   padding: 16px;
 }
-
 .mensaje
 {
   flex-grow: 1;
   margin: 0;
+  font-size: .8rem;
   font-weight: 500;
   color: #334155;
 }
@@ -34,22 +43,41 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #94a3b8;
+  color: #c45a5a;
   font-size: 1.1rem;
 }
 
 /* Colores dinamicos */
-.toast-contenedor.exito { border-left: 5px solid #10b981; }
-.toast-contenedor.exito .toast-barra { background: #10b981; }
+.toast-contenedor.exito .toast-barra
+{
+  --color-toast: #10b981;
+  background: #10b981;
+}
 
-.toast-contenedor.error { border-left: 5px solid #ef4444; }
-.toast-contenedor.error .toast-barra { background: #ef4444; }
+.toast-contenedor.error .toast-barra
+{
+  --color-toast: #ef4444;
+  background: #ef4444;
+}
+
+.icono
+{
+  color: var(--color-toast);
+}
+
+.icono svg
+{
+  width: 30px;
+  height: 30px;
+}
 
 /* La barra de tiempo reactiva */
-.toast-barra {
+.toast-barra
+{
   height: 4px;
   width: 100%;
   animation: encoger 3s linear forwards;
+  background-color: black;
 }
 
 @keyframes encoger

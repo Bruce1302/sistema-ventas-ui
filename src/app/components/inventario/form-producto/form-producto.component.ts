@@ -2,6 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ProductoService} from '../../../services/producto.service';
 import {CategoriaService} from '../../../services/categoria.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     imports: [
@@ -13,6 +14,7 @@ import {CategoriaService} from '../../../services/categoria.service';
 })
 export class FormProductoComponent  implements OnInit{
 
+  private toastService = inject(ToastService);
   private productoService = inject(ProductoService);
   private categoriaService = inject(CategoriaService);
 
@@ -44,11 +46,14 @@ export class FormProductoComponent  implements OnInit{
           this.productoForm.reset();
           this.productoService.paginaActual.set(0);
           this.productoService.obtenerProductosPaginados(0);
+          this.toastService.mostrar('Producto agregado exitosamente', 'exito');
+
 
         },
         error: (error) =>
         {
           console.error('Error al agregar producto:', error);
+          this.toastService.mostrar('Ocurrió un error', 'error');
         }
 
       });
