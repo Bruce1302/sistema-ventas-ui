@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     NgClass,
     ReactiveFormsModule,
-    RouterLink
+    //RouterLink
   ],
   selector: 'app-grilla-productos',
   styleUrl: './grilla-productos.component.css',

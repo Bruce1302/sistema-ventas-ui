@@ -14,7 +14,8 @@
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 0 10px #d6e3ff;
-  margin: 10px auto;
+  margin: 0 auto;
+  height: 100%;
   box-sizing: border-box;
 
 }
@@ -67,7 +68,7 @@
 /* Campos */
 .campo-grupo
 {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .campo-grupo label

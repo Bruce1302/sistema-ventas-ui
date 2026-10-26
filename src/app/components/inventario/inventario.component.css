@@ -8,7 +8,7 @@
                     "formCategorias formCategorias panel-productos"
                     "categorias categorias panel-productos" ;
 
-  padding: 15px;
+  padding: 25px 15px 15px 15px;
 
   box-sizing: border-box;
 
@@ -18,6 +18,7 @@
 {
   display: block;
   grid-area: sidebar;
+  /*margin-top: 10px;*/
   /*border: 1px solid blue;*/
   /*height: fit-content;*/
 
@@ -29,6 +30,7 @@
   margin: 0 auto;
   min-width: 390px;
   max-width: 450px;
+  height: 100%;
   /*border: 1px solid black;*/
 }
 
@@ -48,7 +50,7 @@
 .barra-herramientas
 {
   max-width: 800px;
-  margin: 10px auto;
+  margin: 0 auto;
   position: sticky;
   top: 25px;
   z-index: 10;
@@ -58,7 +60,7 @@
 .contenedor-formCategorias
 {
   grid-area: formCategorias;
-  border: 1px solid green;
+  /*border: 1px solid green;*/
 }
 
 
