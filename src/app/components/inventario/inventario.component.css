@@ -2,7 +2,7 @@
 {
   display: grid;
   grid-template-columns: 120px 430px 2.5fr;
-  grid-template-rows:  520px auto auto;
+  grid-template-rows:  520px 160px auto;
   gap: 15px;
   grid-template-areas: "sidebar formProductos panel-productos"
                     "formCategorias formCategorias panel-productos"
@@ -38,7 +38,7 @@
 .contenedor-grillaProductos
 {
   grid-area: productos;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 
 .panel-productos
@@ -60,6 +60,7 @@
 .contenedor-formCategorias
 {
   grid-area: formCategorias;
+  height: fit-content;
   /*border: 1px solid green;*/
 }
 
@@ -67,5 +68,5 @@
 .contenedor-grillaCategorias
 {
   grid-area: categorias;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
