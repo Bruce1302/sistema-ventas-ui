@@ -1,0 +1,65 @@
+.toast-contenedor
+{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 9999;
+  min-width: 320px;
+
+  animation: entrar 0.3s ease-out;
+}
+
+.toast-contenido
+{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.mensaje
+{
+  flex-grow: 1;
+  margin: 0;
+  font-weight: 500;
+  color: #334155;
+}
+
+.btn-cerrar
+{
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* Colores dinamicos */
+.toast-contenedor.exito { border-left: 5px solid #10b981; }
+.toast-contenedor.exito .toast-barra { background: #10b981; }
+
+.toast-contenedor.error { border-left: 5px solid #ef4444; }
+.toast-contenedor.error .toast-barra { background: #ef4444; }
+
+/* La barra de tiempo reactiva */
+.toast-barra {
+  height: 4px;
+  width: 100%;
+  animation: encoger 3s linear forwards;
+}
+
+@keyframes encoger
+{
+  from { width: 100%; }
+  to { width: 0; }
+}
+
+@keyframes entrar
+{
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
