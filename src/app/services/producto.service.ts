@@ -57,7 +57,15 @@ export class ProductoService {
 
   eliminarProducto(id: string)
   {
-    this.http.delete(`${this.apiUrl}/${id}`);
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+      next: () => {
+        console.log('Producto eliminado con éxito');
+        this.obtenerProductosPaginados(this.paginaActual());
+      },
+      error: (error) => {
+        console.error('Error al eliminar el producto:', error);
+      }
+    });
   }
 
   agregarProducto(producto: Producto)
