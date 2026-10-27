@@ -50,5 +50,10 @@ export class CategoriaService
       })
    }
 
+   actualizarCategoria(categoria: Categoria, id: string)
+   {
+      return this.http.put(`${this.apiUrl}/${id}`, categoria);
+   }
+
 
 }

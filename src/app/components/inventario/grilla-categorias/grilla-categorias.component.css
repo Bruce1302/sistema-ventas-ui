@@ -7,11 +7,11 @@
 :host
 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 170px));
+  gap: 15px 6px;
   padding: 15px;
   box-shadow: 0 0 10px #d6e3ff;
-  border-radius: 20px;
+  border-radius: 15px;
   justify-content: center;
   max-height: 200px;
   overflow-y: auto;
@@ -21,20 +21,43 @@
 .card-categoria
 {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   justify-content: center;
-  height: fit-content;
+  min-height: 35px;
   border: 1px solid #2684e8;
   box-shadow: 0 2px 1px #2684e8;
-  padding: 5px 10px;
+  padding: 5px 8px;
   border-radius: 0 20px 20px 20px;
+
 }
 
-.card-categoria h3
+.card-categoria textarea
 {
-  font-weight: 500;
+  font-size: .8rem;
   text-align: center;
+  width: 100%;
+  font-weight: 500;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  border-radius: 6px;
+  field-sizing: content;
+  border: none;
+
+}
+
+.card-categoria textarea:not([readonly])
+{
+  border: 1px solid #a5acb6;
+  background: #ffffff;
+  padding: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-categoria textarea:not([readonly]):focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .card-categoria button
@@ -42,6 +65,8 @@
   border: none;
   background-color: #fff;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   transition: all 0.2s ease-in-out;
 }
 
@@ -61,6 +86,16 @@
 {
   --color-btn: #f5b3b3;
   color: #d53838;
+}
+
+.btn-actualizar svg
+{
+  color: #71b636;
+}
+
+.btn-cancelar svg
+{
+  fill: #d53838;
 }
 
 .card-categoria button:hover
