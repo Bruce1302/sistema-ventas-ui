@@ -1,5 +1,6 @@
 import { inject, Injectable, OnInit, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastService } from './toast.service';
 
 export interface Categoria
 {
@@ -19,6 +20,7 @@ export class CategoriaService
    private apiUrl = 'http://localhost:8080/categorias';
 
    private http = inject(HttpClient);
+   private toastService = inject(ToastService)
 
    obtenerCategorias()
    {
@@ -42,6 +44,7 @@ export class CategoriaService
         {
           console.log('Categoria eliminada');
           this.categorias.update(categoriasActuales => categoriasActuales.filter(categoria => categoria.id !== id));
+          this.toastService.mostrar('Categoria eliminada exitosamente', 'exito');
         },
         error: (error) =>
         {

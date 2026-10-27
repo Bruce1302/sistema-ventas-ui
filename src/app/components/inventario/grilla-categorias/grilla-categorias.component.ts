@@ -1,6 +1,7 @@
 import { Component, effect, inject } from '@angular/core';
 import { CategoriaService } from '../../../services/categoria.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   imports: [
@@ -14,6 +15,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class GrillaCategoriasComponent {
 
   private categoriaService = inject(CategoriaService);
+  private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
 
   listaCategorias = this.categoriaService.categorias; //traemos las categorias
@@ -65,6 +67,7 @@ export class GrillaCategoriasComponent {
       next: () => {
         this.cancelarEdicion(id);
         this.categoriaService.obtenerCategorias();
+        this.toastService.mostrar('Categoria actualizada exitosamente', 'exito');
       },
       error: (error) => {
         console.error('Error al actualizar el producto:', error);

@@ -1,8 +1,9 @@
-import {Injectable, Service, signal} from '@angular/core';
+import { inject, Injectable, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../components/productos/productos.component';
 import {CarritoService} from './carrito.service';
 import {PageResponse} from '../models/pagination.model';
+import { ToastService } from './toast.service';
 
 @Injectable(
   {
@@ -20,6 +21,7 @@ export class ProductoService {
 
   //Direccion del API
   private apiUrl = 'http://localhost:8080/productos';
+  private toastService = inject(ToastService);
 
   constructor(private http: HttpClient, private carritoService: CarritoService) {}
 
@@ -61,6 +63,7 @@ export class ProductoService {
       next: () => {
         console.log('Producto eliminado con éxito');
         this.obtenerProductosPaginados(this.paginaActual());
+        this.toastService.mostrar('Producto eliminado exitosamente', 'exito');
       },
       error: (error) => {
         console.error('Error al eliminar el producto:', error);

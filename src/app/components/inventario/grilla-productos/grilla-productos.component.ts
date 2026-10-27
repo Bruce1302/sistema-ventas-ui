@@ -5,6 +5,7 @@ import {NgClass} from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Producto } from '../../productos/productos.component';
 import { RouterLink } from '@angular/router';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   imports: [
@@ -20,6 +21,7 @@ export class GrillaProductosComponent implements OnInit {
 
   private productoService = inject(ProductoService);
   private categoriaService = inject(CategoriaService);
+  private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
 
   listaCategorias = this.categoriaService.categorias;
@@ -94,6 +96,8 @@ export class GrillaProductosComponent implements OnInit {
       next: () => {
         this.cancelarEdicion(id);
         this.productoService.obtenerProductosPaginados(this.paginaActual());
+        this.toastService.mostrar('Producto actualizado exitosamente', 'exito');
+
       },
       error: (error) => {
         console.error('Error al actualizar el producto:', error);
