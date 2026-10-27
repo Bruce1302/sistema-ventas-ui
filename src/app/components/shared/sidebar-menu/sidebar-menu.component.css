@@ -83,19 +83,19 @@
   color: #08879a;
 }
 
-.inventario-opcion a .icono:hover
+.inventario-opcion a .icono:hover, .inventario-opcion a.activo .icono
 {
   background-color: #ffe8d6;
   color: #ab4f07;
 }
 
-.usuarios-opcion a .icono:hover
+.usuarios-opcion a .icono:hover, .usuarios-opcion a.activo .icono
 {
   background-color: #efd6ff;
   color: #490277;
 }
 
-.ventas-opcion a .icono:hover
+.ventas-opcion a .icono:hover, .ventas-opcion a.activo .icono
 {
   background-color: #e3fdc2;
   color: #488002;

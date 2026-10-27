@@ -42,11 +42,6 @@ aside
 
 }
 
-.sidebar-nav
-{
-
-}
-
 .sidebar-nav ul
 {
   list-style: none;
@@ -75,7 +70,7 @@ aside
   transition: all 0.3s ease-in-out;
 }
 
-.home-opcion a:hover, .home-opcion a.activo
+.home-opcion a
 {
   background-color: #d6faff;
   color: #08879a;

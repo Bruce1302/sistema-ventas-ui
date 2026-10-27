@@ -2,7 +2,7 @@
     <nav class="sidebar-nav">
       <ul>
         <li class="home-opcion">
-          <a routerLink="/home" routerLinkActive="activo">
+          <a routerLink="/home" routerLinkActive="activo" title="Inicio" >
             <span class="icono" >
               <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -19,7 +19,7 @@
 
         <li class="inventario-opcion">
           <!-- routerLinkActive="activo" le dira a Angular que pinte de azul el menu donde estamos -->
-          <a routerLink="/inventario" routerLinkActive="activo">
+          <a routerLink="/inventario" routerLinkActive="activo" title="Inventario" >
             <span class="icono">
               <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path
                 d="M17.5777 4.43152L15.5777 3.38197C13.8221 2.46066 12.9443 2 12 2C11.0557 2 10.1779 2.46066 8.42229 3.38197L8.10057 3.5508L17.0236 8.64967L21.0403 6.64132C20.3941 5.90949 19.3515 5.36234 17.5777 4.43152Z" fill="currentColor"></path> <path
@@ -32,7 +32,7 @@
         </li>
 
         <li class="ventas-opcion">
-          <a routerLink="/ventas" routerLinkActive="activo">
+          <a routerLink="/ventas" routerLinkActive="activo" title="Ventas">
             <span class="icono">
               <svg viewBox="0 0 24 24" stroke="currentColor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -56,7 +56,7 @@
         @if (rolUsuario() === 'ADMIN')
         {
           <li class="usuarios-opcion">
-            <a routerLink="/usuarios" routerLinkActive="activo">
+            <a routerLink="/usuarios" routerLinkActive="activo" title="Usuarios">
               <span class="icono">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path
                   d="M15.5 7.5C15.5 9.433 13.933 11 12 11C10.067 11 8.5 9.433 8.5 7.5C8.5 5.567 10.067 4 12 4C13.933 4 15.5 5.567 15.5 7.5Z" fill="currentColor"></path> <path d="M18 16.5C18 18.433 15.3137 20 12 20C8.68629 20 6 18.433 6 16.5C6 14.567 8.68629 13 12 13C15.3137 13 18 14.567 18 16.5Z"
