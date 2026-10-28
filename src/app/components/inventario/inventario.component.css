@@ -70,3 +70,29 @@
   grid-area: categorias;
   /*border: 1px solid red;*/
 }
+
+@media (max-width: 1160px)
+{
+  .contenedor-principal
+  {
+    display: grid;
+    grid-template-columns: 120px auto auto;
+    grid-template-rows:  160px 350px auto;
+    gap: 15px;
+    grid-template-areas: "sidebar formProductos formCategorias"
+                    "sidebar formProductos categorias"
+                    "panel-productos panel-productos panel-productos" ;
+
+  }
+
+  .contenedor-formProductos
+  {
+    min-width: 350px;
+  }
+
+  .contenedor-formCategorias, .contenedor-grillaCategorias
+  {
+    min-width: 300px;
+  }
+
+}

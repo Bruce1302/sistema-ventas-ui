@@ -128,4 +128,48 @@ form input:focus
   opacity: 0.8;
 }
 
+@media (max-width: 1160px)
+{
+  :host
+  {
+    padding: 15px 10px;
+  }
+
+  form
+  {
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  form input
+  {
+    width: 60%;
+  }
+
+  form button
+  {
+    min-width: 40%;
+    font-size: 0.7rem;
+  }
+
+  form button svg
+  {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 940px)
+{
+  .header-text p
+  {
+    display: none;
+  }
+
+  form button svg
+  {
+    display: none;
+  }
+}
 
