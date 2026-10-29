@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *
 {
   box-sizing: border-box;
@@ -95,7 +96,38 @@
   transition: background-color 0.2s;
 }
 
+.btn-filtros svg
+{
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
 .btn-filtros:hover
 {
   background-color: #0b5ed7;
+}
+
+@media (max-width: 860px)
+{
+  .buscador-contenedor
+  {
+    padding: 10px;
+  }
+
+  .btn-filtros span
+  {
+    display: none;
+  }
+
+  .btn-filtros
+  {
+    padding: 10px;
+  }
+
+  .btn-filtros svg
+  {
+    width: 16px;
+    height: 16px;
+  }
 }

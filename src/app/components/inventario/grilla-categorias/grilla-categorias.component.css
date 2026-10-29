@@ -119,3 +119,12 @@
 
 }
 
+@media (max-width: 860px)
+{
+  :host
+  {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+

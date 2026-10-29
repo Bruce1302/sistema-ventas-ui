@@ -18,9 +18,6 @@
 {
   display: block;
   grid-area: sidebar;
-  /*margin-top: 10px;*/
-  /*border: 1px solid blue;*/
-  /*height: fit-content;*/
 
 }
 
@@ -31,14 +28,11 @@
   min-width: 390px;
   max-width: 450px;
   height: 100%;
-  /*border: 1px solid black;*/
 }
-
 
 .contenedor-grillaProductos
 {
   grid-area: productos;
-  /*border: 1px solid red;*/
 }
 
 .panel-productos
@@ -95,4 +89,31 @@
     min-width: 300px;
   }
 
+}
+
+@media (max-width: 860px)
+{
+  .contenedor-principal
+  {
+    grid-template-columns: 1fr;
+    grid-template-rows:  auto auto auto auto auto;
+    gap: 15px;
+    grid-template-areas: "sidebar"
+                    "formProductos"
+                    "formCategorias"
+                    "categorias"
+                    "panel-productos" ;
+
+  }
+
+  .contenedor-formProductos
+  {
+    min-width: 300px;
+    max-width: 600px;
+  }
+
+  .barra-herramientas
+  {
+    padding: 10px;
+  }
 }
