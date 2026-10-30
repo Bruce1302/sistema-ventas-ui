@@ -86,6 +86,28 @@ export class ProductoService {
     return this.http.put(`${this.apiUrl}/${id}`, producto);
   }
 
+  filtrarPorCategorias(categoriasIds: string[]) {
+    // Si nos mandan un arreglo vacio, volvemos a cargar la pagina 0
+    if (!categoriasIds || categoriasIds.length === 0)
+    {
+      this.obtenerProductosPaginados(0);
+      return;
+    }
 
+    // Convertimos el arreglo de ids en un texto separado por comas para la URL
+    const categoriasParam = categoriasIds.join(',');
+
+    this.http.get<PageResponse<Producto>>(`${this.apiUrl}/filtrar?categorias=${categoriasParam}&page=0&size=10`)
+      .subscribe({
+        next: (respuesta: PageResponse<Producto>) => {
+
+          // la Grilla reacciona y le damos los datos del filtro reemplazando los productos originales
+          this.productosPaginados.set(respuesta);
+          // Reseteamos tu página global a 0 para los botones de la grilla
+          this.paginaActual.set(0);
+        },
+        error: (error) => console.error('Error al filtrar categorías:', error)
+      });
+  }
 
 }

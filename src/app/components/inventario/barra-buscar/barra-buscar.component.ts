@@ -22,6 +22,7 @@ export class BarraBuscarComponent implements OnInit {
   listaCategorias = this.categoriaService.categorias;
 
   menuAbierto: boolean = false;
+  categoriasSeleccionadas = new Set<string>()
 
   //productosPaginados = this.productoService.productosPaginados;
 
@@ -59,6 +60,38 @@ export class BarraBuscarComponent implements OnInit {
       },
       error: (error) => console.error('Error en la búsqueda del Inventario:', error)
     });
-  });
+    });
+  }
+
+  onCheckboxChange(event: Event)
+  {
+    const checkbox = event.target as HTMLInputElement;
+    const categoriaId = checkbox.value;
+
+    if (checkbox.checked)
+      this.categoriasSeleccionadas.add(categoriaId);//guardamos cuando marquen la casilla
+    else
+      this.categoriasSeleccionadas.delete(categoriaId); //quitamos cuando desmarquen la casilla
+
+  }
+
+  aplicarFiltros()
+  {
+    let arregloIds = Array.from(this.categoriasSeleccionadas);
+    console.log(arregloIds);
+
+    // Si se selecciona todas las categorias, solo llamamos a obtener todos los Productos
+    if (this.categoriasSeleccionadas.size === this.listaCategorias().length)
+    {
+      this.productoService.obtenerProductosPaginados(0);
+      this.menuAbierto = false;
+      return;
+    }
+
+    // si es un filtro real, mandamos los ids de las categorias seleccionadas
+    this.productoService.filtrarPorCategorias(arregloIds);
+
+    // Cerramos el modal
+    this.menuAbierto = false;
   }
 }
