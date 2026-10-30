@@ -108,6 +108,128 @@
   background-color: #0b5ed7;
 }
 
+/************Menu de filtros**************/
+.overlay-cristal
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  height: 100svh;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+.menu-flotante
+{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  max-width: 520px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #d6e3ff;
+  padding: 25px 20px;
+  z-index: 1000;
+}
+
+.menu-header
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.menu-header h4
+{
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.btn-cerrar
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #b90505;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-cerrar svg
+{
+  width: 35px;
+  height: 35px;
+}
+
+.btn-cerrar:hover
+{
+  filter: drop-shadow(0 0 1px #b90505);
+  scale: 1.1;
+}
+
+.menu-body
+{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.checkbox-item
+{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #475569;
+  cursor: pointer;
+}
+
+.checkbox-item input
+{
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #0d6efd;
+}
+
+.menu-footer .btn-aplicar
+{
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .8rem;
+  background-color: #67ab42;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.menu-footer .btn-aplicar:hover
+{
+  box-shadow: 0 0 10px #67ab42;
+}
+
+/**************************************/
+
 @media (max-width: 860px)
 {
   .buscador-contenedor
@@ -131,3 +253,5 @@
     height: 16px;
   }
 }
+
+

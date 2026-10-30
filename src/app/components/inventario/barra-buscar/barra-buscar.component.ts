@@ -4,6 +4,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs';
 import {Producto} from '../../productos/productos.component';
 import {ProductoService} from '../../../services/producto.service';
 import {PageResponse} from '../../../models/pagination.model';
+import { CategoriaService } from '../../../services/categoria.service';
 
 @Component({
     imports: [
@@ -17,12 +18,25 @@ export class BarraBuscarComponent implements OnInit {
 
   buscador = new FormControl('');
   private productoService = inject(ProductoService);
+  private categoriaService = inject(CategoriaService);
+  listaCategorias = this.categoriaService.categorias;
+
+  menuAbierto: boolean = false;
 
   //productosPaginados = this.productoService.productosPaginados;
 
   ngOnInit()
   {
     this.buscarProductos();
+
+    //Llamamos a las categorias
+    this.categoriaService.obtenerCategorias();
+  }
+
+  //Abrimos y cerramos el menu de filtros
+  toggleFiltros()
+  {
+    this.menuAbierto = !this.menuAbierto;
   }
 
   buscarProductos()

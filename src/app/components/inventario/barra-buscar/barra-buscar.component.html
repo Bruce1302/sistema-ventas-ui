@@ -19,7 +19,7 @@
   </button>
 </div>
 
-<button class="btn-filtros">
+<button class="btn-filtros" (click)="toggleFiltros()">
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -30,5 +30,39 @@
     </g>
   </svg>
   <span>Filtros</span>
-
 </button>
+
+@if (menuAbierto)
+{
+
+  <div class="overlay-cristal" (click)="toggleFiltros()"></div>
+
+  <div class="menu-flotante">
+    <div class="menu-header">
+      <h4>Filtrar por Categoría</h4>
+      <button class="btn-cerrar" (click)="toggleFiltros()">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path stroke="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10.9393 12L6.9696 15.9697L8.03026 17.0304L12 13.0607L15.9697 17.0304L17.0304 15.9697L13.0607 12L17.0303 8.03039L15.9696 6.96973L12 10.9393L8.03038 6.96973L6.96972 8.03039L10.9393 12Z" fill="#080341"></path>
+          </g>
+        </svg>
+      </button>
+    </div>
+
+    <div class="menu-body">
+      @for (categoria of listaCategorias(); track categoria.id)
+      {
+        <label class="checkbox-item">
+          <input type="checkbox" [value]="categoria.id">
+          <span>{{ categoria.nombre }}</span>
+        </label>
+      }
+    </div>
+
+    <div class="menu-footer">
+      <button class="btn-aplicar">Aplicar</button>
+    </div>
+  </div>
+}
