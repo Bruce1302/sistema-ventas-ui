@@ -207,9 +207,16 @@
   accent-color: #0d6efd;
 }
 
-.menu-footer .btn-aplicar
+.menu-footer
 {
-  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-aplicar
+{
+  width: 50%;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: .8rem;
@@ -221,6 +228,32 @@
   font-weight: 600;
   cursor: pointer;
   transition: box-shadow 0.2s ease-in-out;
+}
+
+.btn-limpiarFiltros
+{
+  background: white;
+  border: 1px solid #faa6a6;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-limpiarFiltros:hover
+{
+  box-shadow: 0 0 4px #ec6666;
+  background: #fef2f2;
+}
+
+.btn-limpiarFiltros svg
+{
+  color: #c03838;
+  width: 30px;
+  height: 30px;
 }
 
 .menu-footer .btn-aplicar:hover

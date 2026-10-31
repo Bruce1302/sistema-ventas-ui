@@ -22,7 +22,7 @@ export class BarraBuscarComponent implements OnInit {
   listaCategorias = this.categoriaService.categorias;
 
   menuAbierto: boolean = false;
-  categoriasSeleccionadas = new Set<string>()
+  categoriasSeleccionadas: string[] = []
 
   //productosPaginados = this.productoService.productosPaginados;
 
@@ -69,29 +69,39 @@ export class BarraBuscarComponent implements OnInit {
     const categoriaId = checkbox.value;
 
     if (checkbox.checked)
-      this.categoriasSeleccionadas.add(categoriaId);//guardamos cuando marquen la casilla
+    {
+      if (!this.categoriasSeleccionadas.includes(categoriaId))
+        this.categoriasSeleccionadas.push(categoriaId);
+    }
     else
-      this.categoriasSeleccionadas.delete(categoriaId); //quitamos cuando desmarquen la casilla
+      this.categoriasSeleccionadas = this.categoriasSeleccionadas.filter(id => id !== categoriaId);
 
+  }
+
+  estaSeleccionada(id: string): boolean
+  {
+    return this.categoriasSeleccionadas.includes(id);
   }
 
   aplicarFiltros()
   {
-    let arregloIds = Array.from(this.categoriasSeleccionadas);
-    console.log(arregloIds);
-
-    // Si se selecciona todas las categorias, solo llamamos a obtener todos los Productos
-    if (this.categoriasSeleccionadas.size === this.listaCategorias().length)
+    // Si la cantidad de seleccionados es igual al total de categorías existentes ya no se filtrara y se usa todos los productos
+    if (this.categoriasSeleccionadas.length === this.listaCategorias().length)
     {
       this.productoService.obtenerProductosPaginados(0);
       this.menuAbierto = false;
       return;
     }
 
-    // si es un filtro real, mandamos los ids de las categorias seleccionadas
-    this.productoService.filtrarPorCategorias(arregloIds);
+    // Si no están todas seleccionadas, pasamos los IDs indicados para filtrar
+    this.productoService.filtrarPorCategorias(this.categoriasSeleccionadas);
+    this.menuAbierto = false;
+  }
 
-    // Cerramos el modal
+  limpiarFiltros()
+  {
+    this.categoriasSeleccionadas = [];
+    this.productoService.obtenerProductosPaginados(0);
     this.menuAbierto = false;
   }
 }
