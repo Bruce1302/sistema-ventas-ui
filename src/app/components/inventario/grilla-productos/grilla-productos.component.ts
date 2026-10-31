@@ -11,7 +11,6 @@ import { ToastService } from '../../../services/toast.service';
   imports: [
     NgClass,
     ReactiveFormsModule,
-    //RouterLink
   ],
   selector: 'app-grilla-productos',
   styleUrl: './grilla-productos.component.css',
@@ -29,6 +28,8 @@ export class GrillaProductosComponent implements OnInit {
   paginaActual = signal(0);
 
   productosPaginados = this.productoService.productosPaginados;
+
+  terminoBusqueda = this.productoService.terminoBusqueda;
 
   //para poder editar los productos crearmeos un formulario para cada producto
   formularios: Record<string, FormGroup> = {};

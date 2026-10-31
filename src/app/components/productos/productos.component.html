@@ -81,7 +81,7 @@
   }
   @empty
   {
-    @if (buscador.value != null)
+    @if (buscador.value)
     {
       <article class="producto-card">
         <p class="mensajeRegistrar">Este producto aún no se ha registrado <br> <span>¡Agrégalo!</span></p>
@@ -99,7 +99,7 @@
     @else
     {
       <article class="producto-card">
-        <p>Aún no se han realizado ventas para ver los productos más vendidos.</p>
+        <p class="mensajeRegistrar">Aún no se han realizado ventas para ver los productos más vendidos.</p>
       </article>
     }
 

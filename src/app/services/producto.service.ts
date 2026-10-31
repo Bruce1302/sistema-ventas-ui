@@ -18,6 +18,9 @@ export class ProductoService {
 
   paginaActual = signal(0);
 
+  //almacenara el estado de la barra de busqueda, si contiene algo o si tiene algun texto
+  terminoBusqueda = signal<string>('');
+
 
   //Direccion del API
   private apiUrl = 'http://localhost:8080/productos';
@@ -78,6 +81,7 @@ export class ProductoService {
 
   buscarProductos(termino: string)
   {
+    this.terminoBusqueda.set(termino);
     return this.http.get<PageResponse<Producto>>(`${this.apiUrl}/buscar?nombre=${termino}`);
   }
 

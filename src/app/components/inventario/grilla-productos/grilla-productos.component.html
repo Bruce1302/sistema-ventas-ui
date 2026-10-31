@@ -133,11 +133,22 @@
       </footer>
 
     </form>
-  } @empty
+  }
+  @empty
   {
-    <article class="producto-card">
-      <p class="mensajeRegistrar">Este producto aún no se ha registrado <br> <span>¡Agrégalo!</span></p>
-    </article>
+
+    @if (terminoBusqueda())
+    {
+      <article class="producto-card">
+        <p class="mensajeRegistrar">Este producto aún no se ha registrado <br> <span>¡Agrégalo!</span></p>
+      </article>
+    }
+    @else
+    {
+      <article class="producto-card">
+        <p class="mensajeRegistrar">No hay productos registrados aún <br> <span>¡Agrega uno ahora!</span></p>
+      </article>
+    }
   }
 
 </section>
