@@ -1,4 +1,6 @@
-<section>
+<main class="contenedor-principal">
+  <app-sidebar-menu class="sidebar"></app-sidebar-menu>
+
   <section class="contenedor-ventas">
     <!-- Iteramos sobre el cobtenido del Signal -->
     @for (venta of ventasPaginadas()?.content; track venta.id)
@@ -11,7 +13,6 @@
           <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
           <p>Total: S/ {{ venta.total }}</p>
           <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
-
           @if (usuarioRol() === 'ADMIN')
           {
             <button (click)="eliminarVenta( venta.id )">Eliminar</button>
@@ -61,4 +62,4 @@
     </div>
 
   </section>
-</section>
+</main>

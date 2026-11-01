@@ -2,10 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { VentaService } from '../../services/venta.service';
 import { DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { SidebarMenuComponent } from '../shared/sidebar-menu/sidebar-menu.component';
 
 @Component({
   imports: [
-    DatePipe
+    DatePipe,
+    SidebarMenuComponent
   ],
   selector: 'app-ventas',
   styleUrl: './ventas.component.css',
