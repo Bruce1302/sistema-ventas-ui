@@ -1,0 +1,27 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contenedor-principal
+{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-areas:
+    "sidebar ventas";
+  padding: 20px;
+  gap: 20px;
+}
+
+.sidebar
+{
+  grid-area: sidebar;
+  max-height: 520px;
+}
+
+.contenedor-grillaVentas
+{
+  grid-area: ventas;
+}
