@@ -1,65 +1,9 @@
 <main class="contenedor-principal">
+
   <app-sidebar-menu class="sidebar"></app-sidebar-menu>
 
-  <section class="contenedor-ventas">
-    <!-- Iteramos sobre el cobtenido del Signal -->
-    @for (venta of ventasPaginadas()?.content; track venta.id)
-    {
-      <article class="venta-card">
-        <!-- Resumen de la Venta -->
-        <div class="venta-resumen">
-          <h3>Venta codigo: {{ venta.id }} </h3>
-          <!-- Angular tiene un pipe nativo ( | ) para formatear fechas automaticamente -->
-          <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
-          <p>Total: S/ {{ venta.total }}</p>
-          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
-          @if (usuarioRol() === 'ADMIN')
-          {
-            <button (click)="eliminarVenta( venta.id )">Eliminar</button>
-          }
-        </div>
-
-        <!-- Menu desplegable para poder ver los detalles -->
-        <details class="venta-detalles">
-          <summary>Ver detalles de los productos</summary>
-
-          <ul class="lista-detalles">
-            <!-- iteramos los detalles que viajan anidados -->
-            @for (detalle of venta.detalles; track detalle.id) {
-              <li>
-                Producto: {{ detalle.productoNombre }} |
-                Cant: {{ detalle.cantidad }} |
-                Subtotal: S/ {{ detalle.subTotal }}
-              </li>
-            }
-          </ul>
-        </details>
-
-      </article>
-    }
-    @empty
-    {
-      <p>No hay ventas registradas en esta página.</p>
-    }
-
-    <!--controles de la paginacion -->
-    <div class="paginacion-controles">
-      <!-- Bloqueamos el botn "Anterior" si estamos en la pagina 0 -->
-      <button
-        class="btn-nav"
-        (click)="cambiarPagina(paginaActual() - 1)"
-        [disabled]="paginaActual() === 0"> Anterior </button>
-
-      <span>Página {{ paginaActual() + 1 }} de {{ ventasPaginadas()?.page?.totalPages || 1 }}</span>
-
-      <!-- Bloqueamos el botón "Siguiente" si ya llegamos a la ultima pagina -->
-      <button
-        class="btn-nav"
-        (click)="cambiarPagina(paginaActual() + 1)"
-        [disabled]="paginaActual() >= (ventasPaginadas()?.page?.totalPages || 1) - 1">
-        Siguiente
-      </button>
-    </div>
-
+  <section class="contenedor-grillaVentas">
+    <app-grilla-ventas></app-grilla-ventas>
   </section>
+
 </main>
