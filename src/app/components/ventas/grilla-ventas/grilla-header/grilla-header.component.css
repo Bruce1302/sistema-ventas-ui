@@ -1,0 +1,31 @@
+:host
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+}
+
+.titulo-header
+{
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-areas: "icono texto";
+  border: 1px solid black;
+  align-items: center;
+  gap: 10px;
+}
+
+.icono-header
+{
+  width: 30px;
+  height: 30px;
+  grid-area: icono;
+  border: 1px solid red;
+}
+
+.texto-header
+{
+  grid-area: texto;
+  border: 1px solid blue;
+}

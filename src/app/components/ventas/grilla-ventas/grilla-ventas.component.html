@@ -1,37 +1,61 @@
-<section class="contenedor-grillaVentas">
+<app-grilla-header></app-grilla-header>
+
+<section class="contenedor-grilla">
   <!-- Iteramos sobre el cobtenido del Signal -->
   @for (venta of ventasPaginadas()?.content; track venta.id)
   {
-    <article class="venta-card">
-      <!-- Resumen de la Venta -->
-      <div class="venta-resumen">
-        <h3>Venta codigo: {{ venta.id }} </h3>
-        <!-- Angular tiene un pipe nativo ( | ) para formatear fechas automaticamente -->
-        <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
-        <p>Total: S/ {{ venta.total }}</p>
-        <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
-        @if (usuarioRol() === 'ADMIN')
-        {
-          <button (click)="eliminarVenta( venta.id )">Eliminar</button>
-        }
-      </div>
+    <article class="venta-card" [class.extendida]="ventaExpandida() === venta.id">
 
-      <!-- Menu desplegable para poder ver los detalles -->
-      <details class="venta-detalles">
-        <summary>Ver detalles de los productos</summary>
+      @if (ventaExpandida() != venta.id)
+      {
+        <div class="barra-color"></div>
+        <div class="venta-resumen" >
+          <h3>Venta codigo: {{ venta.id }} </h3>
+          <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
+          <p>Total: S/ {{ venta.total }}</p>
+          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
 
-        <ul class="lista-detalles">
-          <!-- iteramos los detalles que viajan anidados -->
-          @for (detalle of venta.detalles; track detalle.id) {
-            <li>
-              Producto: {{ detalle.productoNombre }} |
-              Cant: {{ detalle.cantidad }} |
-              Subtotal: S/ {{ detalle.subTotal }}
-            </li>
+          <button class="btn-accion" (click)="toggleDetalles(venta.id)">
+            <svg fill="#000000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_icurrentColoronCarrier">
+                <path d="M759.2 419.8L697.4 358 512 543.4 326.6 358l-61.8 61.8L512 667z"></path>
+              </g>
+            </svg>
+          </button>
+
+          @if (usuarioRol() === 'ADMIN')
+          {
+            <button (click)="eliminarVenta(venta.id); $event.stopPropagation()">Eliminar</button>
           }
-        </ul>
-      </details>
-
+        </div>
+     }
+     @if (ventaExpandida() === venta.id)
+     {
+       <div class="venta-detalles">
+         <hr>
+         <h4>Productos adquiridos</h4>
+         <ul class="lista-detalles">
+           @for (detalle of venta.detalles; track detalle.id) {
+             <li>
+               Producto: {{ detalle.productoNombre }} |
+               Cant: {{ detalle.cantidad }} |
+               Subtotal: S/ {{ detalle.subTotal }}
+             </li>
+           }
+         </ul>
+         <button (click)="toggleDetalles(venta.id)" class="btn-accion">
+           <svg fill="#000000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+             <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
+             <g id="SVGRepo_icurrentColoronCarrier">
+               <path d="M697.4 759.2l61.8-61.8L573.8 512l185.4-185.4-61.8-61.8L512 450.2 326.6 264.8l-61.8 61.8L450.2 512 264.8 697.4l61.8 61.8L512 573.8z"></path>
+             </g>
+           </svg>
+         </button>
+       </div>
+      }
     </article>
   }
   @empty

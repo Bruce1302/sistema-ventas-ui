@@ -2,10 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
+import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
 
 @Component({
   imports: [
-    DatePipe
+    DatePipe,
+    GrillaHeaderComponent
   ],
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
@@ -23,9 +25,16 @@ export class GrillaVentasComponent {
 
   usuarioRol = this.auth.usuarioRol
 
+  ventaExpandida = signal<string | null>(null);
+
   ngOnInit(): void
   {
     this.cambiarPagina(this.paginaActual());
+  }
+
+  toggleDetalles(id: string)
+  {
+    this.ventaExpandida.update(actual => actual === id ? null : id);
   }
 
   //cuando se requieran ver mas ventas
