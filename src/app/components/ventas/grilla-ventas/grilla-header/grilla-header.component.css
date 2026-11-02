@@ -1,31 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :host
 {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  width: 70%;
+  width: 50%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #d6e3ff;
+  padding: 25px;
 }
 
 .titulo-header
 {
   display: grid;
-  grid-template-columns: 30px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-areas: "icono texto";
-  border: 1px solid black;
   align-items: center;
   gap: 10px;
 }
 
 .icono-header
 {
-  width: 30px;
-  height: 30px;
   grid-area: icono;
-  border: 1px solid red;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eff6ff;
+  border-radius: 50%;
+}
+
+.icono-header svg
+{
+  width: 25px;
+  height: 25px;
+  fill: #0b5ed7;
 }
 
 .texto-header
 {
   grid-area: texto;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
 }
+
+.texto-header h2
+{
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.texto-header p
+{
+  font-size: 0.75rem;
+}
+
+.contenedor-filtros
+{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calendario
+{
+  position: relative;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #d7d7d7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-calendario
+{
+  background: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.btn-calendario svg
+{
+  width: 100%;
+  height: 100%;
+  color: #0a6ad2;
+}
+
+.input-fecha
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.input-fecha::-webkit-calendar-picker-indicator
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.contenedor-filtrosRapidos select
+{
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 0 5px #d7d7d7;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.contenedor-filtrosRapidos select:focus
+{
+  outline: 1px solid #0a6ad2;
+}
+
