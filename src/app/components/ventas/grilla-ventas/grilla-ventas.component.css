@@ -7,10 +7,28 @@
   box-sizing: border-box;
 }
 
+.total-alto
+{
+  --color-fuerte: #339338;
+  --color-claro: #e8f5e9;
+}
+
+.total-medio
+{
+  --color-fuerte: #3b82f6;
+  --color-claro: #eff6ff;
+}
+
+.total-bajo
+{
+  --color-fuerte: #64748b;
+  --color-claro: #f8fafc;
+}
+
 :host
 {
   display: grid;
-  gap: 15px;
+  gap: 20px;
   max-width: 1700px;
 }
 
@@ -94,12 +112,12 @@
 {
   width: 22px;
   height: 22px;
-  color: #10b965;
+  color: var(--color-fuerte);
 }
 
 .btn-accion:hover
 {
-  filter: drop-shadow(0 0 5px #10b965);
+  filter: drop-shadow(0 0 5px var(--color-fuerte));
   scale: 1.1;
 }
 
@@ -108,7 +126,7 @@
   width: 5px;
   height: 50px;
   border-radius: 4px;
-  background-color: #10b965;
+  background-color: var(--color-fuerte);
 }
 
 .icono-header
@@ -116,7 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e8f5e9;;
+  background-color: var(--color-claro);
   padding: 10px;
   border-radius: 50%;
 
@@ -126,7 +144,7 @@
 {
   width: 25px;
   height: 25px;
-  color: #10b965;
+  color: var(--color-fuerte);
 }
 
 .venta-resumen
@@ -148,7 +166,7 @@
 .total-venta
 {
   font-size:2rem;
-  color: #0b5ed7;
+  color: var(--color-fuerte);
   font-weight: bold;
 }
 
@@ -177,14 +195,14 @@
 {
   width: 18px;
   height: 18px;
-  color: #543f91;
+  color: var(--color-fuerte);
 }
 
 .contenedor-ProductosVendidos p
 {
   font-size: .85rem;
   font-weight: 500;
-  color: #543f91;
+  color: var(--color-fuerte);
 }
 
 .btn-eliminar
@@ -204,3 +222,47 @@
 }
 
 .btn-eliminar:hover { background-color: #fef2f2; }
+
+.contenedor-paginacion
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px;
+}
+.contenedor-paginacion span
+{
+  font-size: .8rem;
+}
+
+.contenedor-paginacion button
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border:none;
+  /*border: 1px solid #cbd5e1;*/
+  box-shadow: 0 0px 5px #b9da65;
+  outline: none;
+  background-color: white;
+  padding: 5px;
+  transition: transform .2s ease-in-out,  box-shadow .2s ease-in-out;
+}
+
+.contenedor-paginacion button svg
+{
+  fill: #84ab21;
+  width: 25px;
+  height: 25px;
+}
+
+.contenedor-paginacion button:hover
+{
+  transform: rotate(360deg);
+  box-shadow: 0 0 12px #aed744;
+
+}

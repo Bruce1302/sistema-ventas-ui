@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
 import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
@@ -7,7 +7,8 @@ import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
 @Component({
   imports: [
     DatePipe,
-    GrillaHeaderComponent
+    GrillaHeaderComponent,
+    NgClass
   ],
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
