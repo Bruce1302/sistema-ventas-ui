@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
@@ -13,7 +13,7 @@ import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
   styleUrl: './grilla-ventas.component.css',
   templateUrl: './grilla-ventas.component.html',
 })
-export class GrillaVentasComponent {
+export class GrillaVentasComponent implements OnInit{
 
   private ventaService = inject(VentaService);
 

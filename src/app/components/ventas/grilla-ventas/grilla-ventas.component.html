@@ -10,27 +10,44 @@
         <div class="card-header">
           <div class="barra-color"></div>
           <div class="icono-header">
-            <svg viewBox="-2 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000">
+            <svg viewBox="-2 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"  fill="#000000">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_icurrentColoronCarrier"><title>recurrentColoreipt</title>
-                <descurrentc>Created with SketcurrentColorh Beta.</descurrentc>
                 <defs></defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketcurrentch:type="MSPage">
-                  <g id="IcurrentColoron-Set" sketcurrentch:type="MSLayerGroup" transform="translate(-414.000000, -775.000000)" fill="currentColor">
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" >
+                  <g id="IcurrentColoron-Set"  transform="translate(-414.000000, -775.000000)" fill="currentColor">
                     <path
                       d="M435,781 L421,781 C420.447,781 420,781.448 420,782 C420,782.553 420.447,783 421,783 L435,783 C435.553,783 436,782.553 436,782 C436,781.448 435.553,781 435,781 L435,781 Z M435,786.978 L421,786.978 C420.447,786.978 420,787.425 420,787.978 C420,788.529 420.447,788.978 421,788.978 L435,788.978 C435.553,788.978 436,788.529 436,787.978 C436,787.425 435.553,786.978 435,786.978 L435,786.978 Z M435,793 L421,793 C420.447,793 420,793.447 420,794 C420,794.553 420.447,795 421,795 L435,795 C435.553,795 436,794.553 436,794 C436,793.447 435.553,793 435,793 L435,793 Z M440,805.027 L436,802 L432,805.188 L428,802 L424,805.188 L420,802 L416,805.059 L416,779 C416,777.896 416.896,777 418,777 L438,777 C439.104,777 440,777.896 440,779 L440,805.027 L440,805.027 Z M438,775 L418,775 C415.791,775 414,776.791 414,779 L414,807 L415.867,807 L420,804 L424,807 L428,804 L432,807 L436,804 L440.134,807 L442,807 L442,779 C442,776.791 440.209,775 438,775 L438,775 Z"
-                      id="recurrentColoreipt" sketcurrentch:type="MSShapeGroup"></path>
+                      id="recurrentColoreipt" ></path>
                   </g>
                 </g>
               </g>
             </svg>
           </div>
 
-          <h3>Venta Realizada {{ venta.fechaVenta | date:'short' }} </h3>
+          <div class="info-header">
+            <h3>Código: {{ venta.id.substring(0,12) }}</h3>
+
+            <div class="fecha-venta">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_icurrentColoronCarrier">
+                    <path
+                      d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                      stroke="currentColor" stroke-width="2" stroke-linecurrentcap="round"></path>
+                  </g>
+                </svg>
+              </span>
+              <h4>{{ venta.fechaVenta | date:'dd/MM/yy - h:mm a' }}</h4>
+
+            </div>
+          </div>
 
           <button class="btn-accion" (click)="toggleDetalles(venta.id)">
-            <svg fill="#000000" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="currentColor" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
@@ -41,14 +58,34 @@
         </div>
 
         <div class="venta-resumen" >
-          <p>Total: S/ {{ venta.total }}</p>
-          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
-          @if (usuarioRol() === 'ADMIN')
-          {
-            <button (click)="eliminarVenta(venta.id); $event.stopPropagation()">Eliminar</button>
-          }
+          <div class="contenedor-ProductosVendidos">
+              <span>
+                <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 292.165 292.165" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linejoin="round"></g><g
+                  id="SVGRepo_iconCarrier"> <g> <path style="fill:currentColor;"
+                                                      d="M260.116,200.968l-152.065-0.859c-9.013-0.049-15.322,4.308-14.093,9.736 c1.229,5.423,9.524,9.823,18.536,9.823h140.099c15.703,0,15.703,35.811,0,35.811c0,0-4.52,0.076-10.089,0.169 c-5.57,0.098-4.476,1.512-0.528,6.674c2.317,3.013,3.682,6.777,3.682,10.96c0,10.416-8.447,18.879-18.879,18.879 c-10.416,0-18.302-8.463-18.302-18.879c0-3.873,1.099-7.522,3.008-10.546c3.274-5.194,1.071-6.984-7.941-6.946l-64.045,0.256 c-9.013,0.038-11.009,1.605-7.354,6.663c2.143,2.948,3.399,6.581,3.399,10.579c0,10.416-8.425,18.879-18.857,18.879 c-10.47,0-18.297-8.463-18.297-18.879c0-4.09,1.207-7.789,3.302-10.769c3.639-5.173,3.182-6.723-4.096-6.831l-13.173-0.196 c-6.092,0-20.168-16.382-20.168-29.393c0-3.954-13.859-128.623-18.906-173.892c-1.001-8.953-9.116-16.334-18.128-16.469 l-3.737-0.065c-9.013-0.136-16.888-7.87-13.527-16.236C17.49,0.664,37.68,0,37.68,0C57.293,0,67.1,8.931,71.99,17.492 c4.465,7.821,5.194,16.246,5.629,17.226s8.088,1.762,17.106,1.746l151.331-0.261c37.731,0,36.942,38.519,36.942,38.519 l-0.114,104.522C282.879,200.576,260.116,200.968,260.116,200.968z M117.656,72.97c-10.144,0-18.379,8.213-18.379,18.357 s8.235,18.351,18.379,18.351c10.122,0,18.351-8.208,18.351-18.351S127.778,72.97,117.656,72.97z M117.656,128.036 c-10.144,0-18.379,8.229-18.379,18.373c0,10.122,8.235,18.351,18.379,18.351c10.122,0,18.351-8.229,18.351-18.351 C136.007,136.259,127.778,128.036,117.656,128.036z M172.716,72.97c-10.144,0-18.357,8.213-18.357,18.357 s8.213,18.351,18.357,18.351s18.357-8.208,18.357-18.351S182.86,72.97,172.716,72.97z M172.716,128.036 c-10.144,0-18.357,8.229-18.357,18.373c0,10.122,8.213,18.351,18.357,18.351s18.357-8.229,18.357-18.351 C191.073,136.259,182.86,128.036,172.716,128.036z M227.797,72.97c-10.122,0-18.373,8.213-18.373,18.357 s8.251,18.351,18.373,18.351c10.128,0,18.357-8.208,18.357-18.351S237.925,72.97,227.797,72.97z M227.797,128.036 c-10.122,0-18.373,8.229-18.373,18.373c0,10.122,8.251,18.351,18.373,18.351c10.128,0,18.357-8.229,18.357-18.351 C246.154,136.259,237.925,128.036,227.797,128.036z"></path> </g> </g></svg>
+              </span>
+            @if (venta.cantidadProductosVendidos > 1)
+            {
+              <p>{{ venta.cantidadProductosVendidos }} productos</p>
+            }
+            @else
+            {
+              <p>{{ venta.cantidadProductosVendidos }} producto</p>
+            }
+
+          </div>
+
+          <div class="texto-resumen">
+            <p class="total-venta"> S/ {{ venta.total }}</p>
+          </div>
         </div>
+
+        @if (usuarioRol() === 'ADMIN')
+        {
+          <button class="btn-eliminar" (click)="eliminarVenta(venta.id); $event.stopPropagation()">Eliminar</button>
+        }
      }
+
      @if (ventaExpandida() === venta.id)
      {
        <div class="venta-detalles">
