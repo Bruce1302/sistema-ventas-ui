@@ -11,7 +11,7 @@
   grid-template-columns: 120px 1fr;
   grid-template-areas:
     "sidebar ventas";
-  padding: 20px;
+  padding: 25px 15px 15px 15px;
   gap: 20px;
 }
 

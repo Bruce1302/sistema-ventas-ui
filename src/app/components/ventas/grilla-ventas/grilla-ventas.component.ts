@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
@@ -44,6 +44,7 @@ export class GrillaVentasComponent {
 
     //le pasamos el bloque de ventas que necesitamos
     this.ventaService.obtenerVentas(nuevaPagina);
+
   }
 
   eliminarVenta(id: string)

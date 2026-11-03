@@ -2,7 +2,92 @@
 *
 {
   font-family: 'Poppins', sans-serif;
-  /*margin: 0;*/
-  /*padding: 0;*/
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
+:host
+{
+  display: grid;
+  gap: 15px;
+  max-width: 1700px;
+}
+
+.contenedor-grilla
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 400px));
+  gap: 15px;
+}
+
+.venta-card
+{
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
+  border: 1px solid #f0f4f8;
+}
+
+.card-header
+{
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+  align-items: center;
+
+}
+
+.btn-accion
+{
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-accion svg
+{
+  width: 22px;
+  height: 22px;
+}
+
+.btn-accion:hover
+{
+  filter: drop-shadow(0 0 5px #10b965);
+  scale: 1.1;
+}
+
+.barra-color
+{
+  width: 5px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #10b965;
+}
+
+.icono-header
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f5e9;;
+  padding: 10px;
+  border-radius: 50%;
+
+}
+
+.icono-header svg
+{
+  width: 25px;
+  height: 25px;
+  color: #10b965;
+}
+
+

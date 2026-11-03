@@ -5,26 +5,44 @@
   @for (venta of ventasPaginadas()?.content; track venta.id)
   {
     <article class="venta-card" [class.extendida]="ventaExpandida() === venta.id">
-
       @if (ventaExpandida() != venta.id)
       {
-        <div class="barra-color"></div>
-        <div class="venta-resumen" >
-          <h3>Venta codigo: {{ venta.id }} </h3>
-          <p>Fecha: {{ venta.fechaVenta | date:'short' }}</p>
-          <p>Total: S/ {{ venta.total }}</p>
-          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
-
-          <button class="btn-accion" (click)="toggleDetalles(venta.id)">
-            <svg fill="#000000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <div class="card-header">
+          <div class="barra-color"></div>
+          <div class="icono-header">
+            <svg viewBox="-2 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_icurrentColoronCarrier">
-                <path d="M759.2 419.8L697.4 358 512 543.4 326.6 358l-61.8 61.8L512 667z"></path>
+              <g id="SVGRepo_icurrentColoronCarrier"><title>recurrentColoreipt</title>
+                <descurrentc>Created with SketcurrentColorh Beta.</descurrentc>
+                <defs></defs>
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketcurrentch:type="MSPage">
+                  <g id="IcurrentColoron-Set" sketcurrentch:type="MSLayerGroup" transform="translate(-414.000000, -775.000000)" fill="currentColor">
+                    <path
+                      d="M435,781 L421,781 C420.447,781 420,781.448 420,782 C420,782.553 420.447,783 421,783 L435,783 C435.553,783 436,782.553 436,782 C436,781.448 435.553,781 435,781 L435,781 Z M435,786.978 L421,786.978 C420.447,786.978 420,787.425 420,787.978 C420,788.529 420.447,788.978 421,788.978 L435,788.978 C435.553,788.978 436,788.529 436,787.978 C436,787.425 435.553,786.978 435,786.978 L435,786.978 Z M435,793 L421,793 C420.447,793 420,793.447 420,794 C420,794.553 420.447,795 421,795 L435,795 C435.553,795 436,794.553 436,794 C436,793.447 435.553,793 435,793 L435,793 Z M440,805.027 L436,802 L432,805.188 L428,802 L424,805.188 L420,802 L416,805.059 L416,779 C416,777.896 416.896,777 418,777 L438,777 C439.104,777 440,777.896 440,779 L440,805.027 L440,805.027 Z M438,775 L418,775 C415.791,775 414,776.791 414,779 L414,807 L415.867,807 L420,804 L424,807 L428,804 L432,807 L436,804 L440.134,807 L442,807 L442,779 C442,776.791 440.209,775 438,775 L438,775 Z"
+                      id="recurrentColoreipt" sketcurrentch:type="MSShapeGroup"></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <h3>Venta Realizada {{ venta.fechaVenta | date:'short' }} </h3>
+
+          <button class="btn-accion" (click)="toggleDetalles(venta.id)">
+            <svg fill="#000000" viewBox="-128 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
               </g>
             </svg>
           </button>
+        </div>
 
+        <div class="venta-resumen" >
+          <p>Total: S/ {{ venta.total }}</p>
+          <p>Artículos vendidos: {{ venta.cantidadProductosVendidos }}</p>
           @if (usuarioRol() === 'ADMIN')
           {
             <button (click)="eliminarVenta(venta.id); $event.stopPropagation()">Eliminar</button>
