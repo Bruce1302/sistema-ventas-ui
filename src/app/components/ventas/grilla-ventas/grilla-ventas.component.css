@@ -37,17 +37,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 400px));
   gap: 15px;
+  align-items: start;
+  justify-content: center;
 }
 
 .venta-card
 {
   border-radius: 12px;
   padding: 18px;
-  box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
   border: 1px solid #f0f4f8;
 
   display: grid;
   gap: 15px;
+  box-shadow: none;
+  position: relative;
 
 }
 
@@ -272,9 +275,8 @@
 .venta-card.extendida
 {
   /*grid-template-columns: repeat(auto-fit, minmax(290px, 400px));*/
-  /*grid-row: 1 / -1;*/
-  /*z-index: 10;*/
-  animation: deslizarAbajo 0.3s ease-out forwards;
+  z-index: 10;
+
 }
 
 .detalles-header
@@ -412,17 +414,23 @@
   }
 }
 
-@keyframes deslizarArriba {
-  from {
-    opacity: 1;
-    max-height: 600px;
-    transform: translateY(0);
-  }
-  to {
+.detalles-overlay
+{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 
-    opacity: 0;
-    max-height: 0;
-    transform: translateY(-10px);
-  }
+  min-height: 100%;
+  height: max-content;
+  padding: 18px;
+
+  display: grid;
+  gap: 15px;
+
+  border: 1px solid #f0f4f8;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgb(164 163 163 / 0.25);
+
+  animation: deslizarAbajo 0.3s ease-out forwards;
 }
-

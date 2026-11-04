@@ -13,6 +13,7 @@ import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
   templateUrl: './grilla-ventas.component.html',
+
 })
 export class GrillaVentasComponent implements OnInit{
 
