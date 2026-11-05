@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
 import { DatePipe, NgClass } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';

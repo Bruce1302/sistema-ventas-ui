@@ -1,4 +1,4 @@
-<app-grilla-header></app-grilla-header>
+<app-grilla-header ></app-grilla-header>
 
 <section class="contenedor-grilla">
   <!-- Iteramos sobre el cobtenido del Signal -->
@@ -225,7 +225,9 @@
   }
   @empty
   {
-    <p>No hay ventas registradas en esta página.</p>
+    <article class="venta-card">
+      <p class="mensaje-lista-vacia">No se encontraron ventas registradas aún.</p>
+    </article>
   }
 </section>
 

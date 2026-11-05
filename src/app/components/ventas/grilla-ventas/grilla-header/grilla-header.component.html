@@ -34,11 +34,12 @@
   </div>
 
   <div class="contenedor-filtrosRapidos">
-    <select>
-      <option>Hoy</option>
-      <option>Ayer</option>
-      <option>Última semana</option>
-      <option>Últimos 30 dias</option>
+    <select (change)="aplicarFiltroRapido($event)">
+      <option value="todos" selected>Todos</option>
+      <option value="hoy">Hoy</option>
+      <option value="ayer">Ayer</option>
+      <option value="semana">Última semana</option>
+      <option value="mes">Últimos 30 días</option>
     </select>
 
   </div>

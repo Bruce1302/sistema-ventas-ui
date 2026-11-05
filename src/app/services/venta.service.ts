@@ -75,6 +75,23 @@ export class VentaService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  filtrarFecha(fechaInicio: Date, fechaFin: Date, page: number)
+  {
+    // Convertimos las fechas a formato ISO para Spring Boot
+    const url = `${this.apiUrl}/filtrar?fechaInicio=${fechaInicio.toISOString()}&fechaFin=${fechaFin.toISOString()}&page=${page}&size=10`;
+
+    this.http.get<PageResponse<VentaResponse>>(url).subscribe({
+      next: (respuesta) =>
+      {
+        this.ventasRealizadas.set(respuesta);
+        console.log(fechaInicio.toISOString());
+        console.log(fechaFin.toISOString());
+      },
+      error: (error) => console.error('Error al filtrar ventas por fecha:', error)
+    });
+
+  }
+
 
 
 

@@ -434,3 +434,10 @@
 
   animation: deslizarAbajo 0.3s ease-out forwards;
 }
+
+.mensaje-lista-vacia
+{
+  font-size: 1rem;
+  color: #1e293b;
+  text-align: center;
+}
