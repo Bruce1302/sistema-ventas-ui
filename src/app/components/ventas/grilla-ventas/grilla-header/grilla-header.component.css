@@ -143,3 +143,12 @@
   outline: 1px solid #0a6ad2;
 }
 
+@media (max-width: 860px)
+{
+  :host
+  {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+

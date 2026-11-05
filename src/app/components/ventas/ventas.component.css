@@ -25,3 +25,14 @@
 {
   grid-area: ventas;
 }
+
+@media (max-width: 860px)
+{
+  .contenedor-principal
+  {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "ventas";
+  }
+}
