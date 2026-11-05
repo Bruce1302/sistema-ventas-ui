@@ -9,7 +9,35 @@ import { VentaService } from '../../../../services/venta.service';
 })
 export class GrillaHeaderComponent {
 
-    private ventaService = inject(VentaService);
+  private ventaService = inject(VentaService);
+
+  // Limite para el calendario
+  fechaMaxima: string = '';
+
+  ngOnInit() {
+    // hacemo que hoy sea el tope para las fechas en el calendario
+    const hoy = new Date();
+    const offset = hoy.getTimezoneOffset() * 60000;
+    this.fechaMaxima = new Date(hoy.getTime() - offset).toISOString().split('T')[0];
+  }
+
+  aplicarFiltroCalendario(evento: Event)
+  {
+    const valor = (evento.target as HTMLInputElement).value;
+
+    // Si el usuario borra la fecha, restauramos la grilla completa
+    if (!valor) {
+      this.ventaService.obtenerVentas(0);
+      return;
+    }
+
+    // Armamos los limites forzando la hora desde las 00:00 hasta las 23:59 del dia elegido
+    const fechaInicio = new Date(`${valor}T00:00:00`);
+    const fechaFin = new Date(`${valor}T23:59:59.999`);
+
+    //usamos el mismo metodo para filtrar
+    this.ventaService.filtrarFecha(fechaInicio, fechaFin, 0);
+  }
 
   aplicarFiltroRapido(evento: Event) {
     const valor = (evento.target as HTMLSelectElement).value;

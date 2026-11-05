@@ -30,7 +30,10 @@
       </svg>
     </button>
 
-    <input type="date" class="input-fecha">
+    <input type="date"
+           class="input-fecha"
+           [max]="fechaMaxima"
+           (change)="aplicarFiltroCalendario($event)">
   </div>
 
   <div class="contenedor-filtrosRapidos">
