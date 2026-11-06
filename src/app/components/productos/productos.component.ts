@@ -11,6 +11,7 @@ export interface Producto
 {
   id: string;
   nombre: string;
+  codigo: string;
   categoriaId: string;
   categoriaNombre: string;
   precio: number;
