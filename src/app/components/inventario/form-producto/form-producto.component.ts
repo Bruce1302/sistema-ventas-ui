@@ -30,6 +30,7 @@ export class FormProductoComponent  implements OnInit{
   // creamos el molde del formulario reactivo
   productoForm: FormGroup = this.fb.group({
     nombre: ['', Validators.required],
+    codigo: ['', Validators.required],
     categoriaId: ['', Validators.required],
     precio: ['', Validators.required],
     stock: ['', Validators.required]

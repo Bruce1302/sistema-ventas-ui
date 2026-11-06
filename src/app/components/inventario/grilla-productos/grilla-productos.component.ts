@@ -64,6 +64,7 @@ export class GrillaProductosComponent implements OnInit {
         this.formularios[producto.id] = this.fb.group({
           nombre: [producto.nombre, Validators.required],
           categoriaId: [producto.categoriaId, Validators.required],
+          codigo: [producto.codigo, [Validators.required, Validators.min(0)]],
           precio: [producto.precio, [Validators.required, Validators.min(0)]],
           stock: [producto.stock, [Validators.required, Validators.min(0)]]
         });

@@ -70,7 +70,6 @@
   transition: all 0.2s;
 }
 
-/* 3. Badge de Categoría */
 .card-categoria .badge-categoria {
   display: inline-flex;
   align-items: center;
@@ -125,7 +124,29 @@ svg
 {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: "codigo codigo"
+                       "precio stock";
   gap: 12px;
+}
+
+.card-body .campo-grupo:nth-child(1)
+{
+  grid-area: codigo;
+}
+
+.card-body .campo-grupo:nth-child(2)
+{
+  grid-area: precio;
+}
+
+.card-body .campo-grupo:nth-child(3)
+{
+  grid-area: stock;
+}
+
+.svg_codigo
+{
+  color: #0a6ad2;
 }
 
 .campo-grupo label
