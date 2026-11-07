@@ -83,7 +83,7 @@
           </div>
 
           <div class="texto-resumen">
-            <p class="total-venta"> S/ {{ venta.total }}</p>
+            <p class="total-venta"> S/ {{ venta.total | number:'1.2-2'}}</p>
           </div>
         </div>
 
@@ -158,7 +158,7 @@
 
              <h4>Total</h4>
 
-             <p> S/ {{ venta.total}} </p>
+             <p> S/ {{ venta.total | number:'1.2-2' }} </p>
            </div>
 
            <div class="productos">

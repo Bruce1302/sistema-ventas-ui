@@ -1,5 +1,5 @@
 import { Component, computed, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass } from '@angular/common';
 import { VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
 import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
@@ -8,7 +8,8 @@ import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
   imports: [
     DatePipe,
     GrillaHeaderComponent,
-    NgClass
+    NgClass,
+    DecimalPipe
   ],
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
