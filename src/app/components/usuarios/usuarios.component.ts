@@ -1,10 +1,11 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { Usuario, UsuarioService } from '../../services/usuario.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {SidebarMenuComponent} from '../shared/sidebar-menu/sidebar-menu.component';
 
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SidebarMenuComponent],
   selector: 'app-usuarios',
   styleUrl: './usuarios.component.css',
   templateUrl: './usuarios.component.html',
