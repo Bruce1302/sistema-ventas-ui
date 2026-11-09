@@ -52,7 +52,7 @@ export class FormUsuariosComponent {
           next: (usuarioActualizado) =>
           {
             // actualizamos el signal
-            this.usuarioService.usuarios.update(usuariosActuales =>
+            this.usuarios.update(usuariosActuales =>
               usuariosActuales.map(usuario =>
                 // buscamos al usuario y actualizamos el array con el nuevo dato
                 usuario.id === this.usuarioSeleccionadoId ? usuarioActualizado : usuario
@@ -74,7 +74,7 @@ export class FormUsuariosComponent {
         this.usuarioService.agregarUsuario(this.usuarioForm.value).subscribe({
           next: (nuevoUsuario) =>
           {
-            this.usuarioService.usuarios.update(usuarios => [...usuarios, nuevoUsuario]);
+            this.usuarios.update(usuarios => [...usuarios, nuevoUsuario]);
             this.cancelarEdicion(); // Reutilizamos el mtodo cancelar para limpiar el formulario
             console.log('Usuario guardado exitosamente');
           },
