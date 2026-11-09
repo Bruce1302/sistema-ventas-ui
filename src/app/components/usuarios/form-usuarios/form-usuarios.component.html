@@ -20,9 +20,9 @@
   </div>
 
   <!-- El boton se bloquea  si faltan datos -->
-  <button type="submit" class="btn-guardar" [disabled]="usuarioForm.invalid">{{ usuarioSeleccionadoId ? 'Actualizar' : 'Guardar' }}</button>
+  <button type="submit" class="btn-guardar" [disabled]="usuarioForm.invalid">{{ this.usuarioService.usuarioSeleccionado() ? 'Actualizar' : 'Guardar' }}</button>
 
-  @if (usuarioSeleccionadoId)
+  @if (this.usuarioService.usuarioSeleccionado())
   {
     <button type="button" class="btn-cancelar" (click)="cancelarEdicion()">Cancelar</button>
   }

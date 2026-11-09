@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario, UsuarioService } from '../../../services/usuario.service';
 
@@ -21,6 +21,8 @@ export class FormUsuariosComponent {
   // avisara al html para cambiar el titulo de acuerdo a la accion
   usuarioSeleccionadoId: string | null = null;
 
+  usuarioEnEdicion = this.usuarioService.usuarioSeleccionado;
+
   // creamos le molde del formulario reactivo
   usuarioForm: FormGroup = this.fb.group({
     username: ['', Validators.required],
@@ -28,12 +30,45 @@ export class FormUsuariosComponent {
     rol: ['CAJERO', Validators.required] // CAJERO como opción por defecto
   });
 
+  constructor()
+  {
+    effect(() => {
+      const usuario = this.usuarioEnEdicion();
+
+      if (usuario) {
+        // Llenamos las cajas con los datos (dejamos password en blanco por seguridad)
+        this.usuarioForm.patchValue({
+          username: usuario.username,
+          rol: usuario.rol,
+          password: ''
+        });
+
+        // Quitamos la obligatoriedad de la contraseña inmediatamente
+        this.usuarioForm.get('password')?.clearValidators();
+        this.usuarioForm.get('password')?.updateValueAndValidity();
+      }
+      else
+        this.usuarioForm.reset({ rol: 'CAJERO' });
+
+    });
+  }
+
+  cancelarEdicion() {
+    // Al vaciar el signal, el effect() se dispara solo y limpia el formulario
+    this.usuarioService.usuarioSeleccionado.set(null);
+    this.usuarioForm.reset({ rol: 'CAJERO' });
+
+    // Volvemos a exigir la contraseña para crear usuarios nuevos
+    this.usuarioForm.get('password')?.setValidators([Validators.required]);
+    this.usuarioForm.get('password')?.updateValueAndValidity();
+  }
+
   guardarUsuario()
   {
     if (this.usuarioForm.valid)
     {
 
-      if (this.usuarioSeleccionadoId)  // si es distinto de null significa que se requiere editar
+      if (this.usuarioService.usuarioSeleccionado())  // si es distinto de null significa que se requiere editar
       {
 
         console.log('Nuevos datos:', this.usuarioForm.value);
@@ -41,7 +76,7 @@ export class FormUsuariosComponent {
         //Creamos el usuario para editar
         const usuarioEditado =
           {
-            id: this.usuarioSeleccionadoId,
+            id: this.usuarioService.usuarioSeleccionado()?.id || '',
             username: this.usuarioForm.value.username,
             password: this.usuarioForm.value.password,
             rol: this.usuarioForm.value.rol
@@ -51,16 +86,10 @@ export class FormUsuariosComponent {
         this.usuarioService.editarUsuario(usuarioEditado).subscribe({
           next: (usuarioActualizado) =>
           {
-            // actualizamos el signal
-            this.usuarios.update(usuariosActuales =>
-              usuariosActuales.map(usuario =>
-                // buscamos al usuario y actualizamos el array con el nuevo dato
-                usuario.id === this.usuarioSeleccionadoId ? usuarioActualizado : usuario
-              )
-            );
+            this.usuarioService.obtenerUsuarios();
 
             console.log('Usuario actualizado exitosamente');
-            this.cancelarEdicion(); // 4. Limpiamos el formulario y volvemos al modo "Registrar"
+            this.cancelarEdicion();
           },
           error: (error) =>
           {
@@ -74,7 +103,7 @@ export class FormUsuariosComponent {
         this.usuarioService.agregarUsuario(this.usuarioForm.value).subscribe({
           next: (nuevoUsuario) =>
           {
-            this.usuarios.update(usuarios => [...usuarios, nuevoUsuario]);
+            this.usuarioService.obtenerUsuarios();
             this.cancelarEdicion(); // Reutilizamos el mtodo cancelar para limpiar el formulario
             console.log('Usuario guardado exitosamente');
           },
@@ -89,14 +118,5 @@ export class FormUsuariosComponent {
     }
   }
 
-  cancelarEdicion()
-  {
-    this.usuarioSeleccionadoId = null;
-    this.usuarioForm.reset({ rol: 'CAJERO' });
-
-    // Volvemos a exigir la contraseña para crear usuarios nuevos
-    this.usuarioForm.get('password')?.setValidators([Validators.required]);
-    this.usuarioForm.get('password')?.updateValueAndValidity();
-  }
 
 }

@@ -18,6 +18,8 @@ export class UsuarioService {
 
   usuarios = signal<Usuario[]>([]);
 
+  usuarioSeleccionado = signal<Usuario | null>(null);
+
   private apiUrl = 'http://localhost:8080/usuarios';
 
   private http = inject(HttpClient);
