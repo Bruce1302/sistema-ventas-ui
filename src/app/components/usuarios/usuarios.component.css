@@ -1,0 +1,34 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contenedor-principal
+{
+  display: grid;
+  grid-template-columns: 120px 400px 1fr;
+  grid-template-areas:
+    "sidebar formUsuarios usuarios";
+  padding: 25px 15px 15px 15px;
+  gap: 20px;
+}
+
+.sidebar
+{
+  grid-area: sidebar;
+  max-height: 520px;
+}
+
+.contenedor-formUsuarios
+{
+  grid-area: formUsuarios;
+  align-self: center;
+}
+
+.contenedor-grillaUsuarios
+{
+  grid-area: usuarios;
+  align-self: center;
+}
