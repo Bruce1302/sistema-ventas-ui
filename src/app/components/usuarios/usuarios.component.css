@@ -27,7 +27,7 @@
   align-self: center;
 }
 
-.contenedor-grillaUsuarios
+.contenedor-usuarios
 {
   grid-area: usuarios;
   align-self: center;

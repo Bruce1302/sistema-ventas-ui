@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:host
+{
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-grillaUsuario
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 350px));
+  gap: 25px;
+}
+
+.usuario-card
+{
+  padding: 15px ;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.usuario-card.inactivo
+{
+  filter: grayscale(.7);
+}
+
+.contenedor-icono
+{
+  background: #E6E6FFFF;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-icono svg
+{
+  width: 35px;
+  height: 35px;
+  color: #9191f8;
+}
+
+.card-texto
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "username username"
+                          "estado rol";
+  gap: 5px 10px;
+}
+
+.username
+{
+  grid-area: username;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.estado, .rol
+{
+  font-size: 0.7rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+
+  background-color: #d8e2f6;
+  text-align: center;
+  padding: 5px 7px;
+  font-weight: 600;
+}
+
+.estado
+{
+  grid-area: estado;
+  background-color: rgb(225 253 222);
+  color: #217524;
+}
+
+.estado.inactivo
+{
+  background-color: rgb(252 223 223);
+  color: #730303;
+}
+
+.rol
+{
+  grid-area: rol;
+
+  background-color: #d8e2f6;
+  color: #3062c5;
+
+}
+
+.card-acciones
+{
+  display: flex;
+  flex-direction: column;
+}

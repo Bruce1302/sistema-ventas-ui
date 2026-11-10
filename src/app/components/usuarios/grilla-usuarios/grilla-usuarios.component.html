@@ -1,33 +1,38 @@
-@for (usuario of usuarios(); track usuario.id)
-{
-  <article class="usuario-card">
-    <div class="card-info">
-      <h4>{{ usuario.username }}</h4>
+<section class="contenedor-grillaUsuario">
+  @for (usuario of usuarios(); track usuario.id)
+  {
+    <article class="usuario-card" [ngClass]="{'inactivo': !usuario.activo}">
+      <div class="contenedor-icono">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_icurrentColoronCarrier">
+            <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="currentColor"></path>
+            <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="currentColor"></path>
+          </g>
+        </svg>
+      </div>
 
-      <h4>{{ usuario.activo }}</h4>
+      <div class="card-texto">
+        <h4 class="username">{{ usuario.username }}</h4>
 
-      @if (usuario.activo)
-      {
-        <span>Estado: Activo</span>
-        <br>
-      } @else {
-        <span>Estado: Inactivo</span>
-        <br>
-      }
-      <span class="badge-rol">Rol: {{ usuario.rol }}</span>
+        <p class="estado" [ngClass]="{'inactivo': !usuario.activo}"> {{ usuario.activo ? 'Activo' : 'Inactivo'}}</p>
+
+        <p class="rol">{{ usuario.rol }}</p>
+      </div>
+
+      <div class="card-acciones">
+        <button (click)="seleccionarParaEdicion(usuario)" class="btn-editar">Editar</button>
+        <button (click)="suspenderUsuario( usuario.id )" class="btn-desactivar">Quitar acceso</button>
+        <button (click)="destruirUsuario( usuario.id )" class="btn-eliminar">Eliminar</button>
+      </div>
+
+    </article>
+  }
+  @empty
+  {
+    <div class="mensaje-vacio">
+      <p>No hay usuarios registrados en el sistema.</p>
     </div>
-
-    <div class="card-acciones">
-      <button (click)="seleccionarParaEdicion(usuario)" class="btn-editar">Editar</button>
-      <button (click)="suspenderUsuario( usuario.id )" class="btn-desactivar">Quitar acceso</button>
-      <button (click)="destruirUsuario( usuario.id )" class="btn-eliminar">Eliminar</button>
-    </div>
-
-  </article>
-}
-@empty
-{
-  <div class="mensaje-vacio">
-    <p>No hay usuarios registrados en el sistema.</p>
-  </div>
-}
+  }
+</section>

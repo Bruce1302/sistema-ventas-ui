@@ -1,9 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Usuario, UsuarioService } from '../../../services/usuario.service';
 import { Validators } from '@angular/forms';
+import { NgClass } from '@angular/common';
 
 @Component({
-  imports: [],
+  imports: [
+    NgClass
+  ],
   selector: 'app-grilla-usuarios',
   styleUrl: './grilla-usuarios.component.css',
   templateUrl: './grilla-usuarios.component.html',
