@@ -37,5 +37,10 @@ export class GrillaUsuariosComponent implements OnInit {
     this.usuarioService.suspenderUsuario(id);
   }
 
+  activarUsuario(id:string)
+  {
+    this.usuarioService.activarUsuario(id);
+  }
+
 
 }
