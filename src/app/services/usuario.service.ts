@@ -67,7 +67,24 @@ export class UsuarioService {
 
   activarUsuario(id: string)
   {
+    this.http.patch(`${this.apiUrl}/${id}/activar`, null).subscribe({
+      next:()=>
+      {
+        this.usuarios.update(usuariosActuales =>
+          usuariosActuales.map(usuario => {
+            if (usuario.id === id) //buscamos al usuario y lo activamos
+              return { ...usuario, activo: true };
 
+            //si no es, lo devolvemos sin modificar
+            return usuario;
+          })
+        );
+      },
+      error: (error) =>
+      {
+        console.error('Error al activar el usuario:', error);
+      }
+    })
   }
 
   destruirUsuario(id: string)
