@@ -17,6 +17,7 @@
   margin: 0 auto;
   max-height: 520px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .header-form
@@ -171,38 +172,73 @@ input::placeholder
   -moz-appearance: textfield;
 }
 
-.btn-guardar
+.contenedor-acciones
 {
-  width: 60%;
-  margin: 1rem auto 0 auto;
-  padding: 12px;
-  background-color: #1a73e8;
-  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contenedor-acciones button
+{
+  margin-top: 1rem;
   border: none;
   border-radius: 10px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
   gap: 10px;
   cursor: pointer;
 
   transition: box-shadow 0.2s ease;
 }
 
-.btn-guardar svg
+.btn-cancelar
+{
+  color: #ef4444;
+  border: 1px solid #fecaca;
+  background-color: #fef2f2;
+}
+
+.btn-cancelar svg
 {
   width: 25px;
   height: 25px;
+  color: #ef4444;
+}
+
+.btn-guardar
+{
+  width: auto;
+  padding: 12px;
+  background-color: #1a73e8;
+  color: #ffffff;
+
+}
+
+.btn-guardar svg
+{
+  width: 22px;
+  height: 22px;
   color: #e7e7e7;
 }
 
 .btn-guardar:hover:not(:disabled)
 {
   box-shadow: 0 0 10px #4798ef;
+}
+
+.btn-cancelar:hover:not(:disabled)
+{
+  box-shadow: 0 0 10px #fecaca;
 }
 
 .btn-guardar:disabled

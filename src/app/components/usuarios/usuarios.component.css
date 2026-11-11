@@ -8,7 +8,7 @@
 .contenedor-principal
 {
   display: grid;
-  grid-template-columns: 120px 400px 1fr;
+  grid-template-columns: 120px minmax(350px, 400px) 1fr;
   grid-template-areas:
     "sidebar formUsuarios usuarios";
   padding: 25px 15px 15px 15px;
@@ -24,11 +24,13 @@
 .contenedor-formUsuarios
 {
   grid-area: formUsuarios;
-  align-self: center;
+  align-self: start;
+  width: 100%;
 }
 
 .contenedor-usuarios
 {
+  max-width: 1300px;
   grid-area: usuarios;
-  align-self: center;
+  align-self: start;
 }
