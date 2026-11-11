@@ -28,11 +28,11 @@
   box-shadow: 0 0 5px rgb(110 110 110 / 0.2);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 10px;
 }
 
-.usuario-card.inactivo
+.usuario-card.inactivo > *:not(.contenedor-acciones)
 {
   filter: grayscale(.7);
 }
@@ -61,7 +61,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "username username"
                           "estado rol";
-  gap: 5px 10px;
+  gap:15px;
 }
 
 .username
@@ -105,8 +105,44 @@
 
 }
 
-.card-acciones
+.contenedor-acciones
 {
   display: flex;
   flex-direction: column;
+  gap: 15px;
+}
+
+
+.contenedor-acciones button
+{
+  border: none;
+  padding: 5px;
+
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+
+}
+
+.contenedor-acciones button svg
+{
+  width: 20px;
+  height: 20px;
+}
+
+.btn-eliminar{box-shadow: 0 0 5px #f5b3b3; color: #d53838;}
+
+.btn-editar{box-shadow: 0 0 5px #a2beec; color: #3b82f6}
+
+.btn-desactivar{box-shadow: 0 0 5px #fccca9; color: #ef7110;}
+
+.btn-activar{box-shadow: 0 0 5px #caf397; color: #63a116
+}
+
+.contenedor-acciones button:hover
+{
+  scale: 1.1;
 }

@@ -65,6 +65,11 @@ export class UsuarioService {
     });
   }
 
+  activarUsuario(id: string)
+  {
+
+  }
+
   destruirUsuario(id: string)
   {
     this.http.delete(`${this.apiUrl}/${id}/hard`).subscribe({
