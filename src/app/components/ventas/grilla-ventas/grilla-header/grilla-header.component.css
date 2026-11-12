@@ -149,6 +149,24 @@
   {
     width: 90%;
     margin: 0 auto;
+    min-width: 350px;
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 600px)
+{
+
+  .texto-header p, .texto-header h2 span
+  {
+    display: none;
+  }
+
+  .contenedor-filtrosRapidos select
+  {
+    width: 100px;
+    padding: 5px;
   }
 }
 
