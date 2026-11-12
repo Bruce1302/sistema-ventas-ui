@@ -34,3 +34,24 @@
   grid-area: usuarios;
   align-self: start;
 }
+
+@media (max-width: 860px)
+{
+  .contenedor-principal
+  {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "formUsuarios"
+      "usuarios";
+
+    align-items: center;
+    justify-items: center;
+  }
+
+  .contenedor-formUsuarios
+  {
+    max-width: 500px;
+  }
+}
+
