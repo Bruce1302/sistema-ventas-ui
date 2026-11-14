@@ -109,6 +109,14 @@
 
 }
 
+.mensaje-lista-vacia
+{
+  font-size: .85rem;
+  text-align: center;
+
+
+}
+
 @media (max-width: 1160px)
 {
   :host
