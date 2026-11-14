@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 //creamos la interfaz con los datos necesarios para el login
 export interface AuthRequestDTO
 {
+  codigoTienda: string;
   username: string;
   password: string;
 }
@@ -23,7 +24,7 @@ export interface AuthRequestDTO
 
 export class LoginComponent {
 
-  credenciales: AuthRequestDTO = { username: '',password: '' };
+  credenciales: AuthRequestDTO = { username: '',password: '', codigoTienda: ''};
 
   // Inyectamos el servicio
   constructor(private authService: AuthService, private router: Router) {}
