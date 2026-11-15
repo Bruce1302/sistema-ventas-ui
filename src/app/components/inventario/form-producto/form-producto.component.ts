@@ -53,8 +53,9 @@ export class FormProductoComponent  implements OnInit{
         },
         error: (error) =>
         {
+          const mensaje = error.error?.error || 'Ocurrió un error al guardar el producto.';
           console.error('Error al agregar producto:', error);
-          this.toastService.mostrar('Ocurrió un error', 'error');
+          this.toastService.mostrar(mensaje, 'error');
         }
 
       });

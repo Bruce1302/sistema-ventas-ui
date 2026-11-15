@@ -102,7 +102,9 @@ export class GrillaProductosComponent implements OnInit {
 
       },
       error: (error) => {
+        const mensaje = error.error?.error || 'Ocurrió un error al actualizar el producto.';
         console.error('Error al actualizar el producto:', error);
+        this.toastService.mostrar(mensaje, 'error');
       }
     });
   }
