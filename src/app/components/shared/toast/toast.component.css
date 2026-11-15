@@ -33,9 +33,9 @@
 {
   flex-grow: 1;
   margin: 0;
-  font-size: .8rem;
+  font-size: .9rem;
   font-weight: 500;
-  color: #334155;
+  color: #1e2631;
 }
 
 .btn-cerrar
@@ -47,17 +47,32 @@
   font-size: 1.1rem;
 }
 
+.toast-barra
+{
+  height: 4px;
+  width: 100%;
+  animation: encoger 3s linear forwards;
+
+}
+
+.exito { --color-toast: #10b981;}
+.error { --color-toast: #ef4444;}
+.info { --color-toast: #f68f3b;}
+
 /* Colores dinamicos */
 .toast-contenedor.exito .toast-barra
 {
-  --color-toast: #10b981;
-  background: #10b981;
+  background: var(--color-toast);
 }
 
 .toast-contenedor.error .toast-barra
 {
-  --color-toast: #ef4444;
-  background: #ef4444;
+  background: var(--color-toast);
+}
+
+.toast-contenedor.info .toast-barra
+{
+  background: var(--color-toast);
 }
 
 .icono
@@ -69,16 +84,9 @@
 {
   width: 30px;
   height: 30px;
+  color: var(--color-toast);
 }
 
-/* La barra de tiempo reactiva */
-.toast-barra
-{
-  height: 4px;
-  width: 100%;
-  animation: encoger 3s linear forwards;
-  background-color: black;
-}
 
 @keyframes encoger
 {

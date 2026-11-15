@@ -44,7 +44,8 @@ export class CategoriaService
         {
           console.log('Categoria eliminada');
           this.categorias.update(categoriasActuales => categoriasActuales.filter(categoria => categoria.id !== id));
-          this.toastService.mostrar('Categoria eliminada exitosamente', 'exito');
+          this.toastService.mostrar('Categoria eliminada exitosamente', 'info');
+          console.log(this.toastService.toastConfig())
         },
         error: (error) =>
         {
