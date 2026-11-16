@@ -4,6 +4,7 @@ import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.se
 import {ProductoService} from '../../services/producto.service';
 import { DecimalPipe, NgClass } from '@angular/common';
 import { Producto, ProductosComponent } from '../productos/productos.component';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   imports: [
@@ -16,6 +17,7 @@ import { Producto, ProductosComponent } from '../productos/productos.component';
 })
 export class CarritoComponent {
 
+  private toastService = inject(ToastService);
   private carritoService = inject(CarritoService);
   private ventaService = inject(VentaService);
   private productoService = inject(ProductoService);
@@ -73,11 +75,13 @@ export class CarritoComponent {
         next: () => {
           this.carritoService.limpiarCarrito();
           this.productoService.obtenerTopProductos();
+          this.toastService.mostrar('¡Venta realizada con éxito.!', 'exito');
           console.log('Venta realizada con éxito \n' + listaDetalles);
         },
 
         error: (error) => {
           console.error('Error al realizar la venta:', error);
+          this.toastService.mostrar('Hubo un error al realizar la venta.', 'error');
         }
 
       }
