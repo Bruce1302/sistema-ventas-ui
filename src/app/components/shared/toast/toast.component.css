@@ -9,6 +9,7 @@
 
 .toast-contenedor
 {
+  max-width: 350px;
   position: fixed;
   bottom: 30px;
   right: 30px;

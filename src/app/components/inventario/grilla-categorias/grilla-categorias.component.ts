@@ -70,7 +70,7 @@ export class GrillaCategoriasComponent {
         this.toastService.mostrar('Categoria actualizada exitosamente', 'exito');
       },
       error: (error) => {
-        console.error('Error al actualizar el producto:', error);
+        console.error('Error al actualizar categoria:', error);
       }
     });
   }

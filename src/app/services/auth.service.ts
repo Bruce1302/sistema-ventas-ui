@@ -13,6 +13,7 @@ export class AuthService {
 
   //Declaramos el rol como signal para evitar que se haga la decodificacion muchas veces por segundo
   usuarioRol = signal<string | null>(null);
+  tiendaId = signal<string | null>(null);
 
   private http = inject(HttpClient)
   private router = inject(Router)
@@ -47,6 +48,12 @@ export class AuthService {
   {
     const payload = this.decoficarToken();
     this.usuarioRol.set(payload?.rol || null); //guardamos el rol en el signal una sola vez
+  }
+
+  obtenerTiendaIdLogueada()
+  {
+    const payload = this.decoficarToken();
+    this.tiendaId.set(payload?.tiendaId || null);
   }
 
   decoficarToken()

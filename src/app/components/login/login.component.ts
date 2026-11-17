@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
+import { TiendaService } from '../../services/tienda.service';
+import { ToastService } from '../../services/toast.service';
 
 
 //creamos la interfaz con los datos necesarios para el login
@@ -27,7 +29,7 @@ export class LoginComponent {
   credenciales: AuthRequestDTO = { username: '',password: '', codigoTienda: ''};
 
   // Inyectamos el servicio
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private tiendaService: TiendaService, private toastService: ToastService) {}
 
   iniciarSesion()
   {
@@ -37,15 +39,23 @@ export class LoginComponent {
       {
         console.log('Respuesta del servidor: ', respuesta);
 
-        //Guardamos el token
+        //Guardamos el token y la tienda
         localStorage.setItem('token', respuesta.token);
-        this.authService.obtenerRolLogueado()
+        this.authService.obtenerRolLogueado();
+        this.authService.obtenerTiendaIdLogueada();
+
+        const id = this.authService.tiendaId();
+        if (id)
+          this.tiendaService.cargarTienda(id);
+
+        console.log('Tienda cargada: ' + id);
+
         this.router.navigate(['/home']);
       },
       error: (error) =>
       {
         console.log('Error al iniciar sesion: ', error);
-        alert('Credenciales invalidas');
+        this.toastService.mostrar('El usuario o contraseña son invalidos.', 'error');
       }
     });
 
