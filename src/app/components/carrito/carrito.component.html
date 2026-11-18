@@ -91,10 +91,10 @@
           </svg>
         </button>
       </article>
-    } @empty {
+    } @empty  {
       <div class="carrito-vacio">
         <article class="item-card">
-          <p class="mensaje">¡Agrega productos al carrito!</p>
+          <p  class="mensaje">¡Agrega productos al carrito!</p>
         </article>
       </div>
     }
@@ -117,17 +117,21 @@
         <span class="monto-total">S/ {{ total() | number:'1.2-2' }}</span>
       </div>
 
-      <div class="contendor-comprobante">
-        <p>Tipo de comprobante:</p>
+      @if (tiendaActual()?.facturacionActiva)
+      {
+        <div class="contenedor-comprobantes">
+          <button type="button" [class.activo]="tipoComprobante() === 'NOTA_VENTA'" (click)="seleccionarComprobante('NOTA_VENTA')">Ticket</button>
+          <button type="button" [class.activo]="tipoComprobante() === 'BOLETA'" (click)="seleccionarComprobante('BOLETA')">Boleta</button>
+          <button type="button" [class.activo]="tipoComprobante() === 'FACTURA'" (click)="seleccionarComprobante('FACTURA')">Factura</button>
 
-        <label>Simple</label>
-        <input type="radio" value="Simple" >
-        <label>Boleta</label>
-        <input type="radio" value="Boleta">
-        <label>Factura</label>
-        <input type="radio" value="Factura">
+        </div>
 
-      </div>
+
+          <p>Datos de la boleta</p>
+          <p>El DNI es obligatorio si el monto total es mayor o igual a 700</p>
+          <input type="text">
+
+      }
 
       <button class="btn-finalizar" (click)="nuevaVenta()">
         <svg version="1.1" id="designs" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>

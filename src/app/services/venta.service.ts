@@ -12,6 +12,11 @@ export interface DetallesVenta
 export interface VentaRequest
 {
   detalles: DetallesVenta[];
+  // el ? significa que es campo opcional
+  tipoComprobante?: 'NOTA_VENTA' | 'BOLETA' | 'FACTURA';
+  clienteTipoDoc?: string;
+  clienteNumDoc?: string;
+  clienteNombre?: string;
 }
 
 export interface VentaResponse
@@ -21,6 +26,12 @@ export interface VentaResponse
   detalles: DetalleVentaResponse[];
   cantidadProductosVendidos: number;
   fechaVenta: Date;
+  tipoComprobante: string;
+  serieNumero: string;
+  externalId: string;
+  estadoSunat: string;
+  clienteNumDoc: string;
+  clienteNombre: string;
 
 }
 
@@ -52,7 +63,15 @@ export class VentaService {
 
   nuevaVenta(ventaRequest: VentaRequest)
   {
-    return this.http.post(this.apiUrl, ventaRequest);
+    return this.http.post<VentaResponse>(this.apiUrl, ventaRequest);
+
+  }
+
+  descargarPdf(ventaId: string, formato: 'ticket' | 'a4' = 'ticket')
+  {
+    return this.http.get(`${this.apiUrl}/${ventaId}/pdf?formato=${formato}`, {
+      responseType: 'blob'
+    });
   }
 
   obtenerVentas(page: number)

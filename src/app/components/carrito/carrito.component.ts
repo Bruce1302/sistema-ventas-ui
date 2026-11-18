@@ -1,10 +1,11 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import {CarritoItem, CarritoService} from '../../services/carrito.service';
 import {DetallesVenta, VentaRequest, VentaService} from '../../services/venta.service';
 import {ProductoService} from '../../services/producto.service';
 import { DecimalPipe, NgClass } from '@angular/common';
 import { Producto, ProductosComponent } from '../productos/productos.component';
 import { ToastService } from '../../services/toast.service';
+import { TiendaService } from '../../services/tienda.service';
 
 @Component({
   imports: [
@@ -17,15 +18,26 @@ import { ToastService } from '../../services/toast.service';
 })
 export class CarritoComponent {
 
+  constructor() {
+    effect(() => {
+      if (this.listaCarrito().length === 0) {
+        this.seleccionarComprobante('NOTA_VENTA');
+      }
+    });
+  }
+
   private toastService = inject(ToastService);
   private carritoService = inject(CarritoService);
   private ventaService = inject(VentaService);
   private productoService = inject(ProductoService);
+  private tiendaService = inject(TiendaService);
 
   //efecto del menu del carrito
   carritoAbierto = false;
 
   listaCarrito = this.carritoService.obtenerCarrito();
+
+  tiendaActual = this.tiendaService.tiendaActual;
 
   total = computed(() => {
     return this.listaCarrito().reduce((acumulador, item) => acumulador + item.subTotal, 0);
@@ -38,6 +50,12 @@ export class CarritoComponent {
   igv = computed(() => {
     return this.total() - this.subtotal();
   });
+
+  tipoComprobante = signal<'NOTA_VENTA' | 'BOLETA' | 'FACTURA'>('NOTA_VENTA');
+
+  clienteNumDoc = signal<string>('');
+
+  clienteNombre = signal<string>('');
 
   toggleCarrito()
   {
@@ -86,6 +104,13 @@ export class CarritoComponent {
 
       }
     );
+  }
+
+  seleccionarComprobante(tipo: 'NOTA_VENTA' | 'BOLETA' | 'FACTURA')
+  {
+    this.tipoComprobante.set(tipo);
+    this.clienteNombre.set('');
+    this.clienteNumDoc.set('');
   }
 
   limpiarCarrito()

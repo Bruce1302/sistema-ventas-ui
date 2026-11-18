@@ -346,6 +346,42 @@
   font-size: 1rem;
 }
 
+.contenedor-comprobantes
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.contenedor-comprobantes button
+{
+  background-color: white;
+  color: #007bff;
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.contenedor-comprobantes button:hover
+{
+  background-color: #eef5ff;
+}
+
+.contenedor-comprobantes button.activo
+{
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 10px #4798ef;
+
+}
+
 @media (max-width: 1340px)
 {
   .carrito-panel

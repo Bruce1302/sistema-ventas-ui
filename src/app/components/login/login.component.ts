@@ -46,7 +46,10 @@ export class LoginComponent {
 
         const id = this.authService.tiendaId();
         if (id)
+        {
           this.tiendaService.cargarTienda(id);
+          console.log('facturacion activa: ' + this.tiendaService.tiendaActual()?.facturacionActiva);
+        }
 
         console.log('Tienda cargada: ' + id);
 
