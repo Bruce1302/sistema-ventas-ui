@@ -382,6 +382,91 @@
 
 }
 
+.input-contenedor
+{
+  /*position: relative;*/
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  padding: 3px 10px;
+
+  transition: box-shadow 0.2s ease-in-out;
+  /*box-shadow: 0 0 5px #c0d2ee;*/
+}
+
+.campo-grupo label
+{
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 1rem 0 1rem 0;
+}
+
+.requerido
+{
+  color: #d53535;
+  font-size: 0.9rem;
+}
+
+
+.input-contenedor svg
+{
+  width: 25px;
+  height: 25px;
+  color:  #1a73e8;
+}
+
+.icono-input
+{
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  pointer-events: none;
+
+}
+
+.campo-grupo input
+{
+  width: 100%;
+  padding: 10px 5px;
+  margin-left: 10px;
+  font-size: 0.88rem;
+  color: #0f172a;
+
+  border: none;
+  border-radius: 10px;
+
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.campo-grupo input:focus
+{
+  outline: none;
+  border: none;
+}
+
+.input-contenedor:focus-within
+{
+  box-shadow: 0 0 5px #4798ef;
+}
+
+.input-contenedor input[type="number"]::-webkit-outer-spin-button,
+.input-contenedor input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.input-contenedor input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @media (max-width: 1340px)
 {
   .carrito-panel

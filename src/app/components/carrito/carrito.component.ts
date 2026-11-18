@@ -6,11 +6,13 @@ import { DecimalPipe, NgClass } from '@angular/common';
 import { Producto, ProductosComponent } from '../productos/productos.component';
 import { ToastService } from '../../services/toast.service';
 import { TiendaService } from '../../services/tienda.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   imports: [
     NgClass,
-    DecimalPipe
+    DecimalPipe,
+    ReactiveFormsModule
   ],
   selector: 'app-carrito',
   styleUrl: './carrito.component.css',
