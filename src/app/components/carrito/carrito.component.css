@@ -325,7 +325,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-finalizar svg
@@ -336,7 +336,13 @@
 
 .btn-finalizar:hover
 {
-  background-color: #0056b3;
+  box-shadow: 0 0 10px #4798ef;
+}
+
+.btn-finalizar.desactivado
+{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .mensaje
