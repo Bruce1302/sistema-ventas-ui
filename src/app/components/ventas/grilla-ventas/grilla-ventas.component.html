@@ -30,7 +30,13 @@
           </div>
 
           <div class="info-header">
-            <h3>Código: {{ venta.id.substring(0,12) }}</h3>
+            <h3>
+              @if (venta.serieNumero) {
+                Código: {{ venta.serieNumero }}
+              } @else {
+                Código: {{ venta.id.substring(0,12) }}
+              }
+            </h3>
 
             <div class="fecha-venta">
               <span>
@@ -61,6 +67,14 @@
         </div>
 
         <div class="venta-resumen" >
+          <div class="contenedor-tipoComprobante">
+            <p [ngClass]="{
+            'ticket': venta.tipoComprobante === 'NOTA_VENTA',
+            'boleta': venta.tipoComprobante === 'BOLETA',
+            'factura': venta.tipoComprobante === 'FACTURA' }">
+              {{venta.tipoComprobante === 'NOTA_VENTA' ? 'TICKET' : venta.tipoComprobante }}</p>
+          </div>
+
           <div class="contenedor-ProductosVendidos">
               <span>
                 <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 292.165 292.165" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linejoin="round"></g><g
