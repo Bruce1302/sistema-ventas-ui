@@ -1,0 +1,69 @@
+@if (venta(); as v) {
+  <div class="ticket-impresion">
+    <!-- Cabecera de la Tienda -->
+    <div class="ticket-cabecera">
+      <h3>{{ tienda()?.nombre || 'MI TIENDA' }}</h3>
+      @if (tienda()?.direccion) {
+        <p>{{ tienda()?.direccion }}</p>
+      }
+      @if (tienda()?.telefono) {
+        <p>Tel: {{ tienda()?.telefono }}</p>
+      }
+    </div>
+
+    <div class="linea-punteada"></div>
+
+    <!-- Datos del Comprobante -->
+    <div class="ticket-info">
+      <p class="titulo-doc">NOTA DE VENTA</p>
+      <p><strong>N°:</strong> {{ v.id.substring(0, 8).toUpperCase() }}</p>
+      <p><strong>Fecha:</strong> {{ v.fechaVenta | date:'dd/MM/yyyy HH:mm' }}</p>
+      @if (v.clienteNombre) {
+        <p><strong>Cliente:</strong> {{ v.clienteNombre }}</p>
+      }
+      @if (v.clienteNumDoc) {
+        <p><strong>Doc:</strong> {{ v.clienteNumDoc }}</p>
+      }
+    </div>
+
+    <div class="linea-punteada"></div>
+
+    <!-- Tabla de Productos -->
+    <table class="ticket-tabla">
+      <thead>
+      <tr>
+        <th class="col-cant">Cant</th>
+        <th class="col-desc">Descripción</th>
+        <th class="col-num">P.U.</th>
+        <th class="col-num">Imp.</th>
+      </tr>
+      </thead>
+      <tbody>
+        @for (item of v.detalles; track item.id) {
+          <tr>
+            <td class="col-cant">{{ item.cantidad }}</td>
+            <td class="col-desc">{{ item.productoNombre }}</td>
+            <td class="col-num">{{ item.precioUnitario | number:'1.2-2' }}</td>
+            <td class="col-num">{{ item.subTotal | number:'1.2-2' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="linea-punteada"></div>
+
+    <!-- Total -->
+    <div class="ticket-total">
+      <span>TOTAL A PAGAR:</span>
+      <span>S/ {{ v.total | number:'1.2-2' }}</span>
+    </div>
+
+    <div class="linea-punteada"></div>
+
+    <!-- Pie Legal -->
+    <div class="ticket-pie">
+      <p>¡Gracias por su preferencia!</p>
+      <p class="aviso-legal">Documento de control interno - Sin valor tributario</p>
+    </div>
+  </div>
+}

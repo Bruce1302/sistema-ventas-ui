@@ -342,7 +342,7 @@
 .btn-finalizar.desactivado
 {
   opacity: 0.5;
-  cursor: not-allowed;
+  cursor: wait;
 }
 
 .mensaje

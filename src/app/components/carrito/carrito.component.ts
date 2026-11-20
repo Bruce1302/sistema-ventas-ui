@@ -181,6 +181,8 @@ export class CarritoComponent {
 
           if (ventaCreada.externalId)
             this.abrirComprobantePdf(ventaCreada.id);
+          else
+            this.ventaService.imprimirTicketInterno(ventaCreada);
 
         },
 

@@ -306,7 +306,7 @@
 
 .btn-imprimir.desactivado
 {
-  cursor: not-allowed;
+  cursor: wait;
 }
 
 .btn-eliminar:hover { background-color: #fef2f2; }

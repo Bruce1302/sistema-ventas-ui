@@ -60,6 +60,22 @@ export class VentaService {
 
   ventasRealizadas = signal<PageResponse<VentaResponse> | null>(null);
 
+  ticketParaImprimir = signal<VentaResponse | null>(null);
+
+  imprimirTicketInterno(venta: VentaResponse) {
+    this.ticketParaImprimir.set(venta);
+
+    // Damos 50ms para que Angular dibuje el @if del ticket antes de abrir el diálogo de impresión
+    setTimeout(() => {
+      window.print();
+    }, 50);
+
+    // Limpiamos el Signal al cerrar el cuadro de impresión
+    window.onafterprint = () => {
+      this.ticketParaImprimir.set(null);
+    };
+  }
+
 
   nuevaVenta(ventaRequest: VentaRequest)
   {

@@ -1,4 +1,8 @@
 <main class="contenedor-principal">
     <router-outlet></router-outlet> <!-- inyectara las rutas dinamicamente -->
     <app-toast></app-toast>
+    <app-ticket-interno
+      [venta]="ticketParaImprimir()"
+      [tienda]="tiendaActual()">
+    </app-ticket-interno>
 </main>

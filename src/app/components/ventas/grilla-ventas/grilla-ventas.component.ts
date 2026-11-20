@@ -4,6 +4,8 @@ import { VentaResponse, VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
 import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
 import { ToastService } from '../../../services/toast.service';
+import { TicketInternoComponent } from '../../ticket-interno/ticket-interno.component';
+import { TiendaService } from '../../../services/tienda.service';
 
 @Component({
   imports: [
@@ -11,7 +13,8 @@ import { ToastService } from '../../../services/toast.service';
     GrillaHeaderComponent,
     NgClass,
     DecimalPipe,
-    TitleCasePipe
+    TitleCasePipe,
+    TicketInternoComponent
   ],
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
@@ -21,6 +24,7 @@ import { ToastService } from '../../../services/toast.service';
 export class GrillaVentasComponent implements OnInit{
 
   private ventaService = inject(VentaService);
+  private tiendaService = inject(TiendaService);
   private toastService = inject(ToastService);
   private auth = inject(AuthService);
 
@@ -33,6 +37,10 @@ export class GrillaVentasComponent implements OnInit{
   ventaExpandida = signal<string | null>(null);
 
   procesandoComprobante = signal<boolean>(false);
+
+  ticketParaImprimir = signal<VentaResponse | null >(null);
+
+  tiendaActual = this.tiendaService.tiendaActual;
 
   ngOnInit(): void
   {
@@ -90,7 +98,7 @@ export class GrillaVentasComponent implements OnInit{
 
   imprimirTicket(venta: VentaResponse)
   {
-
+    this.ventaService.imprimirTicketInterno(venta);
   }
 
   eliminarVenta(id: string)

@@ -1,14 +1,23 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ToastComponent } from './components/shared/toast/toast.component';
+import { VentaService } from './services/venta.service';
+import { TiendaService } from './services/tienda.service';
+import { TicketInternoComponent } from './components/ticket-interno/ticket-interno.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToastComponent],
+  imports: [RouterOutlet, TicketInternoComponent, ToastComponent],
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
   protected readonly title = signal('sistema-ventas-ui');
+
+  private ventaService = inject(VentaService);
+  private tiendaService = inject(TiendaService);
+
+  ticketParaImprimir = this.ventaService.ticketParaImprimir;
+  tiendaActual = this.tiendaService.tiendaActual;
 }

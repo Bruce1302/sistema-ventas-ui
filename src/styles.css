@@ -8,3 +8,17 @@ body
   background: #fff;
 
 }
+
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  router-outlet,
+  router-outlet + *,
+  app-toast {
+    display: none !important;
+  }
+}
