@@ -229,7 +229,8 @@ svg
   transition: all 0.2s;
 }
 
-.btn-editar {
+.btn-editar
+{
   color: #3b82f6;
   border: 1px solid #bfdbfe;
 }

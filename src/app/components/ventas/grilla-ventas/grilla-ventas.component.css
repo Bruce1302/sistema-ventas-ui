@@ -25,9 +25,13 @@
   --color-claro: #eaecee;
 }
 
-.ticket { --color-fuerte: #b45309; --color-claro: #fef3c7;}
+.ticket { --color-fuerte: #b45309; --color-claro: #fde9d8;}
 .factura { --color-fuerte: #115e59; --color-claro: #dbfaf3;}
 .boleta { --color-fuerte: #6d28d9; --color-claro: #ede9fe;}
+
+.pendiente{--color-fuerte: #917503; --color-claro: #fdf5d5}
+.aceptado{--color-fuerte: #18791e; --color-claro: #e8f5e9}
+.rechazado{--color-fuerte: #b42318; --color-claro: #fff1ee}
 
 :host
 {
@@ -235,9 +239,26 @@
   color: var(--color-fuerte);
 }
 
+.contenedor-footer
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contenedor-estado p
+{
+  font-size: .8rem;
+  padding: 5px 8px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: var(--color-claro);
+  color: var(--color-fuerte);
+}
+
 .btn-eliminar
 {
-  width: 40%;
+  width: auto;
   margin: 0 auto;
   font-weight: 500;
   font-size: .85rem;
@@ -251,6 +272,43 @@
 
 }
 
+.btn-imprimir
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  color: #3b82f6;
+  background-color: white;
+  border: 2px solid #aed0fc;
+  transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-imprimir svg
+{
+  width: 25px;
+  height: 25px;
+  color: #3b82f6;
+}
+
+.btn-imprimir p
+{
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.btn-imprimir:hover { background-color: #eff6ff;}
+
+.btn-imprimir.desactivado
+{
+  cursor: not-allowed;
+}
+
 .btn-eliminar:hover { background-color: #fef2f2; }
 
 .contenedor-paginacion
@@ -259,7 +317,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin: 10px;
+  margin: 2rem 10px 10px 10px;
 }
 .contenedor-paginacion span
 {

@@ -1,15 +1,17 @@
 import { Component, computed, EventEmitter, inject, OnInit, Output, signal } from '@angular/core';
-import { DatePipe, DecimalPipe, NgClass } from '@angular/common';
-import { VentaService } from '../../../services/venta.service';
+import { DatePipe, DecimalPipe, NgClass, TitleCasePipe } from '@angular/common';
+import { VentaResponse, VentaService } from '../../../services/venta.service';
 import { AuthService } from '../../../services/auth.service';
 import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   imports: [
     DatePipe,
     GrillaHeaderComponent,
     NgClass,
-    DecimalPipe
+    DecimalPipe,
+    TitleCasePipe
   ],
   selector: 'app-grilla-ventas',
   styleUrl: './grilla-ventas.component.css',
@@ -19,7 +21,7 @@ import { GrillaHeaderComponent } from './grilla-header/grilla-header.component';
 export class GrillaVentasComponent implements OnInit{
 
   private ventaService = inject(VentaService);
-
+  private toastService = inject(ToastService);
   private auth = inject(AuthService);
 
   ventasPaginadas = this.ventaService.ventasRealizadas;
@@ -29,6 +31,8 @@ export class GrillaVentasComponent implements OnInit{
   usuarioRol = this.auth.usuarioRol
 
   ventaExpandida = signal<string | null>(null);
+
+  procesandoComprobante = signal<boolean>(false);
 
   ngOnInit(): void
   {
@@ -47,6 +51,45 @@ export class GrillaVentasComponent implements OnInit{
 
     //le pasamos el bloque de ventas que necesitamos
     this.ventaService.obtenerVentas(nuevaPagina);
+
+  }
+
+  imprimirComprobante(id: string)
+  {
+    if (this.procesandoComprobante()) return;
+    this.procesandoComprobante.set(true)
+
+    this.ventaService.descargarPdf(id, 'ticket').subscribe({
+      next: (pdfBlob: Blob) =>
+      {
+        const url = URL.createObjectURL(pdfBlob);
+
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = url;
+        document.body.appendChild(iframe);
+
+        iframe.onload = () => {
+          iframe.contentWindow?.focus();
+          iframe.contentWindow?.print();
+
+          setTimeout(() => {
+            document.body.removeChild(iframe);
+            URL.revokeObjectURL(url);
+          }, 60000);
+        };
+        this.procesandoComprobante.set(false);
+      },
+      error: (error) => {
+        this.procesandoComprobante.set(false);
+        console.error('Error al descargar el PDF:', error);
+        this.toastService.mostrar('No se pudo cargar el comprobante para imprimir.', 'error');
+      }
+    });
+  }
+
+  imprimirTicket(venta: VentaResponse)
+  {
 
   }
 
