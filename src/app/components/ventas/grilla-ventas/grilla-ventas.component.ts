@@ -38,6 +38,8 @@ export class GrillaVentasComponent implements OnInit{
 
   procesandoComprobante = signal<boolean>(false);
 
+  reenviando = signal<string | null>(null);
+
   ticketParaImprimir = signal<VentaResponse | null >(null);
 
   tiendaActual = this.tiendaService.tiendaActual;
@@ -112,6 +114,34 @@ export class GrillaVentasComponent implements OnInit{
       error: (error) =>
       {
         console.log('Error al eliminar la venta');
+      }
+    })
+  }
+
+  reenviarVenta(id: string)
+  {
+    if (this.reenviando()) return;
+    this.reenviando.set(id);
+
+    this.ventaService.reenviarVenta(id).subscribe({
+      next: (ventaActualizada) =>
+      {
+        this.reenviando.set(null);
+
+        if (ventaActualizada.estadoSunat === 'ACEPTADO')
+          this.toastService.mostrar('¡Comprobante aceptado por SUNAT!', 'exito');
+        else if (ventaActualizada.estadoSunat === 'RECHAZADO')
+          this.toastService.mostrar('SUNAT rechazó el comprobante.', 'error');
+        else
+          this.toastService.mostrar('SUNAT aún no responde. Sigue en estado Pendiente.', 'info');
+
+        this.cambiarPagina(this.paginaActual());
+      },
+      error: (error) =>
+      {
+        this.reenviando.set(null);
+        console.log('Error al reenviar la venta');
+        this.toastService.mostrar('Hubo un error al reenviar la venta', 'error');
       }
     })
   }

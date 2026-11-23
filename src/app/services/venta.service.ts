@@ -127,6 +127,11 @@ export class VentaService {
 
   }
 
+  reenviarVenta(id: string)
+  {
+    return this.http.post<VentaResponse>(`${this.apiUrl}/${id}/reenviar`, null);
+  }
+
 
 
 
