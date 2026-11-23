@@ -287,7 +287,12 @@
 {
   scale: 1.05;
   box-shadow: 0 0 8px var(--color-tema);
+}
 
+.btn-agregar[disabled]
+{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .card-stock svg,
