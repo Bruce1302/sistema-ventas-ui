@@ -31,10 +31,12 @@
 
           <div class="info-header">
             <h3>
-              @if (venta.serieNumero) {
-                Código: {{ venta.serieNumero }}
+              @if (venta.serieNumero)
+              {
+                {{ (venta.tipoComprobante === 'FACTURA' ? 'Factura: ' : 'Boleta: ') + venta.serieNumero }}
+
               } @else {
-                Código: {{ venta.id.substring(0,12) }}
+                Ticket: {{ venta.id.substring(0,12) }}
               }
             </h3>
 
@@ -115,7 +117,7 @@
 
             @if (venta.estadoSunat === 'PENDIENTE')
             {
-              <button class="btn-reenviar" (click)="reenviarVenta(venta.id)" [disabled]="reenviando() === venta.id">
+              <button class="btn-reenviar" (click)="reenviarVenta(venta.id)" [disabled]="reenviando() === venta.id" [ngClass]="{'desactivado': reenviando()}">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" color="currentcolor">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

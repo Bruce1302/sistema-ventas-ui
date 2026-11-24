@@ -177,7 +177,6 @@ export class CarritoComponent {
           this.seleccionarComprobante('NOTA_VENTA');
           this.productoService.obtenerTopProductos();
           this.toastService.mostrar('¡Venta realizada con éxito.!', 'exito');
-          console.log('Venta realizada con éxito \n' + listaDetalles);
 
           if (ventaCreada.externalId)
             this.abrirComprobantePdf(ventaCreada.id);

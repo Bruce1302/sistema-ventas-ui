@@ -121,13 +121,13 @@ export class GrillaVentasComponent implements OnInit{
   reenviarVenta(id: string)
   {
     if (this.reenviando()) return;
+
     this.reenviando.set(id);
+    console.log(this.reenviando());
 
     this.ventaService.reenviarVenta(id).subscribe({
       next: (ventaActualizada) =>
       {
-        this.reenviando.set(null);
-
         if (ventaActualizada.estadoSunat === 'ACEPTADO')
           this.toastService.mostrar('¡Comprobante aceptado por SUNAT!', 'exito');
         else if (ventaActualizada.estadoSunat === 'RECHAZADO')
@@ -136,12 +136,13 @@ export class GrillaVentasComponent implements OnInit{
           this.toastService.mostrar('SUNAT aún no responde. Sigue en estado Pendiente.', 'info');
 
         this.cambiarPagina(this.paginaActual());
+        this.reenviando.set(null);
       },
       error: (error) =>
       {
-        this.reenviando.set(null);
         console.log('Error al reenviar la venta');
         this.toastService.mostrar('Hubo un error al reenviar la venta', 'error');
+        this.reenviando.set(null);
       }
     })
   }
