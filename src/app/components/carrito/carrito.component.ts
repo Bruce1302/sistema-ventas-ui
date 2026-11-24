@@ -24,6 +24,7 @@ export class CarritoComponent {
     effect(() => {
       if (this.listaCarrito().length === 0) {
         this.seleccionarComprobante('NOTA_VENTA');
+        this.idempotencyKeyActual = null;
       }
     });
   }
@@ -61,6 +62,8 @@ export class CarritoComponent {
 
   procesandoVenta = signal<boolean>(false);
 
+  private idempotencyKeyActual: string | null = null;
+
   formularioValido = computed(() => {
     const tipo = this.tipoComprobante();
     const doc = this.clienteNumDoc().trim();
@@ -91,6 +94,7 @@ export class CarritoComponent {
   quitarItem(productoId: string)
   {
     this.carritoService.quitarItem(productoId);
+    this.idempotencyKeyActual = null;
   }
 
   aumentarCantidad(id: string)
@@ -109,6 +113,9 @@ export class CarritoComponent {
     const tipo = this.tipoComprobante();
     const doc = this.clienteNumDoc().trim();
     const nombre = this.clienteNombre().trim();
+
+    if (!this.idempotencyKeyActual)
+      this.idempotencyKeyActual = crypto.randomUUID();
 
     if (this.tipoComprobante() === 'BOLETA')
     {
@@ -168,7 +175,7 @@ export class CarritoComponent {
     this.procesandoVenta.set(true)
 
     //los enviamos al api
-    this.ventaService.nuevaVenta(ventaRequest).subscribe(
+    this.ventaService.nuevaVenta(ventaRequest, this.idempotencyKeyActual).subscribe(
       {
         next: (ventaCreada: VentaResponse) =>
         {
@@ -177,6 +184,7 @@ export class CarritoComponent {
           this.seleccionarComprobante('NOTA_VENTA');
           this.productoService.obtenerTopProductos();
           this.toastService.mostrar('¡Venta realizada con éxito.!', 'exito');
+          this.idempotencyKeyActual = null;
 
           if (ventaCreada.externalId)
             this.abrirComprobantePdf(ventaCreada.id);

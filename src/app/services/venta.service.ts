@@ -77,9 +77,15 @@ export class VentaService {
   }
 
 
-  nuevaVenta(ventaRequest: VentaRequest)
+  nuevaVenta(ventaRequest: VentaRequest, idempotencyKey?: string)
   {
-    return this.http.post<VentaResponse>(this.apiUrl, ventaRequest);
+    const headers: Record<string, string> = {};
+
+    if (idempotencyKey)
+      headers['Idempotency-Key'] = idempotencyKey;
+
+
+    return this.http.post<VentaResponse>(this.apiUrl, ventaRequest, { headers });
 
   }
 
