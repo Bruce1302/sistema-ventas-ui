@@ -1,9 +1,10 @@
+
 .contenedor-principal
 {
-  background: linear-gradient(to bottom, #FFA98A, #ffffff);
+  background: linear-gradient(to bottom, #a0c8f3, #ffffff);
   /*border: 1px solid black;*/
-  margin-top: 2rem ;
-  padding-top: 2rem;
+  /*margin-top: 2rem;*/
+  padding-top: 5rem;
 }
 
 .login-contenedor
@@ -23,7 +24,7 @@
   backdrop-filter: blur(5px);
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 26px;
-  box-shadow: 0px 35px 68px 0px rgba(233, 225, 238, 0.5), inset 0px -8px 16px 0px rgba(233, 225, 238, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  box-shadow: 0px 35px 68px 0px rgb(225 230 238 / 0.5), inset 0px -8px 16px 0px rgb(225 229 238 / 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
 }
 
 .login-contenedor h3
@@ -36,7 +37,7 @@
 
   margin-bottom: 1rem;
 
-  color: #751F00;
+  color: #0a6ad2;
 }
 
 .form-contenedor
@@ -62,7 +63,6 @@
   align-content: center;
   justify-content: center;
 
-
 }
 
 .campos-contenedor label
@@ -73,13 +73,13 @@
 
   letter-spacing: 1px;
 
-  color: #751F00;
+  color: #0a6ad2;
 }
 
 .campos-contenedor input
 {
   border: none;
-  border-bottom: 4px solid #751F00;
+  border-bottom: 4px solid #7890a9;
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
   font-size: clamp(0.7rem, 0.325rem + 1.2vw, 1rem);
@@ -87,15 +87,13 @@
   height: 1.5rem;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
-
-
 }
 
 .campos-contenedor input:focus
 {
   outline: none;
-  border-color: #FF6B35;
-  box-shadow: rgba(255, 107, 53, 0.2) 0px 7px 29px 0px;
+  border-color: #0a6ad2;
+  box-shadow: rgb(165 200 239) 0px 7px 20px 0px;
 
 }
 
@@ -108,7 +106,6 @@
   font-weight: 700;
   font-size: clamp(0.8rem, 0.55rem + 0.8vw, 1rem);
 
-
   position: relative;
   display: flex;
   align-items: center;
@@ -118,18 +115,29 @@
   border-color: transparent;
   background-color: inherit;
   border-radius: 100px;
-  color: #751F00 ;
-  box-shadow: 0 0 0 2px #751F00;
+  color: #0a6ad2 ;
+  box-shadow: 0 0 0 2px #0a6ad2;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-ingresar:disabled
+{
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-ingresar.desactivado
+{
+  cursor: wait;
 }
 
 .btn-ingresar  svg
 {
   position: absolute;
   width: 24px;
-  fill: #751F00;
+  fill: #0a6ad2;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -152,7 +160,7 @@
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
-  background-color: #FF6B35;
+  background-color: #0a6ad2;
   border-radius: 50%;
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -169,7 +177,7 @@
 .btn-ingresar:hover
 {
   box-shadow: 0 0 0 12px transparent;
-  color: #212121;
+  color: white;
   border-radius: 12px;
 }
 
@@ -190,13 +198,13 @@
 
 .btn-ingresar:hover svg
 {
-  fill: #212121;
+  fill: white;
 }
 
 .btn-ingresar:active
 {
   scale: 0.95;
-  box-shadow: 0 0 0 4px #FF6B35;
+  box-shadow: 0 0 0 4px #0a6ad2;
 }
 
 .btn-ingresar:hover .circle
