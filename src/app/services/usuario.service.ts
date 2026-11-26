@@ -1,5 +1,6 @@
 import {inject, Injectable, Service, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export interface Usuario
 {
@@ -20,7 +21,7 @@ export class UsuarioService {
 
   usuarioSeleccionado = signal<Usuario | null>(null);
 
-  private apiUrl = 'http://localhost:8080/usuarios';
+  private apiUrl = `${environment.apiUrl}/usuarios`;
 
   private http = inject(HttpClient);
 

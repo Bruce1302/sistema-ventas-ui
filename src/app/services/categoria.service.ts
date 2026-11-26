@@ -1,6 +1,7 @@
 import { inject, Injectable, OnInit, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastService } from './toast.service';
+import { environment } from '../../environments/environment';
 
 export interface Categoria
 {
@@ -17,7 +18,7 @@ export class CategoriaService
 {
    categorias = signal(<Categoria[]>([]));
 
-   private apiUrl = 'http://localhost:8080/categorias';
+   private apiUrl = `${environment.apiUrl}/categorias`;
 
    private http = inject(HttpClient);
    private toastService = inject(ToastService)

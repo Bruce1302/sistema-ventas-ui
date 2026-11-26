@@ -2,6 +2,7 @@ import { inject, Injectable, Service, signal } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { AuthService } from './auth.service';
 import {PageResponse} from '../models/pagination.model';
+import { environment } from '../../environments/environment';
 
 export interface DetallesVenta
 {
@@ -54,7 +55,7 @@ export interface DetalleVentaResponse
 
 export class VentaService {
 
-  private apiUrl = 'http://localhost:8080/ventas';
+  private apiUrl = `${environment.apiUrl}/ventas`;
 
   private http = inject(HttpClient)
 
@@ -82,7 +83,7 @@ export class VentaService {
     const headers: Record<string, string> = {};
 
     if (idempotencyKey)
-      headers['Idempotency-Key'] = idempotencyKey;
+      headers['X-Idempotency-Key'] = idempotencyKey;
 
 
     return this.http.post<VentaResponse>(this.apiUrl, ventaRequest, { headers });

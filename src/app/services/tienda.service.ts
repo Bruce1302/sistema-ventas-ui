@@ -1,6 +1,7 @@
 import { inject, Inject, Injectable, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 export interface Tienda
 {
@@ -18,7 +19,7 @@ export class TiendaService {
   tiendaActual = signal<Tienda | null>(null);
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  private apiUrl = 'http://localhost:8080/tiendas';
+  private apiUrl = `${environment.apiUrl}/tiendas`;
 
   constructor() {
     // Se ejecuta 1 sola vez al arrancar la app incluso tras presionar F5 o actualizar

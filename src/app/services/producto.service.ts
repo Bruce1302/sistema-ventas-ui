@@ -4,13 +4,13 @@ import { Producto } from '../components/productos/productos.component';
 import {CarritoService} from './carrito.service';
 import {PageResponse} from '../models/pagination.model';
 import { ToastService } from './toast.service';
+import { environment } from '../../environments/environment';
 
 @Injectable(
   {
     providedIn: 'root' // servicio disponible para toda la aplicación
   }
 )
-
 export class ProductoService {
 
   topProductos = signal(<Producto[]>([]));
@@ -23,14 +23,14 @@ export class ProductoService {
 
 
   //Direccion del API
-  private apiUrl = 'http://localhost:8080/productos';
+  private apiUrl = `${environment.apiUrl}/productos`;
   private toastService = inject(ToastService);
 
   constructor(private http: HttpClient, private carritoService: CarritoService) {}
 
   obtenerTopProductos()
   {
-    const topProductos = 'http://localhost:8080/productos/top';
+    const topProductos = `${environment.apiUrl}/productos/top`;
 
     this.http.get<Producto[]>(topProductos).subscribe({
 

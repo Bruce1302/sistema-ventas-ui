@@ -2,6 +2,7 @@ import {inject, Injectable, Service, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthRequestDTO } from '../components/login/login.component';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root' // servicio disponible para toda la aplicación
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   //Direccion del API
-  private apiUrl = 'http://localhost:8080/auth/login';
+  private apiUrl = `${environment.apiUrl}/auth/login`;
 
   //Declaramos el rol como signal para evitar que se haga la decodificacion muchas veces por segundo
   usuarioRol = signal<string | null>(null);
