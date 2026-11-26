@@ -236,6 +236,12 @@ svg
 }
 .btn-editar:hover { background-color: #eff6ff; }
 
+
+.btn-editar.desactivado
+{
+  cursor: wait;
+}
+
 .btn-eliminar {
   color: #ef4444;
   border: 1px solid #fecaca;

@@ -1,13 +1,15 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { CategoriaService } from '../../../services/categoria.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastService } from '../../../services/toast.service';
 import { ProductoService } from '../../../services/producto.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass
   ],
   selector: 'app-grilla-categorias',
   styleUrl: './grilla-categorias.component.css',
@@ -19,6 +21,8 @@ export class GrillaCategoriasComponent {
   private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
   private productosService = inject(ProductoService);
+
+  guardando = signal(false);
 
   paginaActualProductos = this.productosService.paginaActual;
 
@@ -60,6 +64,8 @@ export class GrillaCategoriasComponent {
 
   actualizarCategoria(id: string)
   {
+    this.guardando.set(true);
+
     if (this.formularios[id].invalid)
       return;
 
@@ -73,9 +79,11 @@ export class GrillaCategoriasComponent {
         this.categoriaService.obtenerCategorias();
         this.productosService.obtenerProductosPaginados(this.paginaActualProductos());
         this.toastService.mostrar('Categoria actualizada exitosamente', 'exito');
+        this.guardando.set(false);
       },
       error: (error) => {
         console.error('Error al actualizar categoria:', error);
+        this.guardando.set(false);
       }
     });
   }

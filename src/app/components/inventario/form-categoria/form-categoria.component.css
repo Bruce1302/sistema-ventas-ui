@@ -128,6 +128,11 @@ form input:focus
   opacity: 0.8;
 }
 
+.btn-guardar.desactivado
+{
+  cursor: wait;
+}
+
 @media (max-width: 1160px)
 {
   :host

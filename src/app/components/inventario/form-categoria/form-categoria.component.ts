@@ -1,11 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Categoria, CategoriaService } from '../../../services/categoria.service';
 import { ToastService } from '../../../services/toast.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass
   ],
   selector: 'app-form-categoria',
   styleUrl: './form-categoria.component.css',
@@ -16,6 +18,8 @@ export class FormCategoriaComponent implements OnInit{
   private fb = inject(FormBuilder);
   private categoriaService = inject(CategoriaService);
   private toastService = inject(ToastService);
+
+  guardando = signal(false);
 
   listaCategorias = this.categoriaService.categorias; //traemos las categorias
 
@@ -31,6 +35,8 @@ export class FormCategoriaComponent implements OnInit{
 
   agregarCategoria()
   {
+    this.guardando.set(true);
+
     if(this.categoriaForm.valid)
     {
       this.categoriaService.agregarCategorias(this.categoriaForm.value).subscribe({
@@ -40,10 +46,12 @@ export class FormCategoriaComponent implements OnInit{
           this.categoriaForm.reset();
           this.listaCategorias.update(categoriasActuales => [...categoriasActuales, categoria]); // Agregamos la nueva categoría a la lista
           this.toastService.mostrar('Categoria agregada con éxito', 'exito');
+          this.guardando.set(false);
         },
         error: (error) =>
         {
           console.error('Error al agregar categoria:', error);
+          this.guardando.set(false);
         }
 
       });

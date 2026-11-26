@@ -227,3 +227,9 @@ input::placeholder
 
   opacity: 0.8;
 }
+
+
+.btn-guardar.desactivado
+{
+  cursor: wait;
+}

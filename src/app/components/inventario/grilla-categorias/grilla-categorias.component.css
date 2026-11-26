@@ -70,6 +70,12 @@
   transition: all 0.2s ease-in-out;
 }
 
+.btn-actualizar.desactivado
+{
+  cursor: wait;
+}
+
+
 .card-categoria button svg
 {
   width: 18px;

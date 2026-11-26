@@ -3,11 +3,13 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {ProductoService} from '../../../services/producto.service';
 import {CategoriaService} from '../../../services/categoria.service';
 import { ToastService } from '../../../services/toast.service';
+import { NgClass } from '@angular/common';
 
 @Component({
-    imports: [
-        ReactiveFormsModule
-    ],
+  imports: [
+    ReactiveFormsModule,
+    NgClass
+  ],
   selector: 'app-form-producto',
   styleUrl: './form-producto.component.css',
   templateUrl: './form-producto.component.html',
@@ -25,6 +27,7 @@ export class FormProductoComponent  implements OnInit{
     this.categoriaService.obtenerCategorias();
   }
 
+  guardando = signal(false);
   listaCategorias = this.categoriaService.categorias; //traemos las categorias
 
   // creamos el molde del formulario reactivo
@@ -38,6 +41,7 @@ export class FormProductoComponent  implements OnInit{
 
   agregarProducto()
   {
+    this.guardando.set(true);
     if (this.productoForm.valid)
     {
       this.productoService.agregarProducto(this.productoForm.value).subscribe({
@@ -48,14 +52,14 @@ export class FormProductoComponent  implements OnInit{
           this.productoService.paginaActual.set(0);
           this.productoService.obtenerProductosPaginados(0);
           this.toastService.mostrar('Producto agregado exitosamente', 'exito');
-
-
+          this.guardando.set(false);
         },
         error: (error) =>
         {
           const mensaje = error.error?.error || 'Ocurrió un error al guardar el producto.';
           console.error('Error al agregar producto:', error);
           this.toastService.mostrar(mensaje, 'error');
+          this.guardando.set(false);
         }
 
       });

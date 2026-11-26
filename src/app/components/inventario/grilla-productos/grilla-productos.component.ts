@@ -23,6 +23,8 @@ export class GrillaProductosComponent implements OnInit {
   private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
 
+  guardando = signal(false);
+
   listaCategorias = this.categoriaService.categorias;
 
   paginaActual = signal(0);
@@ -87,6 +89,7 @@ export class GrillaProductosComponent implements OnInit {
 
   actualizarProducto( id: string)
   {
+    this.guardando.set(true);
     if (this.formularios[id].invalid)
       return;
 
@@ -99,12 +102,14 @@ export class GrillaProductosComponent implements OnInit {
         this.cancelarEdicion(id);
         this.productoService.obtenerProductosPaginados(this.paginaActual());
         this.toastService.mostrar('Producto actualizado exitosamente', 'exito');
+        this.guardando.set(false);
 
       },
       error: (error) => {
         const mensaje = error.error?.error || 'Ocurrió un error al actualizar el producto.';
         console.error('Error al actualizar el producto:', error);
         this.toastService.mostrar(mensaje, 'error');
+        this.guardando.set(false);
       }
     });
   }

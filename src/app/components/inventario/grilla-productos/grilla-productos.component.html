@@ -149,7 +149,7 @@
         }
         @else
         {
-          <button type="submit" class="btn-editar" [disabled]="formularios[producto.id].invalid">
+          <button type="submit" class="btn-editar" [disabled]="formularios[producto.id].invalid || guardando() === true " [ngClass]="{'desactivado': guardando() === true}">
             Actualizar
           </button>
           <button type="button" class="btn-eliminar" (click)="cancelarEdicion(producto.id)">
