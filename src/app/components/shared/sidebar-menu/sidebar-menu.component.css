@@ -143,8 +143,10 @@
 {
   .sidebar
   {
-    max-width: fit-content;
+    /*max-width: fit-content;*/
+    max-width: 100%;
     max-height: fit-content;
+    margin: 0 auto;
 
   }
 
@@ -152,7 +154,7 @@
   {
     flex-direction: row;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
   }
 
   .logout-opcion
