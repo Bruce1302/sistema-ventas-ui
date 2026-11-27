@@ -1,8 +1,9 @@
-import {inject, Injectable, Service, signal} from '@angular/core';
+import { inject, Injectable, Injector, Service, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthRequestDTO } from '../components/login/login.component';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { TiendaService } from './tienda.service';
 
 @Injectable({
   providedIn: 'root' // servicio disponible para toda la aplicación
@@ -18,6 +19,7 @@ export class AuthService {
 
   private http = inject(HttpClient)
   private router = inject(Router)
+  private injector = inject(Injector);
 
   constructor()
   {
@@ -31,9 +33,15 @@ export class AuthService {
 
   }
 
-  cerrarSesion( )
+  cerrarSesion()
   {
     localStorage.removeItem('token');
+    this.usuarioRol.set(null);
+    this.tiendaId.set(null);
+
+    // Pedimos TiendaService bajo demanda justo al cerrar sesión (cero dependencia circular)
+    const tiendaService = this.injector.get(TiendaService);
+    tiendaService.tiendaActual.set(null);
 
     this.router.navigate(['/login']);
   }
@@ -82,5 +90,27 @@ export class AuthService {
       console.error("Error al decodificar el token", error);
       return null;
     }
+  }
+
+  estaAutenticado(): boolean
+  {
+    const payload = this.decoficarToken();
+    if (!payload || !payload.exp) {
+      return false;
+    }
+
+    // payload.exp viene en segundos, multiplicamos por 1000 para comparar en milisegundos
+    const fechaExpiracion = payload.exp * 1000;
+    const estaVigente = Date.now() < fechaExpiracion;
+
+    if (!estaVigente)
+    {
+      // Si ya caducó, limpiamos el token muerto de inmediato para que vuelva a iniciar sesión
+      localStorage.removeItem('token');
+      this.usuarioRol.set(null);
+      this.tiendaId.set(null);
+    }
+
+    return estaVigente;
   }
 }

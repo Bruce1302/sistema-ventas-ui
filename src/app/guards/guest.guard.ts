@@ -1,14 +1,15 @@
 import {CanActivateFn, Router} from '@angular/router';
 import {inject} from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 export const guestGuard: CanActivateFn = (route, state) => {
 
   const router = inject(Router);
   const token = localStorage.getItem('token');
+  const authService = inject(AuthService);
 
-  if (token)
+  if (authService.estaAutenticado())
   {
-    // Si ya existe un token, lo mandamos directo al menú principal
     router.navigate(['/home']);
     return false; // Bloqueamos que se dibuje la pantalla de login
   }

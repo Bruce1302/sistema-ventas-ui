@@ -116,13 +116,29 @@
   background-color: #0b5ed7;
 }
 
+.titulo-seccion
+{
+  max-width: fit-content;
+  grid-column: 1 / -1;
+  margin: 0 0 -1rem 1rem;
+  font-size: 1rem;
+  letter-spacing: .5px;
+  font-weight: 600;
+  color: #475569;
+  padding: 5px 15px;
+  border-radius: 10px;
+  background-color: #f1f5f9;
+  box-shadow: 0 0 5px #cbd5e1;
+}
+
 .contenedor-topProductos-grid
 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 30px;
+  gap: 50px;
   padding: 20px;
   justify-content: center;
+  align-content: start;
   max-width: 1000px;
   height: calc(100vh - 200px);
   overflow-y: auto;
