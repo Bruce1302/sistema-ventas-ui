@@ -1,9 +1,10 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { CategoriaService } from '../../../services/categoria.service';
+import { Categoria, CategoriaService } from '../../../services/categoria.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastService } from '../../../services/toast.service';
 import { ProductoService } from '../../../services/producto.service';
 import { NgClass } from '@angular/common';
+import { ConfirmacionService } from '../../../services/confirmacion.service';
 
 @Component({
   imports: [
@@ -21,6 +22,7 @@ export class GrillaCategoriasComponent {
   private toastService = inject(ToastService);
   private fb = inject(FormBuilder);
   private productosService = inject(ProductoService);
+  private confirmacionService = inject(ConfirmacionService);
 
   guardando = signal(false);
 
@@ -47,9 +49,14 @@ export class GrillaCategoriasComponent {
     });
   }
 
-  eliminarCategoria(id: string)
+  eliminarCategoria(categoria: Categoria)
   {
-    this.categoriaService.eliminarCategoria(id);
+    //this.categoriaService.eliminarCategoria(id);
+    this.confirmacionService.pedir(
+      '¿Eliminar categoría?',
+      `Se eliminará la categoria "${categoria.nombre}". Esta acción no se puede deshacer.`,
+      () => this.categoriaService.eliminarCategoria(categoria.id)
+    );
   }
 
   activarEdicion(id: string)

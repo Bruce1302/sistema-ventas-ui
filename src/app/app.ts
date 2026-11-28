@@ -4,11 +4,12 @@ import { ToastComponent } from './components/shared/toast/toast.component';
 import { VentaService } from './services/venta.service';
 import { TiendaService } from './services/tienda.service';
 import { TicketInternoComponent } from './components/ticket-interno/ticket-interno.component';
+import { ModalConfirmarComponent } from './components/shared/modal-confirmar/modal-confirmar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TicketInternoComponent, ToastComponent],
+  imports: [RouterOutlet, TicketInternoComponent, ToastComponent, ModalConfirmarComponent],
   styleUrl: './app.css',
   templateUrl: './app.html',
 })

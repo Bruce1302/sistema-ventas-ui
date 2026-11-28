@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Producto } from '../../productos/productos.component';
 import { RouterLink } from '@angular/router';
 import { ToastService } from '../../../services/toast.service';
+import { ConfirmacionService } from '../../../services/confirmacion.service';
 
 @Component({
   imports: [
@@ -21,6 +22,7 @@ export class GrillaProductosComponent implements OnInit {
   private productoService = inject(ProductoService);
   private categoriaService = inject(CategoriaService);
   private toastService = inject(ToastService);
+  private confirmacionService = inject(ConfirmacionService);
   private fb = inject(FormBuilder);
 
   guardando = signal(false);
@@ -51,9 +53,14 @@ export class GrillaProductosComponent implements OnInit {
     this.productoService.obtenerProductosPaginados(nuevaPagina);
   }
 
-  eliminarProducto(id: string)
+  eliminarProducto(producto: Producto)
   {
-    this.productoService.eliminarProducto(id);
+    //this.productoService.eliminarProducto(id);
+    this.confirmacionService.pedir(
+      '¿Eliminar producto?',
+      `Se eliminará "${producto.nombre}". Esta acción no se puede deshacer.`,
+      () => this.productoService.eliminarProducto(producto.id)
+    );
   }
 
   constructor() {

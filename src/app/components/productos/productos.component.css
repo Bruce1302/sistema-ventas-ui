@@ -135,7 +135,7 @@
 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 50px;
+  gap: 50px 25px;
   padding: 20px;
   justify-content: center;
   align-content: start;

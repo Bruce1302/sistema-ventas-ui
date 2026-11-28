@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*
+{
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-overlay
+{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-confirmacion
+{
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 0 30px #79625c;
+  animation: scaleUp 0.2s ease-out;
+}
+
+.modal-icono
+{
+  margin-bottom: 10px;
+}
+
+.modal-icono svg
+{
+  width: 45px;
+  height: 45px;
+}
+
+.modal-confirmacion h3
+{
+  margin: 0 0 8px 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+}
+
+.modal-confirmacion p
+{
+  margin: 0 0 22px 0;
+  color: #3d4756;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.modal-acciones
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.btn-cancelar
+{
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+  color: #0a6ad2;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.btn-cancelar:hover
+{
+  background: #eff6ff;
+}
+
+.btn-confirmar-eliminar
+{
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #ef4444;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: all 0.2s ease-out;
+}
+
+.btn-confirmar-eliminar:hover
+{
+  background: #dc2626;
+  box-shadow: 0 0 10px #ee7171;
+}
+
+@keyframes fadeIn
+{
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp
+{
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
